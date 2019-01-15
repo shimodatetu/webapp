@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  width:100vw;
+  height:10vh;
+  top: 0;
+  padding-left: 2vw;
+  background-color: rgba(0,0,0,0.5);
+  .menu_icon {
+    width:8vh;
+    height:8vh;
+  }
+  .icon {
+    font-size:8vh;
+  }
+
+}
+
+.menu {
+  position: fixed;
+  width:20vw;
+  height:100vh;
+  top: 10vh;
+  left:-20vw;
+  background-color: rgba(255,255,255,1);
+  border: solid 1px #000000;
+  .link_tab{
+    width:100%;
+    font-size:3.5vw;
+    border: solid 1px #000000;
+    text-align: center
+  }
+}
+.plus {
+  margin-top:10vh
+}

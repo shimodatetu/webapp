@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src=""></script>
     <title>AcTest</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,9 +11,17 @@
   </head>
 
   <body>
+    <script>
+      $(function(){
+        $(".alert").fadeOut(5000);
+      });
+
+    </script>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
+    <%= render partial:'layouts/header' %>
     <%= yield %>
+    <%= render partial:'layouts/menu' %>
   </body>
 </html>
