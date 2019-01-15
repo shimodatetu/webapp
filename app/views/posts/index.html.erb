@@ -1,0 +1,15 @@
+
+<div class="new-post">
+  <form>
+    <input name="content" rows="2" cols="65" data-behavior="room_speaker">
+  </form>
+  <select id="group" name="group">
+      <option value="Group1">Group1</option>
+      <option value="Group2">Group2</option>
+      <option value="Group3">Group3</option>
+  </select>
+  <div id="posts">
+    <%= render @posts %>
+  </div>
+
+</div>

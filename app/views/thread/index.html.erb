@@ -1,0 +1,9 @@
+<h1><%= Group.find_by(id: params[:id]).title %></h1>
+<div id="posts">
+  <%= render @posts %>
+</div>
+<br>
+<form>
+  投稿：<input name="content" rows="2" cols="65" data-behavior="room_speaker">
+  <input type="hidden"id="group" name="group" value=<%= params[:id] %>>
+</form>

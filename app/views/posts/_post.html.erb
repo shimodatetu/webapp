@@ -1,0 +1,9 @@
+<div class="posts">
+  <% if !params[:id].nil? then %>
+    <% if post.group_id == params[:id].to_i then %>
+      <%= post.user.name %>：<%= post.content %>
+    <% end %>
+  <% else %>
+    <%= post.user.name %>：<%= post.content %>
+  <% end %>
+</div>
