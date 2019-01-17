@@ -5,7 +5,7 @@ $(document).on('click','.menu_icon', function() {
       opened = true;
   }
   else {
-    $(".menu").animate({left: "-20vw"});
+    $(".menu").animate({left: "-15vw"});
     opened = false;
   }
 });

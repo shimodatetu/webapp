@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_085459) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
+    t.string "image"
     t.integer "user_id"
     t.integer "group_id"
     t.datetime "created_at", null: false
@@ -30,6 +31,12 @@ ActiveRecord::Schema.define(version: 2019_01_15_085459) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "country"
+    t.string "gender"
+    t.string "fullName"
+    t.string "age"
+    t.string "image"
+    t.string "profile"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

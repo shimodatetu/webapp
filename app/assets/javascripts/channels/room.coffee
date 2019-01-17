@@ -6,6 +6,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
   received: (data) ->
     # alert data['message']
+    console.log(data["message"])
+    # if data["message"]["image"]
     $('#posts').append data['message']
 
 

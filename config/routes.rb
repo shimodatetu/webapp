@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'thread/index/:id' => 'thread#index'
   get 'sessions/index'
   get 'posts/index'
+  post "posts",to: "posts#create",as: "posts"
   get 'groups/index'
 
   resources :users

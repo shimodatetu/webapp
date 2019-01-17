@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem "rest-client"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
@@ -18,6 +20,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bcrypt'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem "carrierwave"
+gem 'gon'
+gem 'dropzonejs-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

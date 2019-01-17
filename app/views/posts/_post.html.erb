@@ -2,8 +2,11 @@
   <% if !params[:id].nil? then %>
     <% if post.group_id == params[:id].to_i then %>
       <%= post.user.name %>：<%= post.content %>
+      <%= image_tag post.image.url if !post.image.blank? %>
+
     <% end %>
   <% else %>
     <%= post.user.name %>：<%= post.content %>
+    <%= image_tag post.image.url if !post.image.blank? %>
   <% end %>
 </div>

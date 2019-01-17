@@ -17,19 +17,45 @@
 
 .menu {
   position: fixed;
-  width:20vw;
+  width:15vw;
   height:100vh;
   top: 10vh;
-  left:-20vw;
+  left:-15vw;
   background-color: rgba(255,255,255,1);
   border: solid 1px #000000;
   .link_tab{
     width:100%;
-    font-size:3.5vw;
+    font-size:2vw;
     border: solid 1px #000000;
     text-align: center
   }
 }
 .plus {
-  margin-top:10vh
+  margin-top:12vh
+}
+
+input[type="file"] {
+   // display: none;
+}
+label {
+   background: #ddd;
+   padding: 10px 30px;
+   border-radius: 10px;
+   display: inline-block;
+   position: relative;
+}
+label::after {
+   content: "選択されていません";
+   font-size: 14px;
+   height: 20px;
+   line-height: 20px;
+   position: absolute;
+   right: -140px;
+   top: calc(50% - 10px);
+}
+label.changed::after {
+   content: "";
+}
+.filename {
+   font-size: 12px;
 }

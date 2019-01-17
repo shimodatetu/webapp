@@ -11,9 +11,9 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     location.href=local
     # Called when there's incoming data on the websocket for this channel
   make: (title, message) ->
-    alert "ok"
     @perform 'make',title: title, message: message
 
 $(document).on 'submit', '[class~=make_thread]', (event) ->
+  if event.keyCode is 13 # return = send
     App.thread.make $('#title').val(), $('#message').val()
     event.preventDefault()
