@@ -1,0 +1,11 @@
+
+<%= form_tag("/groups",mehtod:"post") do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title%>
+  <br>
+  <%= label_tag :content %>
+  <%= text_field_tag :content %>
+  <% if logged_in? %>
+    <%= submit_tag '送信', :class=>'btn btn-black btn-block' %>
+  <% end %>
+<% end %>

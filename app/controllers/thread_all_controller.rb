@@ -1,5 +1,5 @@
 class ThreadAllController < ApplicationController
-  def index
+  def show
     @groups = Group.all
     @posts = Post.all
   end

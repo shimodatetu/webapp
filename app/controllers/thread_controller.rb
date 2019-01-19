@@ -1,5 +1,5 @@
 class ThreadController < ApplicationController
-  def index
+  def show
     @groups = Group.all
     @posts = Post.all
     @post = Post.new

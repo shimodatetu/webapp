@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_085459) do
     t.string "country"
     t.string "gender"
     t.string "fullName"
-    t.string "age"
+    t.integer "age"
     t.string "image"
     t.string "profile"
     t.string "password_digest"

@@ -17,6 +17,7 @@ App.profile = App.cable.subscriptions.create "ProfileChannel",
   image_change: (asd) ->
     @perfotm 'image_change',file:"asd"
 
+###
 $(document).on 'click', '.profile .content .edit .edit_text', (event) ->
   id = event.target.parentNode.id
   parent = event.target.parentNode
@@ -36,5 +37,4 @@ $(document).on 'change', '#01', (event) ->
   id = parent.id
   #App.profile.change id,file
   event.preventDefault()
-
-alert(gon.a)
+###

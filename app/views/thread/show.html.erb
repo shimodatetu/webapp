@@ -4,7 +4,7 @@
 </div>
 <br>
 <form>
-  投稿：<input name="content" rows="2" cols="65" data-behavior="room_speaker">
+  投稿<input name="content" rows="2" cols="65" data-behavior="room_speaker">
   <input type="hidden"id="group" name="group" value=<%= params[:id] %>>
 </form>
 
@@ -15,10 +15,8 @@
   <%#= f.submit "画像投稿",class: "btn btn-info" %>
 <%# end %>
 <br><br>
-<%= form_for @post,remote: true,html:{class: 'dropzone', id: 'upload-dropzone'} do |f| %>
-  <div class="fallback">
-    <%= f.file_field :image %>
-    <%= f.hidden_field :group_id,value: params[:id] %>
-  </div>
+<%= form_for @post,remote: true do |f| %>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :group_id,value: params[:id] %>
   <%= f.submit "画像投稿",class: "btn btn-info" %>
 <% end %>

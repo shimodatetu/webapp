@@ -5,7 +5,7 @@ class MessageBroadcastJob < ApplicationJob
     if message.image.blank?
       ActionCable.server.broadcast 'room_channel', message: render_message(message)
     else
-      ActionCable.server.broadcast 'room_channel', message: "<img src='#{message.image.url}'>"
+      ActionCable.server.broadcast 'room_channel', message: render_message(message)#"<img src='#{message.image.url}'>"
     end
   end
   private

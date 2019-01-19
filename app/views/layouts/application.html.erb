@@ -18,10 +18,10 @@
       });
 
     </script>
+    <%= render partial:'layouts/header' %>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
-    <%= render partial:'layouts/header' %>
     <%= yield %>
     <%= render partial:'layouts/menu' %>
   </body>
