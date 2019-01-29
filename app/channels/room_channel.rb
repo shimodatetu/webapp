@@ -11,13 +11,12 @@ class RoomChannel < ApplicationCable::Channel
   require 'rest-client'
 
   def speak(data)
-
     group = Group.find_by(id: data['group_id'])
-    p "======================"
-    p data["message"]
-    p  "======================"
     if group
-      post = Post.new(content: data["message"] )
+      post = Post.new
+      post.content_base = data['content_base']
+      post.content_jap = data['content_jap']
+      post.content_eng = data['content_eng']
       post.group_id = group.id
       post.user_id = current_user.id
       post.save

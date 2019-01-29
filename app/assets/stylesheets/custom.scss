@@ -1,35 +1,60 @@
+
 .header {
-  position: fixed;
-  width:100vw;
-  height:10vh;
-  top: 0;
-  padding-left: 2vw;
-  background-color: rgba(0,0,0,0.5);
-  .menu_icon {
-    width:8vh;
-    height:8vh;
-  }
-  .icon {
-    font-size:8vh;
+  position:fixed;
+  .header_logo {
+    width:100vw;
+    height:50px;
+    padding-left: 20px;
+    background-color: rgba(255,195,0,1);
+    font-size:35px;
+    font-family:"serif";
   }
 
-}
+  .navbar {
+    min-height: 40px !important;
+  }
+  .navbar-nav {
+    height: 40px;
+    padding: 0px 0px;
+  }
+  .nav-fall{
+    height:40px;
+    font-size: 18px;
+    background-color: rgba(255,235,110,1);
 
-.menu {
-  position: fixed;
-  width:15vw;
-  height:100vh;
-  top: 10vh;
-  left:-15vw;
-  background-color: rgba(255,255,255,1);
-  border: solid 1px #000000;
-  .link_tab{
-    width:100%;
-    font-size:2vw;
-    border: solid 1px #000000;
-    text-align: center
+    .link_tab {
+      margin-top:0px;
+      a{
+        margin-top:-5px;
+        height:42px;
+      }
+    }
+  }
+
+
+  .login_button_all {
+    .login_button {
+      font-size:20px;
+      width:110px;
+      background-color: rgba(255,235,110,1);
+      margin-top:10px;
+      margin-left:10px;
+      float:left;
+    }
+  }
+  .lang_button_all {
+    .lang_button {
+      margin-right:20px;
+      float:right;
+      background-color: rgba(91,202,255,1);
+    }
+  }
+  .input-group{
+    position:relative;
+    float:left;
+    padding-left:10px;
   }
 }
 .plus {
-  margin-top:12vh
+  padding-top:170px
 }

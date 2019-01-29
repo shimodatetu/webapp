@@ -1,3 +1,81 @@
-// Place all the styles related to the groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.make_thread {
+  padding-left:10px;
+  ul li {
+    list-style: none;
+  }
+  label {
+    margin-right: 10px;
+    width:150px;
+    float: left;
+    font-family:'alba';
+  }
+  .make_content{
+    width:800px;
+    border: solid 1px #000000;
+    font-size:20px;
+    .title_input_all{
+      padding-top:20px;
+      .title_input_form{
+        width:400px;
+      }
+    }
+    .content_input_all{
+      padding-top:20px;
+      .content_input_form{
+        width:600px;
+      }
+    }
+  }
+  .big-category{
+    margin-top:20px;
+  }
+  .small-category{
+    margin-top:20px;
+  }
+  .make_title_show{
+    width:800px;
+    border: solid 1px #000000;
+    background-color: rgba(255,235,110,1);
+    padding:5px;
+    padding-left:8px;
+    font-size:25px;
+  }
+  .submit_cover{
+    width:100%;
+    height:40px;
+    margin-bottom:10px;
+    .submit_button{
+      margin-left:400px;
+      background-color: rgba(255,235,110,1);
+      padding:5px;
+      padding-left:20px;
+      padding-right:20px;
+    }
+  }
+}
+
+select{
+    height:32px;
+    width:400px;
+    outline:none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    background: none transparent;
+    vertical-align: middle;
+    font-size: inherit;
+    color: inherit;
+    -moz-appearance: button;
+    appearance: button;
+    padding-left:10px;
+}
+select option{
+  background-color: #fff;
+  color: #333;
+}
+select::-ms-expand {
+  display: none;
+}
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #828c9a;
+}

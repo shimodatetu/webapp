@@ -1,11 +1,83 @@
-
-<%= form_tag("/groups",mehtod:"post") do %>
-  <%= label_tag :title %>
-  <%= text_field_tag :title%>
-  <br>
-  <%= label_tag :content %>
-  <%= text_field_tag :content %>
-  <% if logged_in? %>
-    <%= submit_tag '送信', :class=>'btn btn-black btn-block' %>
-  <% end %>
-<% end %>
+<% lang = session["lang"] %>
+<div class="make_thread">
+  <div class="make_title_show">
+    <% if lang != "jap" %>
+      <div>Make Thread</div>
+    <% else %>
+      <div>スレッド作成</div>
+    <% end %>
+  </div>
+  <form class='make_content'>
+    <ul class="make_thread">
+      <div class="big-category">
+        <label>
+          <% if lang != "jap" %>
+            Category
+          <% else %>
+            大カテゴリー
+          <% end %>
+        </label>
+        <select class="selectpicker big_select">
+          <% if lang != "jap" %>
+            <option>Please Select</option>
+            <% @category.each do |cate| %>
+              <option class="big_select"id="<%= cate.id %>"value="<%= cate.id %>">
+                <%= cate.name_en %>
+              </option>
+            <% end %>
+          <% else %>
+            <option>選択してください</option>
+            <% @category.each do |cate| %>
+              <option class="big_select"id="<%= cate.id %>"value="<%= cate.id %>">
+                <%= cate.name_jp %>
+              </option>
+            <% end %>
+          <% end %>
+        </select>
+      </div>
+      <div class="small-category">
+        <label>
+          <% if lang != "jap" %>
+            Sub Category
+          <% else %>
+            小カテゴリー
+          <% end %>
+        </label>
+        <select class="selectpicker small_select">
+          <% if lang != "jap" %>
+            <option>Please Select Category</option>
+          <% else %>
+            <option value="">大カテゴリーを選択してください</option>
+          <% end %>
+        </select>
+      </div>
+      <li class="title_input_all">
+        <% if lang != "jap" %>
+          <label for="title">Title</label>
+        <% else %>
+          <label for="title">タイトル</label>
+        <% end %>
+        <input id="title"class="title_input_form"id="title" rows="2" cols="65">
+      </li>
+      <li class="content_input_all">
+        <% if lang != "jap" %>
+          <label for="content">Content</label>
+        <% else %>
+          <label for="content">内容</label>
+        <% end %>
+        <textarea id="content"class="content_input_form" rows="3" cols="65"></textarea>
+      </li>
+    </ul>
+    <% if logged_in? %>
+      <div class="submit_cover">
+        <button type="submit"class="btn btn-default submit_button">
+          <% if lang != "jap" %>
+            Confirm
+          <% else %>
+            作成
+          <% end %>
+        </button>
+      </div>
+    <% end %>
+  </form>
+</div>

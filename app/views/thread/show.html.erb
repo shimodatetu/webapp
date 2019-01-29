@@ -1,4 +1,12 @@
-<h1><%= Group.find_by(id: params[:id]).title %></h1>
+<h1>
+  <% if session["lang"].blank? %>
+    <%= Group.find_by(id: params[:id]).title_en %>
+  <% elsif session["lang"] == "eng" %>
+    <%= Group.find_by(id: params[:id]).title_en %>
+  <% else %>
+    <%= Group.find_by(id: params[:id]).title_jp %>
+  <% end %>
+</h1>
 <div id="posts">
   <%= render @posts %>
 </div>
@@ -7,13 +15,6 @@
   投稿<input name="content" rows="2" cols="65" data-behavior="room_speaker">
   <input type="hidden"id="group" name="group" value=<%= params[:id] %>>
 </form>
-
-<%#= form_for @post,remote: true do |f| %>
-  <%#= render "shared/errors", object:  %>
-  <%#= f.file_field :image %>
-  <%#= f.hidden_field :group_id,value: params[:id] %>
-  <%#= f.submit "画像投稿",class: "btn btn-info" %>
-<%# end %>
 <br><br>
 <%= form_for @post,remote: true do |f| %>
   <%= f.file_field :image %>

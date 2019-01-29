@@ -10,20 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_085459) do
+ActiveRecord::Schema.define(version: 2019_01_21_234755) do
+
+  create_table "bigcategories", force: :cascade do |t|
+    t.string "name_en"
+    t.string "name_jp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
-    t.string "title"
+    t.string "title_base"
+    t.string "title_en"
+    t.string "title_jp"
     t.integer "user_id"
+    t.integer "smallcategory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text "content"
+    t.text "content_base"
+    t.text "content_eng"
+    t.text "content_jap"
     t.string "image"
     t.integer "user_id"
     t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "smallcategories", force: :cascade do |t|
+    t.string "name_en"
+    t.string "name_jp"
+    t.integer "bigcategory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

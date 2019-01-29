@@ -1,7 +1,189 @@
 
+<% url = request.url %>
+<% lang = session["lang"] %>
 <div class="header">
-  <div class="menu_icon">
-    <div class="icon glyphicon glyphicon-menu-hamburger"></div>
+  <div class="header_logo">
+    Fall in Friends
   </div>
+  <nav class="navbar navbar-default nav-fall">
+    <div id="nav-drawer">
+      <input id="nav-input" type="checkbox" class="nav-unshown">
+      <label id="nav-open" for="nav-input"><span></span></label>
+      <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+      <div id="nav-content">
+        <ul class="nav navbar-nav">
+          <li class="link_tab">
+            <%= link_to '/' do %>
+              <% if lang != "jap" %>
+                All Threads
+              <% else %>
+                スレッド一覧
+              <% end %>
+            <% end %>
+          </li>
+          <li class="link_tab">
+            <%= link_to '/signup' do %>
+              <% if lang != "jap" %>
+                Sign Up
+              <% else %>
+                会員登録
+              <% end %>
+            <% end %>
+          </li>
+          <li class="link_tab">
+            <%= link_to '/login' do %>
+              <% if lang != "jap" %>
+                Login
+              <% else %>
+                ログイン
+              <% end %>
+            <% end %>
+          </li>
+          <li class="link_tab">
+            <%= link_to '/groups' do %>
+              <% if lang != "jap" %>
+                Make
+              <% else %>
+                  スレッド作成
+              <% end %>
+            <% end %>
+          </li>
+          <li class="link_tab">
+            <%= link_to '/profile' do %>
+
+              <% if lang != "jap" %>
+                My Page
+              <% else %>
+                マイページ
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lang_button_all">
+    <%= button_to "全文日本語", {controller: 'tasks', action: 'lang_change_jp'},
+          {method: :post, class: "btn btn-lg btn-info active lang_button", params: {url:url}} %>
+    <div class="button_space"></div>
+    <%= button_to "All English", {controller: 'tasks', action: 'lang_change_en'},
+          {method: :post, class: "btn btn-lg btn-info active lang_button",params: {url:url}}%>
+  </div>
+  <div class="input-group"style="width:30%;">
+
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    </span>
+    <% if session["lang"] != "jap" %>
+	   <input type="text" class="form-control" placeholder="Search Categories">
+    <% else %>
+	   <input type="text" class="form-control" placeholder="カテゴリーを検索">
+    <% end %>
+  </div>
+  <!--<div class="login_button_all">
+    <% #begin %>
+    <% if lang != "jap" %>
+      <%= link_to "Login", '/login',
+        {method: :get, class: "btn btn-default active login_button",params: {url:url}}%>
+      <div class="button_space"></div>
+      <%= link_to "Sign up", '/signup',
+        {method: :get, class: "btn btn-default active login_button", params: {url:url}} %>
+    <% else %>
+      <%= link_to "ログイン", '/login',
+        {method: :get, class: "btn btn-default active login_button",params: {url:url}}%>
+      <div class="button_space"></div>
+      <%= link_to "会員登録", '/signup',
+        {method: :get, class: "btn btn-default active login_button", params: {url:url}} %>
+    <% end %>
+    <% #end %>
+  </div>-->
+
 </div>
 <div class="plus"></div>
+<style media="screen">
+  #nav-input,#nav-open,.nav-unshown{
+    display: none;
+  }
+  @media screen and (max-width: 800px) {
+  #nav-open{
+    display: inline-block;
+  }
+  #nav-drawer {
+    position: relative;
+  }
+
+  /*チェックボックス等は非表示に*/
+  .nav-unshown {
+    display:none;
+  }
+
+  /*アイコンのスペース*/
+  #nav-open {
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    vertical-align: middle;
+  }
+
+  /*ハンバーガーアイコンをCSSだけで表現*/
+  #nav-open span, #nav-open span:before, #nav-open span:after {
+    position: absolute;
+    height: 3px;/*線の太さ*/
+    width: 25px;/*長さ*/
+    border-radius: 3px;
+    background: #555;
+    display: block;
+    content: '';
+    cursor: pointer;
+  }
+  #nav-open span:before {
+    bottom: -8px;
+  }
+  #nav-open span:after {
+    bottom: -16px;
+  }
+
+  /*閉じる用の薄黒カバー*/
+  #nav-close {
+    display: none;/*はじめは隠しておく*/
+    position: fixed;
+    z-index: 99;
+    top: 0;/*全体に広がるように*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    transition: .3s ease-in-out;
+  }
+
+  /*中身*/
+  #nav-content {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;/*最前面に*/
+    width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
+    max-width: 330px;/*最大幅（調整してください）*/
+    height: 100%;
+    background: #fff;/*背景色*/
+    transition: .3s ease-in-out;/*滑らかに表示*/
+    -webkit-transform: translateX(-105%);
+    transform: translateX(-105%);/*左に隠しておく*/
+  }
+
+  /*チェックが入ったらもろもろ表示*/
+  #nav-input:checked ~ #nav-close {
+    display: block;/*カバーを表示*/
+    opacity: .5;
+  }
+
+  #nav-input:checked ~ #nav-content {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);/*中身を表示（右へスライド）*/
+    box-shadow: 6px 0 25px rgba(0,0,0,.15);
+  }
+}
+</style>

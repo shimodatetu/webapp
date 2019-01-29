@@ -6,14 +6,70 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    local = '/thread/index/'+data['id']
+    alert("ok");
+    local = '/thread/show/'+data['id']
     $('#groups').append data['message']
-    location.href=local
+    if data['user_id'] == gon.current_user.id
+      location.href=local
     # Called when there's incoming data on the websocket for this channel
-  make: (title, message) ->
-    @perform 'make',title: title, message: message
+  make: (title_base, mes_base, title_jp,mes_jp,title_en,mes_en,category) ->
+    category = Number(category)
+    @perform 'make',title_base:title_base,message_base:mes_base,title_jp:title_jp,message_jp:mes_jp,title_en:title_en,message_en:mes_en,category:category
 
-$(document).on 'submit', '[class~=make_thread]', (event) ->
-  if event.keyCode is 13 # return = send
-    App.thread.make $('#title').val(), $('#message').val()
-    event.preventDefault()
+$(document).on 'click', '[class~=submit_button]', (event) ->
+  words_check($('#title').val(), $('#content').val(),$('.small_select').val())
+  #alert($('.small_select').val());
+  event.preventDefault()
+
+words_check=(title,coment,category)->
+  lang = ""
+  if isHalf(title) == true && isHalf(coment) == true
+    lang = "ja"
+  else
+    lang = "en"
+  #alert lang
+  translate(title,coment,lang,category)
+
+translate=(title,coment,lang,category) ->
+
+  words = title+"|"+coment
+  defer = $.Deferred()
+  $.ajax
+    url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
+    type: 'POST'
+    headers:{
+      'Content-Type': 'application/json'
+      'Accept': 'application/jwt'
+      'Ocp-Apim-Subscription-Key': 'd0d8d178e5f54dcaab373fe9896fdb3a'
+    }
+    async: false
+  .done (data) ->
+    token = data
+    defer.resolve(token)
+    key = 'Bearer ' + token
+    text = words
+    response = $.ajax
+      url: 'https://api.microsofttranslator.com/v2/http.svc/Translate'
+      type: 'GET'
+      data: {
+        'appid': key
+        'Accept': 'application/xml'
+        'text': words
+        'to': lang
+      }
+      async: false
+    data = response.responseText
+    translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
+    get_text = translation.split('|')
+    if lang == "ja"
+      App.thread.make(title,coment,get_text[0],get_text[1],title,coment,category)
+    else
+      App.thread.make(title,coment,title,coment,get_text[0],get_text[1],category)
+    end
+    return defer.promise()
+
+isHalf=(str)->
+	if ( !str.match(/^(\w| |'|,|&)+$/) )
+	   return false
+  else
+    return true

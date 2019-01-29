@@ -1,0 +1,2 @@
+module CategoMakeHelper
+end

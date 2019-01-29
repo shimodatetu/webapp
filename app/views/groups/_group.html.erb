@@ -2,9 +2,9 @@
   <% link = '../thread/show/'+group.id.to_s %>
   <%= link_to link do %>
     <div style="border: solid 1px #333333;">
-      <div>title:<%= group.title %></div>
+      <div>title:<%= group.title_base %></div>
       <%= group.user.name %>：<% group.posts.find_by(id: 1) %>
-      <%= group.posts.first.content %>
+      <%= group.posts.first.content_base %>
     </div>
   <% end %>
 </div>

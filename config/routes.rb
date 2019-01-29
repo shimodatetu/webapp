@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  
-  get 'users/index'
+
+  get 'category/show'
+  match '/small_new' => 'category#small_new', via: [ :post ]
+  match '/big_new' => 'category#big_new', via: [ :post ]
+
+  post 'tasks/en',to:'tasks#lang_change_en'
+  post 'tasks/jp',to:'tasks#lang_change_jp'
+  get 'signup',to:'users#index'
   get 'thread/show/:id' => 'thread#show'
   get 'sessions/index'
   get 'posts/index'
@@ -8,7 +14,6 @@ Rails.application.routes.draw do
   get '/profile',to: 'profile#show'
   patch '/profile', to: 'profile#update'
   get '/groups',to:'groups#new'
-  post '/groups',to:'groups#create'
   resources :users
 
 
