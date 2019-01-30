@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'bcrypt'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'bootstrap-sass'
 gem "carrierwave"
 gem 'gon'

@@ -9,7 +9,19 @@
     float: left;
     font-family:'alba';
   }
+  .make_title_show{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width:800px;
+    border: solid 1px #000000;
+    background-color: rgba(255,235,110,1);
+    padding:5px;
+    padding-left:8px;
+    font-size:25px;
+  }
   .make_content{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     width:800px;
     border: solid 1px #000000;
     font-size:20px;
@@ -31,14 +43,6 @@
   }
   .small-category{
     margin-top:20px;
-  }
-  .make_title_show{
-    width:800px;
-    border: solid 1px #000000;
-    background-color: rgba(255,235,110,1);
-    padding:5px;
-    padding-left:8px;
-    font-size:25px;
   }
   .submit_cover{
     width:100%;

@@ -1,16 +1,23 @@
+<% lang = session["lang"] %>
+<% subcategory = Smallcategory.find_by(id: params[:id]) %>
+<% category = subcategory.bigcategory %>
 <div class="thread_all">
   <div class="thread_all_title">
-    <% if lang != "jap" %>
-      <div>Thread All</div>
-    <% else %>
-      <div>スレッド一覧</div>
-    <% end %>
+    <div class="innerTitle">
+      <% if lang != "jap" %>
+        <%= category.name_en %>
+        ＞
+        <%= subcategory.name_en %>
+      <% else %>
+        <%= category.name_jp %>
+        ＞
+        <%= subcategory.name_jp %>
+      <% end %>
+    </div>
+  </div>
+  <div class="thread_all_content">
+    <div id="groups">
+      <%= render @groups %>
+    </div>
   </div>
 </div>
-
-<h1>Thread all</h1>
-<div id="groups">
-  <%= render @groups %>
-</div>
-
-<% require 'rest-client' %>

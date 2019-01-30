@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'tasks/jp',to:'tasks#lang_change_jp'
   get 'signup',to:'users#index'
   get 'thread/show/:id' => 'thread#show'
+  get 'thread_all/show/:id' => 'thread_all#show'
   get 'sessions/index'
   get 'posts/index'
   post "posts",to: "posts#create",as: "posts"
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#index'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  root 'thread_all#show'
+  root 'category#show'
   #root 'users#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,23 +1,32 @@
+<% lang = session["lang"] %>
 <div class="posts">
-  <% if !params[:id].nil? then %>
-    <% if post.group_id == params[:id].to_i then %>
-      <% if post.image.blank? %>
-        <%= post.user.name %>：
-        <% if session['lang'] == "eng" %>
-          <%= post.content_eng %>
-        <% else %>
-          <%= post.content_jap %>
+  <div class="thread_content">
+    <% if !params[:id].nil? then %>
+      <% if post.group_id == params[:id].to_i then %>
+        <div class="post_user_cover">
+          <%= image_tag(post.user.image.url, :class => "post_img") %>
+          <p class="post_name">
+            <%= post.user.name %>
+          </p>
+        </div>
+        <% if post.image.blank? %>
+          <%= post.user.name %>：
+          <% if session['lang'] == "eng" %>
+            <%= post.content_eng %>
+          <% else %>
+            <%= post.content_jap %>
+          <% end %>
         <% end %>
-      <%end%>
+        <%= image_tag post.image.url if !post.image.blank? %>
+      <% end %>
+    <% else %>
+      <%= post.user.name %>：
+      <% if session['lang'] == "eng" %>
+        <%= post.content_eng %>
+      <% else %>
+        <%= post.content_jap %>
+      <% end %>
       <%= image_tag post.image.url if !post.image.blank? %>
     <% end %>
-  <% else %>
-    <%= post.user.name %>：
-    <% if session['lang'] == "eng" %>
-      <%= post.content_eng %>
-    <% else %>
-      <%= post.content_jap %>
-    <% end %>
-    <%= image_tag post.image.url if !post.image.blank? %>
-  <% end %>
+  </div>
 </div>

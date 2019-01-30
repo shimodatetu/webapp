@@ -1,8 +1,12 @@
 class CategoryController < ApplicationController
-  def show
+  def new
     @categories = Bigcategory.all
     @big_new = Bigcategory.new
     @small_new = Smallcategory.new
+  end
+
+  def show
+    @category = Bigcategory.all
   end
 
   def big_new

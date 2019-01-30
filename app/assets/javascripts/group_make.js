@@ -1,3 +1,4 @@
+var option_there = false;
 $(function(){
   $(".big_select").on("change",function(event){
     $(".add_option").remove();
@@ -9,7 +10,16 @@ $(function(){
       }
     }
   });
-
+  $(".small_select").on("click",function(){
+    if(option_there == false){
+      if(gon.lang != "jap"){
+        alert("Please Select Category At First(Not Sub Category)");
+      }
+      else {
+        alert("初めに大カテゴリーを選択してください");
+      }
+    }
+  });
 });
 
 function put_subcategory(id){
@@ -25,4 +35,11 @@ function put_subcategory(id){
     }
   }
   $(".small_select").append(html_text);
+  if(gon.lang != "jap"){
+    $(".small_first_option").html("Please Select");
+  }
+  else {
+    $(".small_first_option").html("選択してください");
+  }
+  option_there = true;
 }

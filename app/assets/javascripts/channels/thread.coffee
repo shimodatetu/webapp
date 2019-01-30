@@ -65,11 +65,11 @@ translate=(title,coment,lang,category) ->
       App.thread.make(title,coment,get_text[0],get_text[1],title,coment,category)
     else
       App.thread.make(title,coment,title,coment,get_text[0],get_text[1],category)
-    end
     return defer.promise()
 
+bytes=(str) ->
+  return(encodeURIComponent(str).replace(/%../g,"x").length);
 isHalf=(str)->
-	if ( !str.match(/^(\w| |'|,|&)+$/) )
-	   return false
-  else
-    return true
+  str_length = str.length
+  str_byte = bytes(str)
+  return str_length == str_byte

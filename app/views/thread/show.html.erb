@@ -1,16 +1,40 @@
-<h1>
-  <% if session["lang"].blank? %>
-    <%= Group.find_by(id: params[:id]).title_en %>
-  <% elsif session["lang"] == "eng" %>
-    <%= Group.find_by(id: params[:id]).title_en %>
-  <% else %>
-    <%= Group.find_by(id: params[:id]).title_jp %>
-  <% end %>
-</h1>
-<div id="posts">
-  <%= render @posts %>
+<% lang = session["lang"] %>
+<% group = Group.find_by(id: params[:id]) %>
+<% subcategory = group.smallcategory %>
+<% category = subcategory.bigcategory %>
+
+<div class="thread_show">
+  <div class="thread_show_title">
+    <div class="innerTitle">
+      <% if lang != "jap" %>
+        <%= category.name_en %>
+        ＞
+        <%= subcategory.name_en %>
+        ＞
+        <%= group.title_en %>
+      <% else %>
+        <%= category.name_jp %>
+        ＞
+        <%= subcategory.name_jp %>
+        ＞
+        <%= group.title_jp %>
+      <% end %>
+    </div>
+  </div>
+  <div class="thread_show_content">
+    <div class="thread_title">
+      <% if lang != "jap" %>
+        <%= group.title_en %>
+      <%else%>
+        <%= group.title_jp %>
+      <% end %>
+    </div>
+    <div id="posts">
+      <%= render @posts %>
+    </div>
+  </div>
 </div>
-<br>
+
 <form>
   投稿<input name="content" rows="2" cols="65" data-behavior="room_speaker">
   <input type="hidden"id="group" name="group" value=<%= params[:id] %>>

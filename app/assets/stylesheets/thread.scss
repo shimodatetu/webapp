@@ -1,3 +1,49 @@
-// Place all the styles related to the thread controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.thread_show {
+  padding-left:10px;
+  .thread_show_title{
+    width:800px;
+    border: solid 1px #000000;
+    background-color: rgba(255,235,110,1);
+    padding:5px;
+    padding-left:8px;
+    font-size:30px;
+    padding-left:20px;
+    .innerTitle{
+      padding-left:10px;
+    }
+    margin-bottom:30px;
+  }
+  .thread_show_content{
+    margin-bottom:200px;
+    width:800px;
+    border: solid 1px #000000;
+    .thread_title{
+      width:800px;
+      border: solid 1px #000000;
+      background-color: rgba(255,235,110,1);
+      padding:5px;
+      padding-left:8px;
+      font-size:30px;
+      padding-left:20px;
+    }
+    .thread_content {
+      text-decoration: none;
+      color:#000000;
+      .post_user_cover{
+        width:100px;
+        .post_img {
+          margin-left:10px;
+          margin-top:10px;
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius:50%;
+        }
+        .post_name{
+          font-size:20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

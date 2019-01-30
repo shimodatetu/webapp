@@ -40,7 +40,7 @@
             <% end %>
           </li>
           <li class="link_tab">
-            <%= link_to '/groups' do %>
+            <%= link_to '/groups',data: {"turbolinks"=>false} do %>
               <% if lang != "jap" %>
                 Make
               <% else %>
@@ -70,7 +70,7 @@
     <%= button_to "All English", {controller: 'tasks', action: 'lang_change_en'},
           {method: :post, class: "btn btn-lg btn-info active lang_button",params: {url:url}}%>
   </div>
-  <div class="input-group"style="width:30%;">
+  <div class="input-group"style="width:40%;">
 
     <span class="input-group-btn">
       <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
