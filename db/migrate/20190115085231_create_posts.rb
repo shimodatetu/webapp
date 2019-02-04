@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration[5.2]
   def change
     create_table :posts do |t|
-      t.text :content_base
+      t.text :lang
       t.text :content_eng
       t.text :content_jap
       t.string :image

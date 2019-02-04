@@ -1,0 +1,49 @@
+
+<% lang = session["lang"] %>
+<div class="menu_bar panel panel-default">
+  <div class="normal_text panel-heading">
+    <div class="panel-title row">
+      <div class="sm-">
+      <span class="glyphicon glyphicon-th-list"></span>
+      Category List<br>
+      <div style="padding-left:20px">カテゴリ一覧</div>
+    </div>
+  </div>
+  <div class="panel-body category_content">
+    <% Bigcategory.all.each do |cate| %>
+      <div class="bigcategory text big">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <% if lang != "jap" %>
+          <%= cate.name_en %>
+        <% else %>
+          <%= cate.name_jp %>
+        <% end %>
+      </div>
+      <hr class="cut_line">
+      <ul style="display:none;">
+        <% cate.smallcategories.each do |s_cate| %>
+          <li class="smallcategory text ">
+            <span class="glyphicon glyphicon-share-alt"></span>
+            <% if lang != "jap" %>
+              <%= s_cate.name_en %>
+            <% else %>
+              <%= s_cate.name_jp %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.big').click(function() {
+    if ($(this).attr('class').match(/selected/)) {
+      // メニュー非表示
+      $(this).removeClass('selected').next('hr').next('ul').slideUp('fast');
+    } else {
+
+      // メニュー表示
+      $(this).addClass('selected').next('hr').next('ul').slideDown('fast');
+    }
+  });
+</script>

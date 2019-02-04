@@ -8,17 +8,16 @@ class ThreadChannel < ApplicationCable::Channel
   end
 
   def make(data)
-    p "-------------------------------------------------------------------------------------------"
     Group.create()
     group = Group.new()
     group.smallcategory_id = data['category']
-    group.title_base = data['title_base']
+    group.lang = data['lang']
     group.title_jp = data['title_jp']
     group.title_en = data['title_en']
     group.user_id = current_user.id
     if group.save
       post = Post.new()
-      post.content_base = data['message_base']
+      post.lang = data['lang']
       post.content_jap = data['message_jp']
       post.content_eng = data['message_en']
       post.group_id = group.id

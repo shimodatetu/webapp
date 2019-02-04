@@ -12,9 +12,9 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     if data['user_id'] == gon.current_user.id
       location.href=local
     # Called when there's incoming data on the websocket for this channel
-  make: (title_base, mes_base, title_jp,mes_jp,title_en,mes_en,category) ->
+  make: (lang, title_jp,mes_jp,title_en,mes_en,category) ->
     category = Number(category)
-    @perform 'make',title_base:title_base,message_base:mes_base,title_jp:title_jp,message_jp:mes_jp,title_en:title_en,message_en:mes_en,category:category
+    @perform 'make',lang:lang,title_jp:title_jp,message_jp:mes_jp,title_en:title_en,message_en:mes_en,category:category
 
 $(document).on 'click', '[class~=submit_button]', (event) ->
   words_check($('#title').val(), $('#content').val(),$('.small_select').val())
@@ -62,9 +62,9 @@ translate=(title,coment,lang,category) ->
     translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
     get_text = translation.split('|')
     if lang == "ja"
-      App.thread.make(title,coment,get_text[0],get_text[1],title,coment,category)
+      App.thread.make(lang,get_text[0],get_text[1],title,coment,category)
     else
-      App.thread.make(title,coment,title,coment,get_text[0],get_text[1],category)
+      App.thread.make(lang,title,coment,get_text[0],get_text[1],category)
     return defer.promise()
 
 bytes=(str) ->

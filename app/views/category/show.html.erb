@@ -1,39 +1,70 @@
 <% lang = session["lang"] %>
-<div class="category_all">
-  <div class="category_all_title">
-    <% if lang != "jap" %>
-      <div>Categories</div>
-    <% else %>
-      <div>カテゴリ一覧</div>
-    <% end %>
+
+<div class="search_result row"style="//display:none">
+  <div class="col-sm-1">
+    <span class="icon glyphicon glyphicon-arrow-right"></span>
   </div>
-  <div class="category_all_content">
+  <div class="col-sm-10 search_panel">
+    <div class="">
+      <div class="bigcategory">
+          Sports/スポーツ
+          <span class="change_icon glyphicon glyphicon-chevron-down"></span>
+      </div>
+      <div class="smallcategory">
+        Tennis/テニス
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-warning big_category_list">
+  <div class="panel-heading category_head">
+    <div class="panel-title">
+      Large Category List / 大カテゴリ一覧
+    </div>
+  </div>
+  <div class="panel-body category_all_content">
     <% @category.each do |cate| %>
-      <div class="big_category">
-        <% if lang != "jap" %>
-          <%= cate.name_en %>
-        <% else %>
-          <%= cate.name_jp %>
-        <% end %>
-        <br>
-        <div class="small_cate_wrap">
-          <ul class="small_cate">
-            <% cate.smallcategories.each do |s_cate| %>
-              <li class="small_title">
-                <% if lang != "jap" %>
-                  <%= link_to "/thread_all/show/#{s_cate.id}" do %>
-                    ●<%= s_cate.name_en %>
-                  <% end %>
-                <% else %>
-                  <%= link_to "/thread_all/show/#{s_cate.id}" do %>
-                    ●<%= s_cate.name_jp %>
-                  <% end %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+      <div class="bigcategory">
+        <button id="<%= cate.id %>"class="btn btn-lg btn-default category_title">
+          <%= cate.name_en %> / <%= cate.name_jp %>
+          <span class="change_icon glyphicon glyphicon-chevron-down"></span>
+        </button>
       </div>
     <% end %>
   </div>
 </div>
+
+<div class="panel panel-warning all_category_list">
+  <div class="panel-heading category_head">
+    <div class="panel-title">
+      All Category List / 全カテゴリ一覧
+    </div>
+  </div>
+  <div class="panel-body category_all_content row">
+    <% @category.each do |cate| %>
+      <div class="panel panel-warning category_panel<%= cate.id %>">
+        <div class="bigcategory panel-heading">
+          <div class="category_title panel-title">
+            <%= cate.name_en %> / <%= cate.name_jp %>
+          </div>
+        </div>
+        <ul class="smallcategory panel-body">
+          <% cate.smallcategories.each do |s_cate| %>
+            <li class="text col-sm-6">
+              <%= s_cate.name_en %> / <%= s_cate.name_jp %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".category_title").on("click",function(){
+    var scroll_place = $(".category_panel"+$(this).attr("id")).offset().top;
+    scroll_place -= 165;
+    $("html").animate({scrollTop:scroll_place},"normal");
+  });
+</script>

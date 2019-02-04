@@ -2,39 +2,43 @@
 <div class="groups">
   <% if group.smallcategory_id == params[:id].to_i %>
     <% link = '../../thread/show/'+group.id.to_s %>
-    <%= link_to link,class:"thread_content" do %>
-      <div class="thread_title">
-        <% if lang != "jap" %>
-          <%= group.title_en %>
-        <%else%>
-          <%= group.title_jp %>
-        <% end %>
-      </div>
-      <div class="group_user_cover">
-        <%= image_tag(group.user.image.url, :class => "group_img") %>
-        <p class="group_name">
-          <%= group.user.name %>
-        </p>
-      </div>
-      <div class="post_content_cover">
-        <div class="post_content">
-          <div class="post_content_l">
+    <div class="thread_cover">
+      <%= link_to link,class:"thread_link" do %>
+        <div class="thread_content">
+          <div class="thread_title">
             <% if lang != "jap" %>
-              <%= group.posts.first.content_eng %>
+              <%= group.title_en %>
             <% else %>
-              <%= group.posts.first.content_jap %>
+              <%= group.title_jp %>
             <% end %>
           </div>
+          <div class="group_user_cover">
+            <%= image_tag(group.user.image.url, :class => "group_img") %>
+            <p class="group_name">
+              <%= group.user.name %>
+            </p>
+          </div>
+          <div class="post_content_cover">
+            <div class="post_content">
+              <div class="post_content_l">
+                <% if lang != "jap" %>
+                  <%= group.posts.first.content_eng %>
+                <% else %>
+                  <%= group.posts.first.content_jap %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="move_thread">
+            <% if lang != "jap" %>
+              Move to This Thread
+            <% else %>
+              このスレッドに移動
+            <% end %>
+            <span class="glyphicon glyphicon-chevron-right icon"></span>
+          </div>
         </div>
-      </div>
-      <div class="move_thread">
-        <% if lang != "jap" %>
-          Move to This
-        <% else %>
-          ここに移動
-        <% end %>
-        <span class="glyphicon glyphicon-chevron-right icon"></span>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>

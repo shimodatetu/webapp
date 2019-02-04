@@ -20,17 +20,19 @@ ActiveRecord::Schema.define(version: 2019_01_21_234755) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "title_base"
+    t.string "lang"
     t.string "title_en"
     t.string "title_jp"
     t.integer "user_id"
     t.integer "smallcategory_id"
+    t.integer "bigcategory_id"
+    t.integer "seen_num", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text "content_base"
+    t.text "lang"
     t.text "content_eng"
     t.text "content_jap"
     t.string "image"

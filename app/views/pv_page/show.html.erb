@@ -1,0 +1,101 @@
+<% lang = session["lang"] %>
+
+<div class="panel panel-warning pvpage_all">
+  <div class="panel-heading pvpage_head">
+    <div class="panel-title">
+      Popular Thread / 人気スレッド
+    </div>
+  </div>
+  <div class="panel-body pvpage_lang row">
+    <div class="col-sm-6">
+      <div class="lang_show">
+        English / 英語
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="lang_show">
+        Japanese / 日本語
+      </div>
+    </div>
+  </div>
+  <div class="panel-body row thread_all">
+    <% @groups.each do |group| %>
+      <div class="col-sm-6">
+        <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
+          <div class="panel panel-warning">
+            <div class="panel-heading thread_title">
+              <div class="panel-title">
+                <%= group.title_en %>
+              </div>
+            </div>
+            <div class="panel-body thread_content">
+              <div class="row">
+                <div class="col-sm-3 group_user_cover">
+                  <div class="group_img_cover">
+                    <%= image_tag(group.user.image.url, :class => "group_img") %>
+                  </div>
+                  <p class="group_name">
+                    <%= group.user.name %>
+                  </p>
+                </div>
+
+                <div class="col-sm-9 post_content_cover">
+                  <div class="post_content">
+                    <div class="post_content_text">
+                      <%= group.posts.first.content_eng %>
+                    </div>
+                  </div>
+                  <div class="lang_type">
+                    <% if group.lang == "ja" %>
+                      <div class="lang-show">Original</div>
+                    <% else %>
+                      <div class="lang-show">Translated</div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
+          <div class="panel panel-warning">
+            <div class="panel-heading thread_title">
+              <div class="panel-title">
+                <%= group.title_jp %>
+              </div>
+            </div>
+            <div class="panel-body thread_content">
+              <div class="row">
+                <div class="col-sm-3 group_user_cover">
+                  <div class="group_img_cover">
+                    <%= image_tag(group.user.image.url, :class => "group_img") %>
+                  </div>
+                  <p class="group_name">
+                    <%= group.user.name %>
+                  </p>
+                </div>
+
+                <div class="col-sm-9 post_content_cover">
+                  <div class="post_content">
+                    <div class="post_content_text">
+                      <%= group.posts.first.content_jap %>
+                    </div>
+                  </div>
+                  <div class="lang_type">
+                    <% if group.lang == "en" %>
+                      <div class="lang-show">原文</div>
+                    <% else %>
+                      <div class="lang-show">翻訳済</div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -12,14 +12,14 @@ class CategoryController < ApplicationController
   def big_new
     @big_new = Bigcategory.new(big_param)
     if @big_new.save
-      redirect_to "/category/show"
+      redirect_to "/category/new"
     end
   end
 
   def small_new
     @small_new = Smallcategory.new(small_param)
     if @small_new.save
-      redirect_to "/category/show"
+      redirect_to "/category/new"
     end
   end
 

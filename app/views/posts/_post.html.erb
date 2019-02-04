@@ -9,14 +9,26 @@
             <%= post.user.name %>
           </p>
         </div>
-        <% if post.image.blank? %>
-          <%= post.user.name %>：
-          <% if session['lang'] == "eng" %>
-            <%= post.content_eng %>
+        <div class="post_content_cover">
+          <div class="post_content">
+              <% if lang != "jap" %>
+
+              <div class="post_content_l">
+                <%= post.content_eng %>
+              </div>
+            <% else %>
+              <%= post.content_jap %>
+            <% end %>
+          </div>
+        </div>
+        <div class="lang_change">
+          <% if lang != "jap" %>
+            Move to This Thread
           <% else %>
-            <%= post.content_jap %>
+            日本語に
           <% end %>
-        <% end %>
+          <span class="glyphicon glyphicon-chevron-right icon"></span>
+        </div>
         <%= image_tag post.image.url if !post.image.blank? %>
       <% end %>
     <% else %>
