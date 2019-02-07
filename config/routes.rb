@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
   get 'category/new'
+  get 'category/thread/:id' => 'category#thread'
   match '/small_new' => 'category#small_new', via: [ :post ]
   match '/big_new' => 'category#big_new', via: [ :post ]
-  
+
   get 'category/show'
   post 'tasks/en',to:'tasks#lang_change_en'
   post 'tasks/jp',to:'tasks#lang_change_jp'
+  post 'search',to:'tasks#search'
   get 'signup',to:'users#index'
   get 'thread/show/:id' => 'thread#show'
   get 'thread_all/show/:id' => 'thread_all#show'

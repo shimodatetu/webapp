@@ -4,35 +4,103 @@
 <% category = subcategory.bigcategory %>
 
 <div class="thread_show">
-  <div class="thread_show_title">
-    <div class="innerTitle">
-      <% if lang != "jap" %>
-        <%= category.name_en %>
+  <div class="panel panel-warning thread_show_category">
+    <div class="panel-heading thread_show_head">
+      <div class="thread_show_title">
+        <%= category.name_en %> / <%= category.name_jp %>
         ＞
-        <%= subcategory.name_en %>
-        ＞
-        <%= group.title_en %>
-      <% else %>
-        <%= category.name_jp %>
-        ＞
-        <%= subcategory.name_jp %>
-        ＞
-        <%= group.title_jp %>
+        <%= subcategory.name_en %> / <%= subcategory.name_jp %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-warning thread_show_content">
+    <div class="panel-heading thread_head">
+      <div class="thread-title">
+      <%= group.title_en %> / <%= group.title_jp %>
+      </div>
+    </div>
+    <div class="panel-body thread_lang row">
+      <div class="col-sm-6">
+        <div class="lang_show">
+          English / 英語
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="lang_show">
+          Japanese / 日本語
+        </div>
+      </div>
+    </div>
+    <div class="panel-body row thread_all">
+      <% group.posts.each do |thread| %>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-warning">
+              <div class="panel-body thread_content">
+                <div class="row">
+                  <div class="col-sm-3 group_user_cover">
+                    <div class="group_img_cover">
+                      <%= image_tag(thread.user.image.url, :class => "group_img") %>
+                    </div>
+                    <p class="group_name">
+                      <%= thread.user.name %>
+                    </p>
+                  </div>
+
+                  <div class="col-sm-9 post_content_cover">
+                    <div class="post_content">
+                      <div class="post_content_text">
+                        <%= group.posts.first.content_eng %>
+                      </div>
+                    </div>
+                    <div class="lang_type">
+                      <% if group.lang == "ja" %>
+                        <div class="lang-show">Original</div>
+                      <% else %>
+                        <div class="lang-show">Translated</div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-warning">
+              <div class="panel-body thread_content">
+                <div class="row">
+                  <div class="col-sm-3 group_user_cover">
+                    <div class="group_img_cover">
+                      <%= image_tag(thread.user.image.url, :class => "group_img") %>
+                    </div>
+                    <p class="group_name">
+                      <%= thread.user.name %>
+                    </p>
+                  </div>
+
+                  <div class="col-sm-9 post_content_cover">
+                    <div class="post_content">
+                      <div class="post_content_text">
+                        <%= group.posts.first.content_jap %>
+                      </div>
+                    </div>
+                    <div class="lang_type">
+                      <% if group.lang == "en" %>
+                        <div class="lang-show">Original</div>
+                      <% else %>
+                        <div class="lang-show">Translated</div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class="thread_show_content">
-    <div class="thread_title">
-      <% if lang != "jap" %>
-        <%= group.title_en %>
-      <%else%>
-        <%= group.title_jp %>
-      <% end %>
-    </div>
-    <div id="posts">
-      <%= render @posts %>
-    </div>
-  </div>
+
 </div>
 
 <form>

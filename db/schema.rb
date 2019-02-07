@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_234755) do
+ActiveRecord::Schema.define(version: 2019_02_05_124136) do
 
   create_table "bigcategories", force: :cascade do |t|
     t.string "name_en"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2019_01_21_234755) do
     t.string "image"
     t.integer "user_id"
     t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "secretcategories", force: :cascade do |t|
+    t.string "name_en"
+    t.string "name_jp"
+    t.integer "smallcategory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

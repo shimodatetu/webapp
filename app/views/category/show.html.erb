@@ -1,63 +1,89 @@
 <% lang = session["lang"] %>
-
-<div class="search_result row"style="//display:none">
-  <div class="col-sm-1">
-    <span class="icon glyphicon glyphicon-arrow-right"></span>
-  </div>
-  <div class="col-sm-10 search_panel">
-    <div class="">
-      <div class="bigcategory">
-          Sports/スポーツ
-          <span class="change_icon glyphicon glyphicon-chevron-down"></span>
+<div class="category_list_all_cover">
+  <% if !flash["search"].nil? %>
+    <div class="search_result row">
+      <div class="col-sm-1">
+        <span class="icon glyphicon glyphicon-arrow-right"></span>
       </div>
-      <div class="smallcategory">
-        Tennis/テニス
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="panel panel-warning big_category_list">
-  <div class="panel-heading category_head">
-    <div class="panel-title">
-      Large Category List / 大カテゴリ一覧
-    </div>
-  </div>
-  <div class="panel-body category_all_content">
-    <% @category.each do |cate| %>
-      <div class="bigcategory">
-        <button id="<%= cate.id %>"class="btn btn-lg btn-default category_title">
-          <%= cate.name_en %> / <%= cate.name_jp %>
-          <span class="change_icon glyphicon glyphicon-chevron-down"></span>
-        </button>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="panel panel-warning all_category_list">
-  <div class="panel-heading category_head">
-    <div class="panel-title">
-      All Category List / 全カテゴリ一覧
-    </div>
-  </div>
-  <div class="panel-body category_all_content row">
-    <% @category.each do |cate| %>
-      <div class="panel panel-warning category_panel<%= cate.id %>">
-        <div class="bigcategory panel-heading">
-          <div class="category_title panel-title">
-            <%= cate.name_en %> / <%= cate.name_jp %>
+      <div class="col-sm-10 search_panel">
+        <% if !flash["search_big_en"].nil? && !flash["search_big_jp"].nil? && !flash["search_big_id"].nil? %>
+          <div class="bigcategory">
+            <button id='<%= flash["search_big_id"] %>'class="btn btn-lg btn-default category_title">
+              <%=flash["search_big_en"]%> / <%= flash["search_big_jp"] %>
+              <span class="change_icon glyphicon glyphicon-chevron-down"></span>
+            </button>
           </div>
-        </div>
-        <ul class="smallcategory panel-body">
-          <% cate.smallcategories.each do |s_cate| %>
-            <li class="text col-sm-6">
-              <%= s_cate.name_en %> / <%= s_cate.name_jp %>
-            </li>
-          <% end %>
-        </ul>
+        <% else %>
+          <div class="not_found">
+            Not Found / 見つかりませんでした
+          </div>
+        <% end %>
+        <% if !flash["search_sub_en"].nil? && !flash["search_sub_jp"].nil? && !flash["search_sub_id"].nil? %>
+          <div class="smallcategory">
+            ＞
+            <span class="text">
+              <%= link_to "/category/thread/#{flash["search_sub_id"]}" do %>
+                <%= flash["search_sub_en"] %> / <%= flash["search_sub_jp"] %>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+
+    <% flash["search"] = nil %>
+    <% flash["search_big_en"] = nil %>
+    <% flash["search_big_jp"] = nil %>
+    <% flash["search_big_id"] = nil %>
+    <% flash["search_sub_en"] = nil %>
+    <% flash["search_sub_jp"] = nil %>
+    <% flash["search_sub_id"] = nil %>
+  <% end %>
+
+  <div class="panel panel-warning big_category_list">
+    <div class="panel-heading category_head">
+      <div class="panel-title">
+        Large Category List / 大カテゴリ一覧
+      </div>
+    </div>
+    <div class="panel-body category_all_content">
+      <% @category.each do |cate| %>
+        <div class="bigcategory">
+          <button id="<%= cate.id %>"class="btn btn-lg btn-default category_title">
+            <%= cate.name_en %> / <%= cate.name_jp %>
+            <span class="change_icon glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="panel panel-warning all_category_list">
+    <div class="panel-heading category_head">
+      <div class="panel-title">
+        All Category List / 全カテゴリ一覧
+      </div>
+    </div>
+    <div class="panel-body category_all_content row">
+      <% @category.each do |cate| %>
+        <div class="panel panel-warning category_panel<%= cate.id %>">
+          <div class="bigcategory panel-heading">
+            <div class="category_title panel-title">
+              <%= cate.name_en %> / <%= cate.name_jp %>
+            </div>
+          </div>
+          <ul class="smallcategory panel-body">
+            <% cate.smallcategories.each do |s_cate| %>
+              <li class="text col-sm-6">
+                <%= link_to "/category/thread/#{s_cate.id}" do %>
+                  <%= s_cate.name_en %> / <%= s_cate.name_jp %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

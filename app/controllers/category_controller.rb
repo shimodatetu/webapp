@@ -9,6 +9,10 @@ class CategoryController < ApplicationController
     @category = Bigcategory.all
   end
 
+  def thread
+    @categories = Smallcategory.all
+  end
+
   def big_new
     @big_new = Bigcategory.new(big_param)
     if @big_new.save

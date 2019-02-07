@@ -15,7 +15,7 @@
       <label id="nav-open" for="nav-input"><span></span></label>
       <label class="nav-unshown" id="nav-close" for="nav-input"></label>
       <%= link_to("/login" , class:"login_button") do %>
-        <div style="font-size:10px;">サインイン</div>
+        <div class="float_jap">サインイン</div>
         Sign In
         <span class="">
           <%#= image_tag("ログインアイコン3.png", :class => "icon") %>
@@ -25,7 +25,7 @@
       <div id="nav-content">
         <ul class="nav navbar-nav">
           <li class="link_tab">
-            <%= link_to '/' do %>
+            <%= link_to '/',class:"link_text" do %>
               <div class="float_jap">
                 ホーム
               </div>
@@ -33,7 +33,7 @@
             <% end %>
           </li>
           <li class="link_tab">
-            <%= link_to '/category/show' do %>
+            <%= link_to '/category/show',class:"link_text" do %>
               <div class="float_jap">
                 カテゴリ一覧
               </div>
@@ -41,15 +41,15 @@
             <% end %>
           </li>
           <li class="link_tab">
-            <%= link_to '/groups',data: {"turbolinks"=>false} do %>
+            <%= link_to '/groups',data: {"turbolinks"=>false},class:"link_text" do %>
               <div class="float_jap">
                 スレッドの作成
               </div>
               Make Thread
             <% end %>
           </li>
-          <li class="link_tab">
-            <%= link_to '/profile' do %>
+          <li class="link_tab",class:"link_text">
+            <%= link_to '/profile',class:"link_text" do %>
               <div class="float_jap">
                 マイページ
               </div>
@@ -57,7 +57,7 @@
             <% end %>
           </li>
           <li class="link_tab">
-            <%= link_to '/' do %>
+            <%= link_to '/',class:"link_text" do %>
               <div class="float_jap">
                 ガイド
               </div>
@@ -70,10 +70,10 @@
   </nav>
 
   <!--<div class="lang_button_all">
-    <%= button_to "スレッド作成", {controller: 'tasks', action: 'lang_change_jp'},
+    <%= button_to "日本語", {controller: 'tasks', action: 'lang_change_jp'},
           {method: :post, class: "btn btn-info active lang_button", params: {url:url}} %>
     <div class="button_space"></div>
-    <%= button_to "緊急スレッド", {controller: 'tasks', action: 'lang_change_en'},
+    <%= button_to "English", {controller: 'tasks', action: 'lang_change_en'},
           {method: :post, class: "btn btn-info active lang_button",params: {url:url}}%>
   </div>-->
   <div class="thread_button_all">
@@ -82,16 +82,19 @@
       Help Thread
     <% end %>
     <%= link_to "/groups", class: "btn btn-info thread_button make" do %>
-    <div class="thread_button_jp">スレッド作成</div>
-    Make Thread
+      <div class="thread_button_jp">スレッド作成</div>
+      Make Thread
     <% end %>
   </div>
-  <div class="input-group">
-    <span class="input-group-btn">
-      <button type="button" class="search btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-    </span>
-	  <input type="text" class="form-control" placeholder="Search Categories / カテゴリーを検索">
-
-  </div>
+  <%= form_tag('/search', method: :post) do %>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <%= button_tag type:"submit",class: "search btn btn-default" do %>
+          <span class="glyphicon glyphicon-search">
+        <% end %>
+      </span>
+      <%= text_field_tag :search_text ,"", class:"form-control",placeholder:"Search Categories / カテゴリーを検索" %>
+    </div>
+  <% end %>
 </div>
 <div class="plus"></div>

@@ -18,10 +18,20 @@
       });
 
     </script>
+    <%# require 'rest-client' %>
+
+    <%#response = RestClient.get("https://api.microsofttranslator.com/V2/Http.svc/Translate?text=I hate it. </|/> I don't want to play soccer.|&to=ja", {
+      "Ocp-Apim-Subscription-Key" => 'd0d8d178e5f54dcaab373fe9896fdb3a'
+    })%>
+    <%#= response.body%>
     <%= render partial:'layouts/header' %>
     <%#= render partial:'layouts/menu' %>
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+      <% if key != "search" && key != "search_big_en" && key != "search_big_jp" &&
+        key != "search_big_id" && key != "search_sub_en" &&
+        key != "search_sub_jp" && key != "search_sub_id"%>
+        <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+      <% end %>
     <% end %>
     <div class="main_content_cover">
       <%= yield %>
