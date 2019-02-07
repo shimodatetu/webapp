@@ -81,9 +81,16 @@
       <div class="thread_button_jp">緊急スレッド</div>
       Help Thread
     <% end %>
-    <%= link_to "/groups", class: "btn btn-info thread_button make" do %>
-      <div class="thread_button_jp">スレッド作成</div>
-      Make Thread
+    <% if @test_id.nil? %>
+      <%= link_to "/groups", data: {"turbolinks"=>false},class: "btn btn-info thread_button make" do %>
+        <div class="thread_button_jp">スレッド作成</div>
+        Make Thread
+      <% end %>
+    <% else %>
+      <%= link_to "/groups/?category_id=#{@test_id}",data: {"turbolinks"=>false}, class: "btn btn-info thread_button make" do %>
+        <div class="thread_button_jp">スレッド作成</div>
+        Make Thread
+      <% end %>
     <% end %>
   </div>
   <%= form_tag('/search', method: :post) do %>

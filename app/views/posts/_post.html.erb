@@ -4,7 +4,11 @@
     <% if !params[:id].nil? then %>
       <% if post.group_id == params[:id].to_i then %>
         <div class="post_user_cover">
-          <%= image_tag(post.user.image.url, :class => "post_img") %>
+          <% if post.user.image.url.nil? %>
+            <%= image_tag("/user.png", :class => "group_img") %>
+          <% else %>
+            <%= image_tag(post.user.image.url, :class => "group_img") %>
+          <% end %>
           <p class="post_name">
             <%= post.user.name %>
           </p>

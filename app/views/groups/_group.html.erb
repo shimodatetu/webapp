@@ -13,7 +13,11 @@
             <% end %>
           </div>
           <div class="group_user_cover">
-            <%= image_tag(group.user.image.url, :class => "group_img") %>
+            <% if group.user.image.url.nil? %>
+              <%= image_tag("/user.png", :class => "group_img") %>
+            <% else %>
+              <%= image_tag(group.user.image.url, :class => "group_img") %>
+            <% end %>
             <p class="group_name">
               <%= group.user.name %>
             </p>

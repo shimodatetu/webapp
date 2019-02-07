@@ -11,6 +11,7 @@ class CategoryController < ApplicationController
 
   def thread
     @categories = Smallcategory.all
+    @test_id = params[:id]
   end
 
   def big_new

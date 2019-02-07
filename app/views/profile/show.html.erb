@@ -1,6 +1,8 @@
 <div class="profile">
-  <% if !current_user.image.url.blank? %>
-    <%= image_tag current_user.image.url %>
+  <% if current_user.image.url.nil? %>
+    <%= image_tag("/user.png", :class => "group_img") %>
+  <% else %>
+    <%= image_tag(current_user.image.url, :class => "group_img") %>
   <% end %>
   <%= form_for current_user,url: "/profile" do |f| %>
     <div id="input-group">
