@@ -39,7 +39,7 @@
     <%= f.submit "",class: "btn btn-info img_send" ,:style => "display:none"%>
   <% end %>
   <form>
-    <input name="content" rows="2" cols="65" data-behavior="room_speaker"class="form-control">
+    <input name="content" rows="2" cols="65" placeholder="Comment / コメント"data-behavior="room_speaker"class="form-control">
     <input type="hidden"id="group" name="group" value=<%= params[:id] %>>
   </form>
 
