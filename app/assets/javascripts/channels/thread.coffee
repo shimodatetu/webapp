@@ -6,7 +6,6 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    alert("ok");
     local = '/thread/show/'+data['id']
     $('#groups').append data['message']
     if data['user_id'] == gon.current_user.id
@@ -32,7 +31,7 @@ words_check=(title,coment,category)->
 
 translate=(title,coment,lang,category) ->
 
-  words = title+" </|/> "+coment
+  words = title+" {} "+coment
   defer = $.Deferred()
   $.ajax
     url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
@@ -60,7 +59,7 @@ translate=(title,coment,lang,category) ->
       async: false
     data = response.responseText
     translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-    get_text = translation.split('&lt;/|/&gt;')
+    get_text = translation.split('{}')
     if lang == "ja"
       App.thread.make(lang,get_text[0],get_text[1],title,coment,category)
     else

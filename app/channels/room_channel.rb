@@ -13,8 +13,8 @@ class RoomChannel < ApplicationCable::Channel
   def speak(data)
     group = Group.find_by(id: data['group_id'])
     if group
-      post = Post.new
-      post.content_base = data['content_base']
+      post = Post.new()
+      post.lang = data['lang']
       post.content_jap = data['content_jap']
       post.content_eng = data['content_eng']
       post.group_id = group.id

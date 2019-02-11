@@ -9,4 +9,27 @@ class ApplicationController < ActionController::Base
  def logged_in?
    !current_user.nil?
  end
+
+ def user_image_default
+   return "/user.png"
+ end
+ #
+ # require "google/cloud/translate"
+ #
+ #  # Your Google Cloud Platform project ID
+ #  project_id = "AIzaSyCgjFOpuYQrKqsunVHpQporHSNmg1yW0mw"
+ #
+ #  # Instantiates a client
+ #  translate = Google::Cloud::Translate.new project: project_id
+ #
+ #  # The text to translate
+ #  text = "Hello, world!"
+ #  # The target language
+ #  target = "ru"
+ #
+ #  # Translates some text into Russian
+ #  translation = translate.translate text, to: target
+ #
+ #  @test_base = "Text: #{text}"
+ #  @test_trans = "Translation: #{translation}"
 end

@@ -1,7 +1,11 @@
 .header {
+
   z-index: 10;
   position:fixed;
   background-color: rgba(255,255,255,1);
+  .banner{
+    width:100vw;
+  }
   .header_top{
     .header_logo {
       width:100vw;
@@ -95,6 +99,7 @@
     position:absolute;
     right:40px;
     .thread_button{
+      color:#cd853f;
       text-align: center;
       margin-right:30px;
       float:right;
@@ -104,6 +109,14 @@
       .thread_button_jp{
         font-size:12px;
       }
+    }
+    .make{
+      background-color: rgba(232,248,244,1.0);
+      border-style: none;
+    }
+    .help{
+      background-color: rgba(237,204,177,1.0);
+      border-style: none;
     }
   }
   .input-group{
