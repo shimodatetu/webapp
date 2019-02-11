@@ -40,9 +40,10 @@
         }
         .thread_content{
           border:1px solid #faebcc;
-          height:110px;
+          height:130px;
           color:#000000;
           .group_user_cover{
+            margin-top:15px;
             .group_img_cover{
               text-align: center;
               .group_img {
@@ -78,7 +79,7 @@
           }
           .lang_type{
             float: right;
-            margin-top:4px;
+            margin-top:20px;
             .lang-show{
               border-radius: 5px;
               font-size:15px;
