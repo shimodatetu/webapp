@@ -30,9 +30,15 @@
 
               <div class="col-sm-9 post_content_cover">
                 <div class="post_content">
-                  <div class="post_content_text">
-                    <%= post.content_eng %>
-                  </div>
+                  <% if post.image.url.nil? %>
+                    <div class="post_content_text">
+                      <%= post.content_eng %>
+                    </div>
+                  <% else %>
+                    <div class="post_content_img">
+                      <%= image_tag("#{post.image.url}", :class => "post_img") %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="lang_type">
                   <% if post.lang == "ja" %>
@@ -72,9 +78,15 @@
 
               <div class="col-sm-9 post_content_cover">
                 <div class="post_content">
-                  <div class="post_content_text">
-                    <%= post.content_jap %>
-                  </div>
+                  <% if post.image.url.nil? %>
+                    <div class="post_content_text">
+                      <%= post.content_eng %>
+                    </div>
+                  <% else %>
+                    <div class="post_content_img">
+                      <%= image_tag("#{post.image.url}", :class => "post_img") %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="lang_type">
                   <% if post.lang == "en" %>

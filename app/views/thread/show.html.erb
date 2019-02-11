@@ -28,16 +28,19 @@
       <%= render @posts %>
     </div>
   </div>
+</div>
+<div class="thread_post input-group">
+  <%= form_for @post, :html => {:class => "input-group-btn"},remote: true do |f| %>
+    <label for="file_send"class="btn btn-default" >
+      <%= f.file_field :image,:id => "file_send", :class => "post_file"%>
+      <span class="glyphicon glyphicon-picture picture_send"></span>
+    </label>
+    <%= f.hidden_field :group_id,value: params[:id] %>
+    <%= f.submit "",class: "btn btn-info img_send" ,:style => "display:none"%>
+  <% end %>
+  <form>
+    <input name="content" rows="2" cols="65" data-behavior="room_speaker"class="form-control">
+    <input type="hidden"id="group" name="group" value=<%= params[:id] %>>
+  </form>
 
 </div>
-
-<form>
-  投稿<input name="content" rows="2" cols="65" data-behavior="room_speaker">
-  <input type="hidden"id="group" name="group" value=<%= params[:id] %>>
-</form>
-<br><br>
-<%= form_for @post,remote: true do |f| %>
-  <%= f.file_field :image %>
-  <%= f.hidden_field :group_id,value: params[:id] %>
-  <%= f.submit "画像投稿",class: "btn btn-info" %>
-<% end %>

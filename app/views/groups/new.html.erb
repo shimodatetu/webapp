@@ -1,13 +1,9 @@
 <% lang = session["lang"] %>
-<div class="make_thread">
-  <div class="make_title_show">
-    <% if lang != "jap" %>
-      <div>Make Thread</div>
-    <% else %>
-      <div>スレッド作成</div>
-    <% end %>
+<div class="panel panel-warning make_thread">
+  <div class="panel panel-heading make_header">
+    Make Thread / スレッド作成
   </div>
-  <form class='make_content'>
+  <form class='make_content panel-body'>
     <ul class="make_thread">
       <div class="big-category">
         <label>

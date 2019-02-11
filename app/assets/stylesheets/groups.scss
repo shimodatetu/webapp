@@ -1,5 +1,7 @@
-.make_thread {
-  padding-left:10px;
+.make_thread{
+  margin-left:10px;
+  width:800px;
+  //border:1px solid #faebcc;
   ul li {
     list-style: none;
   }
@@ -9,21 +11,12 @@
     float: left;
     font-family:'alba';
   }
-  .make_title_show{
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width:800px;
-    border: solid 1px #000000;
+  .make_header{
+    font-size: 20px;
     background-color: rgba(255,235,110,1);
-    padding:5px;
-    padding-left:8px;
-    font-size:25px;
   }
   .make_content{
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
     width:800px;
-    border: solid 1px #000000;
     font-size:20px;
     .title_input_all{
       padding-top:20px;
@@ -34,12 +27,11 @@
     .content_input_all{
       padding-top:20px;
       .content_input_form{
-        width:600px;
+        width:400px;
       }
     }
   }
   .big-category{
-    margin-top:20px;
   }
   .small-category{
     margin-top:20px;
