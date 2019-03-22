@@ -7,8 +7,8 @@
     width:100vw;
     background-color: rgba(255,205,68,1);
     .banner{
-      height:60px;
-      width:1150px;
+      height:50px;
+      width:860px;
     }
   }
   .header_top{
@@ -33,7 +33,7 @@
   }
   .nav-fall{
 
-    border-bottom:solid 2px #8A562B;
+    border-bottom:solid 2px #cd853f;
     z-index:20;
     height:50px;
     font-size: 18px;
@@ -67,15 +67,27 @@
         height:42px;
       }
       .link_text:hover{
+        height:60px;
         color:#C8A580;
       }
       .link_text{
-        color:#9F6434;
+        color:#BF8454;
         font-size: 20px;
         font-weight: bold;
         text-decoration: none;
+        .now_page{
+          height:45px;
+          padding-left:15px;
+          padding-right:15px;
+          border-bottom-left-radius:10px;
+          border-bottom-right-radius:10px;
+          background:#ffeb6e;
+        }
         .float_jap{
           font-size:10px;
+        }
+        .base_en{
+          margin-top:-3px;
         }
       }
     }
@@ -98,31 +110,6 @@
       float:right;
       background-color: rgba(91,202,255,1);
     }
-
-  }
-  .thread_button_all{
-    position:absolute;
-    right:40px;
-    .thread_button{
-      color:#cd853f;
-      text-align: center;
-      margin-right:30px;
-      float:right;
-      font-size:18px;
-      padding-left:20px;
-      padding-right:20px;
-      .thread_button_jp{
-        font-size:12px;
-      }
-    }
-    .make{
-      background-color: rgba(232,248,244,1.0);
-      border-style: none;
-    }
-    .help{
-      background-color: rgba(237,204,177,1.0);
-      border-style: none;
-    }
   }
   .input-group{
     width:60vw;
@@ -130,12 +117,6 @@
     float:left;
     padding-left:110px;
     //padding-left:calc(200px + 10px);
-  }
-  .search {
-    display: inline-block;
-  }
-  .search_form {
-    display: inline-block;
   }
   #nav-input,#nav-open,.nav-unshown{
     display: none;
@@ -219,6 +200,54 @@
       -webkit-transform: translateX(0%);
       transform: translateX(0%);/*中身を表示（右へスライド）*/
       box-shadow: 6px 0 25px rgba(0,0,0,.15);
+    }
+  }
+}
+.header_plus{
+  padding-top:130px;
+}
+.add_header{
+  z-index: 9;
+  position:fixed;
+  background-color: rgba(255,255,255,1);
+  width:calc(100% - 40px);
+  .input-group{
+    width:60vw;
+    position:relative;
+    float:left;
+    padding-left:10px;
+  }
+  .search_all{
+    .search {
+      display: inline-block;
+    }
+    .search_form {
+      display: inline-block;
+    }
+  }
+  .thread_button_all{
+    position:absolute;
+    right:40px;
+    margin-top: -10px;
+    .thread_button{
+      //color:#cd853f;
+      text-align: center;
+      margin-right:30px;
+      float:right;
+      font-size:18px;
+      padding-left:20px;
+      padding-right:20px;
+      .thread_button_jp{
+        font-size:12px;
+      }
+    }
+    .make{
+      background-color: rgba(200,220,244,1.0);
+      border-style: none;
+    }
+    .help{
+      background-color: rgba(237,204,177,1.0);
+      border-style: none;
     }
   }
 }

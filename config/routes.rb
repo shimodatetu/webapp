@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'category/show'
   post 'tasks/en',to:'tasks#lang_change_en'
   post 'tasks/jp',to:'tasks#lang_change_jp'
-  post 'search',to:'tasks#search'
+  post 'search/header',to:'tasks#search'
+  post 'search/inside',to:'tasks#search_inside'
   get 'signup',to:'users#index'
   get 'thread/show/:id' => 'thread#show'
   get 'thread_all/show/:id' => 'thread_all#show'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get 'posts/index'
   post "posts",to: "posts#create",as: "posts"
   get '/profile',to: 'profile#show'
+  get '/profile/:id' => 'profile#show'
   patch '/profile', to: 'profile#update'
   get '/groups',to:'groups#new'
   resources :users

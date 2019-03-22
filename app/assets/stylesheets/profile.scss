@@ -1,4 +1,112 @@
-.profile {
+.profile{
+  ::-webkit-input-placeholder {
+    color: #bbbbbb;
+  }
+  width:1100px;
+  .profile_picture{
+    width:160px;
+    .group_img{
+      width: 160px; /* 任意の幅を指定 */
+      height: 100px; /* 任意の高さを指定 */
+      object-fit:cover;
+    }
+    .profile_picture_change{
+      background-color: #dddddd;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      width:100%;
+      text-align:center;
+      padding:2px;
+      .jp{
+        font-size:12px;
+      }
+      .en{
+        font-size:18px;
+        margin-top:-3px;
+      }
+    }
+    .profile_picture_change:hover{
+      background-color: #cccccc;
+    }
+    margin-bottom:20px;
+  }
+  .profile_contents_change{
+    width:160px;
+    border-radius:2px;
+    border:solid 2px #dddddd;
+    .profile_contents_button{
+      .jp{
+        font-size:10px;
+      }
+      .en{
+        font-size:16px;
+      }
+    }
+  }
+  .profile_title{
+    margin-left:15px;
+    .title{
+      margin-right:15px;
+      font-size:22px;
+      margin-bottom:20px;
+      .jp{
+        font-size:12px;
+      }
+    }
+  }
+  .profile_page{
+    font-size:18px;
+    margin-left:15px;
+    background-color: rgba(255,235,110,1);
+    border-radius:5px;
+    .profile_content{
+      border-radius:5px;
+      padding-top:5px;
+      .profile_content_data{
+        padding:10px;
+        .content_checkbox{
+          margin-top:10px;
+          margin-left:10px;
+          margin-right:4px;
+        }
+        .content_select{
+          margin-top:10px;
+          background-color:#ffffff;
+          border:solid 1px #dddddd;
+          height:35px;
+          margin-bottom:5px;
+          margin-right:10px;
+          width:20%;
+        }
+        .content_name{
+          padding-top:5px;
+          padding-left:20px;
+          color:#cd853f;
+          .jp{
+            font-size:12px;
+          }
+        }
+        .content_input{
+          margin-top:10px;
+          padding:2px;
+          padding-left:4px;
+          padding-right:4px;
+          width:100%;
+        }
+      }
+    }
+  }
+  .save_button{
+    margin-left: 50px;
+    border:0px;
+    font-size:15px;
+    padding:10px;
+    background: #ffeb6e;
+    color:#CF9454;
+  }
+}
+
+.profiled {
   font-size: 4vh;
   .content {
     height:7vh;
@@ -18,4 +126,8 @@
     padding-left:10px;
     float:right;
   }
+}
+.ui-dialog{
+  width:500px !important;
+  margin:auto !important;
 }

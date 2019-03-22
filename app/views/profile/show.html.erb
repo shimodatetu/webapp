@@ -1,85 +1,79 @@
+<%= render partial:'./thread_button' %>
 <div class="profile">
-  <% if current_user.image.url.nil? %>
-    <%= image_tag("/user.png", :class => "group_img") %>
-  <% else %>
-    <%= image_tag(current_user.image.url, :class => "group_img") %>
-  <% end %>
-  <%= form_for current_user,url: "/profile" do |f| %>
-    <div id="input-group">
-      <label for="user[image]">Image</label>
-      <%= f.file_field :image,id:"image" %>
-    </div>
-    <div class="content">
-      <div class="show_type">name = </div>
-      <div class="show_data"id="data_name">
-        <%#= current_user.name %>
-        <%= f.text_field :name,class: "form-control" %>
-      </div>
-      <div id="name"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="show_type">country = </div>
-      <div class="show_data"id="data_country">
-        <%= f.text_field :country,class: "form-control" %>
-        <%#= current_user.country %>
-      </div>
-      <div id="country"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="show_type">email = </div>
-      <div class="show_data"id="data_email">
-        <%= f.text_field :email,class: "form-control" %>
-        <%#= current_user.email %>
-      </div>
-      <div id="email"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="show_type">age = </div>
-      <div class="show_data"id="data_age">
-        <%= f.number_field :age,class: "form-control" %>
-        <%#= current_user.age %>
-      </div>
-      <div id="age"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="show_type">gender = </div>
-      <div class="show_data"id="data_gender">
-        <%= f.text_field :gender,class: "form-control" %>
-        <%#= current_user.gender %>
-      </div>
-      <div id="gender"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="show_type">fullName = </div>
-      <div class="show_data"id="data_fullName">
-        <%= f.text_field :fullName,class: "form-control" %>
-        <%#= current_user.fullName %>
-      </div>
-      <div id="fullName"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="show_type">profile = </div>
-      <div class="show_data"id="data_profile">
-        <%= f.text_field :profile,class: "form-control" %>
-        <%#= current_user.profile %>
-      </div>
-      <div id="user_profile"class="edit">
-        <div class="edit_text">編集</div>
-      </div>
-    </div>
-    <%= f.submit "更新する",class: "btn btn-success" %>
-  <% end %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="profile_picture">
 
+        <% if current_user.image.url.nil? %>
+          <%= image_tag("/user.png", :class => "group_img") %>
+        <% else %>
+          <%= image_tag(current_user.image.url, :class => "group_img") %>
+        <% end %>
+        <%= form_for current_user,url: "/profile" do |f| %>
+          <%= button_tag type: 'button',class:"profile_picture_change" do %>
+            <label type="button" for="image">
+              <div class="jp">
+                写真を変更する
+              </div>
+              <div class="en">
+                Change Photo
+              </div>
+              <%= f.file_field :image,id:"image",class:"profile_image_input",style:"display:none" %>
+            </label>
+          <% end %>
+
+          <%= f.submit "send",id:"image_submit",style:"display:none" %>
+        <% end %>
+      </div>
+      <div class="profile_contents_change">
+        <ul class="nav flex-column">
+          <li class="nav-item profile_contents_button">
+            <%= link_to '/profile/1',class:"nav-link" do %>
+              <div class="jp">
+                プロフィール
+              </div>
+              <div class="en">
+                My Profile
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item profile_contents_button">
+            <%= link_to '/profile/2',class:"nav-link" do %>
+              <div class="jp">
+                アカウント
+              </div>
+              <div class="en">
+                Account
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item profile_contents_button">
+            <%= link_to '/profile/3',class:"nav-link" do %>
+              <div class="jp">
+                フォトアルバム
+              </div>
+              <div class="en">
+                Photo Album
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item profile_contents_button">
+            <%= link_to '/profile/4',class:"nav-link" do %>
+              <div class="jp">
+                履歴
+              </div>
+              <div class="en">
+                Personal History
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-10">
+      <% if params[:id].nil? || params[:id] == "1" %>
+        <%= render partial:"profile_page" %>
+      <% end %>
+    </div>
+  </div>
 </div>

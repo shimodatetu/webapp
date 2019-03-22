@@ -59,14 +59,16 @@ ActiveRecord::Schema.define(version: 2019_02_05_124136) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "birth_year"
+    t.integer "birth_month"
+    t.integer "birth_day"
     t.string "name"
     t.string "email"
     t.string "country"
     t.string "gender"
-    t.string "fullName"
-    t.integer "age"
     t.string "image"
-    t.string "profile"
+    t.string "profile_en"
+    t.string "profile_jp"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

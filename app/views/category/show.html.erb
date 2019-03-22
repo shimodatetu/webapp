@@ -1,4 +1,5 @@
 <% lang = session["lang"] %>
+<%= render partial:'./search' %>
 <div class="category_list_all_cover">
   <% if !flash["search"].nil? %>
     <div class="search_result row">
@@ -40,43 +41,55 @@
     <% flash["search_sub_id"] = nil %>
   <% end %>
 
-  <div class="panel panel-warning big_category_list">
+  <div class="panel panel-warning big_category_list all_category_list">
     <div class="panel-heading category_head">
       <div class="panel-title">
-        Large Category List / 大カテゴリ一覧
+        <div class="float_jp">
+          カテゴリ一覧
+        </div>
+        Category List
       </div>
     </div>
-    <div class="panel-body category_all_content">
+    <div class="panel-body category_content">
       <% @category.each do |cate| %>
-        <div class="bigcategory">
-          <button id="<%= cate.id %>"class="btn btn-lg btn-default category_title">
+        <div class="bigcategory_only">
+          <!--<button id="<%= cate.id %>"class="btn btn-lg btn-default category_title">
             <%= cate.name_en %> / <%= cate.name_jp %>
             <span class="change_icon glyphicon glyphicon-chevron-down"></span>
-          </button>
+          </button>-->
+          <div id="<%= cate.id %>"class="category_title">
+            <div class="cate_icon">
+              <div class="change_icon glyphicon glyphicon-chevron-down"></div>
+            </div>
+            <div class="cate_name">
+              <div class="float_jp">
+                <%= cate.name_jp %>
+              </div>
+              <%= cate.name_en %>
+            </div>
+          </div>
         </div>
       <% end %>
-    </div>
-  </div>
-
-  <div class="panel panel-warning all_category_list">
-    <div class="panel-heading category_head">
-      <div class="panel-title">
-        All Category List / 全カテゴリ一覧
-      </div>
     </div>
     <div class="panel-body category_all_content row">
       <% @category.each do |cate| %>
         <div class="panel panel-warning category_panel<%= cate.id %>">
-          <div class="bigcategory panel-heading">
+          <div class="bigcategory_add panel-heading">
             <div class="category_title panel-title">
-              <%= cate.name_en %> / <%= cate.name_jp %>
+              <div class="float_jp">
+                <%= cate.name_jp %>
+              </div>
+              <%= cate.name_en %>
             </div>
           </div>
           <ul class="smallcategory panel-body">
             <% cate.smallcategories.each do |s_cate| %>
-              <li class="text col-sm-6">
+              <li class="text col-sm-4">
                 <%= link_to "/category/thread/#{s_cate.id}" do %>
-                  <%= s_cate.name_en %> / <%= s_cate.name_jp %>
+                  <div class="float_jp">
+                    <%= s_cate.name_jp %>
+                  </div>
+                  <%= s_cate.name_en %>
                 <% end %>
               </li>
             <% end %>
@@ -85,6 +98,7 @@
       <% end %>
     </div>
   </div>
+
 </div>
 
 <script type="text/javascript">

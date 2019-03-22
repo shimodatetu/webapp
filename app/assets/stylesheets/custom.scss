@@ -1,5 +1,9 @@
 .main_content_cover{
-  padding-top:200px;
   padding-left:100px;
   padding-bottom:450px;
+  .obj-fit-img {
+    object-fit: cover;
+    object-position: 0 100%;
+    font-family: 'object-fit: cover; object-position: 0 100%;'
+  }
 }

@@ -7,5 +7,4 @@ class MessageBroadcastJob < ApplicationJob
   def render_message(message)
     ApplicationController.renderer.render(partial: 'posts/post', locals: { post: message })
   end
-
 end

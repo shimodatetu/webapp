@@ -3,7 +3,7 @@
   width:800px;
   margin-left:10px;
   .pvpage_head{
-    background-color: rgba(255,235,110,1);
+    background-color: #fff0b0;
     .panel-title{
       font-size:20px;
     }
@@ -16,7 +16,7 @@
   }
   .thread_all{
     .thread_title{
-      background-color: rgba(255,235,110,1);
+      background-color: #fff0b0;
     }
     .thread_content{
       height:110px;
@@ -58,14 +58,9 @@
           padding:4px;
           padding-left:7px;
           padding-right:7px;
-          background-color: rgba(255,225,139,1);
+          background-color: #fff0b0;
         }
       }
     }
-  }
-}
-.thread_link:hover{
-  .thread_content{
-    background-color: rgba(252,248,210,1);
   }
 }

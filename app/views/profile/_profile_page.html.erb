@@ -1,0 +1,171 @@
+<%# require "./country.rb" %>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/pepper-grinder/jquery-ui.css">
+<form>
+  <div class="profile_title row">
+    <div class="col-sm-6 row title">
+      <div class="col-sm-10">
+        <div class="jp">
+          プロフィール
+        </div>
+        My Profile
+        <div class="save_button btn btn-default">
+          Save / 保存
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="profile_page row">
+    <div class="profile_page_en">
+      <div class="col-sm-12 profile_content">
+        <div class="row profile_content_data">
+          <div class="col-sm-2 content_name">
+            <div class="jp">
+              ユーザーネーム
+            </div>
+            UserName
+          </div>
+          <div class="col-sm-3">
+            <input id="username"class="form_control content_input" placeholder="Blank"value="<%= current_user.name %>">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+      <div class="col-sm-12 profile_content">
+        <div class="row profile_content_data">
+          <div class="col-sm-2 content_name">
+            <div class="jp">
+              性別
+            </div>
+            Gender
+          </div>
+          <div class="col-sm-10">
+            <select id="gender"class="content_select">
+              <option value="">No Selected</option>
+              <% if current_user.gender == "Male" %>
+                <option value="Male" selected>Male / 男性</option>
+              <% else %>
+                <option value="Male">Male / 男性</option>
+              <% end %>
+              <% if current_user.gender == "Female" %>
+                <option value="Female" selected>Female / 女性</option>
+              <% else %>
+                <option value="Female">Female / 女性</option>
+              <% end %>
+              <% if current_user.gender == "Neuter" %>
+                <option value="Neuter" selected>Neuter / 中性</option>
+              <% else %>
+                <option value="Neuter">Neuter / 中性</option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 profile_content">
+        <div class="profile_content_data row">
+          <div class="content_name col-sm-2">
+            <div class="jp">
+              生年月日
+            </div>
+            Date Of Birth
+          </div>
+          <div class="col-sm-10">
+            <select id="year"class="content_select">
+              <option>Year</option>
+              <% 2019.downto(1900) do |num| %>
+                <% if current_user.birth_year == num %>
+                  <option value="<%= num %>"selected><%= num %></option>
+                <% else %>
+                  <option value="<%= num %>"><%= num %></option>
+                <% end %>
+              <% end %>
+            </select>
+            <select id="month"class="content_select">
+              <option>Month</option>
+              <% 1.upto(12) do |num| %>
+                <% if current_user.birth_month == num %>
+                  <option value="<%= num %>"selected><%= num %></option>
+                <% else %>
+                  <option value="<%= num %>"><%= num %></option>
+                <% end %>
+              <% end %>
+            </select>
+            <select id="date"class="content_select">
+              <option>Date</option>
+              <% 1.upto(31) do |num| %>
+                <% if current_user.birth_day == num %>
+                  <option value="<%= num %>"selected><%= num %></option>
+                <% else %>
+                  <option value="<%= num %>"><%= num %></option>
+                <% end %>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 profile_content">
+        <div class="row profile_content_data">
+          <div class="col-sm-4 content_name">
+            <div class="jp">
+              出身国
+            </div>
+            Country
+          </div>
+          <div class="col-sm-8">
+            <select value="<%= current_user.country %>"class="content_select"id="country"name="country"style="width:100%;padding:1vw;">
+              <option value="">No selected</option>
+              <%= render partial: "country" %>
+            </select>
+            <script type="text/javascript">
+              $("#country option[value='<%= current_user.country %>']").prop("selected","selected");
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="profile_page row">
+    <div class="profile_content">
+      <div class="col-sm-6">
+        <div class="row profile_content_data">
+          <div class="col-sm-4 content_name">
+            <div class="jp">
+              自己紹介(英語)
+            </div>
+            Introduction
+            (English)
+          </div>
+          <div class="col-sm-8">
+            <textarea id="profile_en"placeholder="Blank"class="content_input"><%=current_user.profile_en%></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row profile_content_data">
+          <div class="col-sm-4 content_name">
+            <div class="jp">
+              自己紹介(日本語)
+            </div>
+            Introduction
+            (Japanese)
+          </div>
+          <div class="col-sm-8">
+            <textarea id="profile_jp"placeholder="入力されていません"class="content_input"><%=current_user.profile_jp%></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div id="toen_change" style="display:none;">
+  <p>自己紹介の欄の文章を英語に翻訳しますか？</p>
+</div>
+<div id="tojp_change" style="display:none;">
+  <p>May I translate your englsh introduction to Japanese?</p>
+</div>
+<div id="enjp_change" style="display:none;">
+  <p>May I translate your englsh introduction to japanese or it of japanese to english?</p>
+  <p>日本語の自己紹介を英語に翻訳しますか？それとも英語の自己紹介を日本語に翻訳しますか？</p>
+</div>

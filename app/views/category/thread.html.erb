@@ -1,5 +1,6 @@
 <% lang = session["lang"] %>
 <% category = @categories.find_by(id: params[:id].to_i) %>
+<%= render partial:'./search' %>
 <div class="panel panel-warning smallcategory_all">
   <div class="panel-heading smallcategory_head">
     <div class="panel-title">

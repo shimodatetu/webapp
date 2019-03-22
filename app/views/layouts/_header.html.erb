@@ -1,14 +1,5 @@
-
-<% url = request.url %>
-<%#= request.url %>
-<%#= request.url.include?("/category/show") %>
-<% lang = session["lang"] %>
+<% url = request.fullpath %>
 <div class="header">
-  <!--<div class="header_top">
-    <div class="header_logo">
-      Fall in Friends
-    </div>
-  </div>-->
   <div class="banner_cover">
     <%= image_tag("banner.png", :class => "banner") %>
   </div>
@@ -29,36 +20,64 @@
       <% end %>
       <div id="nav-content">
         <ul class="nav navbar-nav">
-          <li class="link_tab">
+          <li id="/"class="link_tab">
             <%= link_to '/',class:"link_text" do %>
-              <div class="float_jap">
-                ホーム
+              <div class="text_fill
+              <% if url == '/'%>
+                <%= "now_page" %>
+              <% end %>">
+                <div class="float_jap">
+                  ホーム
+                </div>
+                <div class="base_en">
+                  Home
+                </div>
               </div>
-              Home
             <% end %>
           </li>
           <li class="link_tab">
             <%= link_to '/category/show',class:"link_text" do %>
-              <div class="float_jap">
-                カテゴリ一覧
+              <div class="text_fill
+              <% if url == '/category/show'%>
+                <%= "now_page" %>
+              <% end %>">
+                <div class="float_jap">
+                  カテゴリ一覧
+                </div>
+                <div class="base_en">
+                  Category List
+                </div>
               </div>
-              Category List
             <% end %>
           </li>
           <li class="link_tab">
             <%= link_to '/groups',data: {"turbolinks"=>false},class:"link_text" do %>
-              <div class="float_jap">
-                スレッドの作成
+            <div class="text_fill
+              <% if url == '/groups'%>
+                <%= "now_page" %>
+              <% end %>">
+                <div class="float_jap">
+                  スレッドの作成
+                </div>
+                <div class="base_en">
+                  Make Thread
+                </div>
               </div>
-              Make Thread
             <% end %>
           </li>
           <li class="link_tab",class:"link_text">
             <%= link_to '/profile',class:"link_text" do %>
-              <div class="float_jap">
-                マイページ
+              <div class="text_fill
+              <% if url == '/profile'%>
+                <%= "now_page" %>
+              <% end %>">
+                <div class="float_jap">
+                  マイページ
+                </div>
+                <div class="base_en">
+                  My Page
+                </div>
               </div>
-              My Page
             <% end %>
           </li>
           <li class="link_tab">
@@ -66,46 +85,14 @@
               <div class="float_jap">
                 ガイド
               </div>
-              Guide
+              <div class="base_en">
+                Guide
+              </div>
             <% end %>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <!--<div class="lang_button_all">
-    <%= button_to "日本語", {controller: 'tasks', action: 'lang_change_jp'},
-          {method: :post, class: "btn btn-info active lang_button", params: {url:url}} %>
-    <div class="button_space"></div>
-    <%= button_to "English", {controller: 'tasks', action: 'lang_change_en'},
-          {method: :post, class: "btn btn-info active lang_button",params: {url:url}}%>
-  </div>-->
-  <div class="thread_button_all">
-    <%= link_to "/groups", class: " btn btn-danger thread_button help" do %>
-      <div class="thread_button_jp">緊急スレッド</div>
-      Help Thread
-    <% end %>
-    <% if @test_id.nil? %>
-      <%= link_to "/groups", data: {"turbolinks"=>false},class: "btn btn-info thread_button make" do %>
-        <div class="thread_button_jp">スレッド作成</div>
-        Make Thread
-      <% end %>
-    <% else %>
-      <%= link_to "/groups/?category_id=#{@test_id}",data: {"turbolinks"=>false}, class: "btn btn-info thread_button make" do %>
-        <div class="thread_button_jp">スレッド作成</div>
-        Make Thread
-      <% end %>
-    <% end %>
-  </div>
-  <%= form_tag('/search', method: :post) do %>
-    <div class="input-group">
-      <span class="input-group-btn">
-        <%= button_tag type:"submit",class: "search btn btn-default" do %>
-          <span class="glyphicon glyphicon-search">
-        <% end %>
-      </span>
-      <%= text_field_tag :search_text ,"", class:"form-control",placeholder:"Search Categories / カテゴリーを検索" %>
-    </div>
-  <% end %>
 </div>
-<div class="plus"></div>
+<div class="header_plus"></div>

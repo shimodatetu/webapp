@@ -15,9 +15,9 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     category = Number(category)
     @perform 'make',lang:lang,title_jp:title_jp,message_jp:mes_jp,title_en:title_en,message_en:mes_en,category:category
 
-$(document).on 'click', '[class~=submit_button]', (event) ->
+$(document).on 'click', '.make_thread_text .submit_button', (event) ->
+  alert($(".big_select").val())
   words_check($('#title').val(), $('#content').val(),$('.small_select').val())
-  #alert($('.small_select').val());
   event.preventDefault()
 
 words_check=(title,coment,category)->
@@ -30,7 +30,6 @@ words_check=(title,coment,category)->
   translate(title,coment,lang,category)
 
 translate=(title,coment,lang,category) ->
-
   words = title+" {} "+coment
   defer = $.Deferred()
   $.ajax
@@ -39,7 +38,7 @@ translate=(title,coment,lang,category) ->
     headers:{
       'Content-Type': 'application/json'
       'Accept': 'application/jwt'
-      'Ocp-Apim-Subscription-Key': 'd0d8d178e5f54dcaab373fe9896fdb3a'
+      'Ocp-Apim-Subscription-Key': ENV["MICROSOFT_KEY"]
     }
     async: false
   .done (data) ->
@@ -57,6 +56,7 @@ translate=(title,coment,lang,category) ->
         'to': lang
       }
       async: false
+
     data = response.responseText
     translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
     get_text = translation.split('{}')
