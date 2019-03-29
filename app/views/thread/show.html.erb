@@ -2,7 +2,6 @@
 <% group = Group.find_by(id: params[:id]) %>
 <% subcategory = group.smallcategory %>
 <% category = subcategory.bigcategory %>
-<%= render partial:'./search' %>
 <div class="thread_show group_<%= params[:id] %>">
   <div class="panel panel-warning thread_show_content">
     <div class="panel-heading thread_head">
