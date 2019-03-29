@@ -6,21 +6,32 @@
     background-color: #fff0b0;
     .panel-title{
       font-size:20px;
+      .float_jp{
+        font-size:12px;
+      }
     }
   }
   .pvpage_lang{
     .lang_show{
       font-size:20px;
       text-align:center;
+      .float_jp{
+        font-size:12px;
+      }
     }
   }
+
   .thread_all{
     .thread_title{
       background-color: #fff0b0;
+      .float_jp{
+        font-size:12px;
+      }
     }
     .thread_content{
       height:110px;
       color:#000000;
+      background-color: rgba(252,248,210,0.4);
       .group_user_cover{
         .group_img_cover{
           text-align: center;
@@ -43,9 +54,9 @@
         padding-left:0px;
         .post_content{
           height:55px;
-          width:180px;
           .post_content_text{
             margin:auto;
+            margin-top:5px;
           }
         }
       }

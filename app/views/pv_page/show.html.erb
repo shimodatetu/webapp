@@ -1,22 +1,12 @@
 <% lang = session["lang"] %>
-<%= render partial:'./search' %>
 
 <div class="panel panel-warning pvpage_all">
   <div class="panel-heading pvpage_head">
     <div class="panel-title">
-      Popular Thread / 人気スレッド
-    </div>
-  </div>
-  <div class="panel-body pvpage_lang row">
-    <div class="col-sm-6">
-      <div class="lang_show">
-        English / 英語
+      <div class="float_jp">
+        人気スレッド
       </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="lang_show">
-        Japanese / 日本語
-      </div>
+      Popular Thread
     </div>
   </div>
   <div class="panel-body thread_all">
@@ -26,8 +16,13 @@
           <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
             <div class="panel panel-warning">
               <div class="panel-heading thread_title">
-                <div class="panel-title">
-                  <%= group.title_en %>
+                <div class="panel-title row">
+                  <div class="col-sm-2">
+                    Title：
+                  </div>
+                  <div class="col-sm-10">
+                    <%= group.title_en %>
+                  </div>
                 </div>
               </div>
               <div class="panel-body thread_content">
@@ -48,11 +43,11 @@
                   <div class="col-sm-9 post_content_cover">
                     <div class="post_content">
                       <div class="post_content_text">
-                        <%= group.posts.first.content_eng %>
+                        <%= group.posts.first.content_eng.truncate(50) %>
                       </div>
                     </div>
                     <div class="lang_type">
-                      <% if group.lang == "ja" %>
+                      <% if group.lang == "en" %>
                         <div class="lang-show">Original</div>
                       <% else %>
                         <div class="lang-show">Translated</div>
@@ -68,8 +63,13 @@
           <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
             <div class="panel panel-warning">
               <div class="panel-heading thread_title">
-                <div class="panel-title">
-                  <%= group.title_jp %>
+                <div class="panel-title row">
+                  <div class="col-sm-4">
+                    タイトル：
+                  </div>
+                  <div class="col-sm-8">
+                    <%= group.title_jp %>
+                  </div>
                 </div>
               </div>
               <div class="panel-body thread_content">
@@ -90,14 +90,14 @@
                   <div class="col-sm-9 post_content_cover">
                     <div class="post_content">
                       <div class="post_content_text">
-                        <%= group.posts.first.content_jap %>
+                        <%= group.posts.first.content_jap.truncate(23) %>
                       </div>
                     </div>
                     <div class="lang_type">
-                      <% if group.lang == "en" %>
-                        <div class="lang-show">原文</div>
+                      <% if group.lang == "ja" %>
+                        <div class="lang-show">Original</div>
                       <% else %>
-                        <div class="lang-show">翻訳済</div>
+                        <div class="lang-show">Translated</div>
                       <% end %>
                     </div>
                   </div>

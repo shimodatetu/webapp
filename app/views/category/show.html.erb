@@ -1,5 +1,4 @@
 <% lang = session["lang"] %>
-<%= render partial:'./search' %>
 <div class="category_list_all_cover">
   <% if !flash["search"].nil? %>
     <div class="search_result row">
@@ -104,7 +103,7 @@
 <script type="text/javascript">
   $(".category_title").on("click",function(){
     var scroll_place = $(".category_panel"+$(this).attr("id")).offset().top;
-    scroll_place -= 190;
+    scroll_place -= 60;
     $("html").animate({scrollTop:scroll_place},"normal");
   });
 </script>

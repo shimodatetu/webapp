@@ -16,7 +16,7 @@
     width:800px;
     margin-left:10px;
     .thread_head{
-      background-color: rgba(255,235,110,1);
+      background-color: #fff0b0;
       .thread-title{
         font-size:20px;
       }
@@ -27,25 +27,32 @@
         text-align:center;
       }
     }
-
     .thread_all{
       padding-left:30px;
       padding-right:30px;
       .thread_title{
-        background-color: rgba(255,235,110,1);
+        background-color: #fff0b0;
       }
       .thread_content_cover{
         .thread_content_header{
-          background-color: rgba(255,235,110,1);
+          background-color: #fff0b0;
+          font-size:20px;
+        }
+        .first_thread_content{
+          background-color: rgba(252,248,210,0.5);
         }
         .thread_content{
           border:1px solid #faebcc;
-          height:130px;
           color:#000000;
+          padding-top:15px;
           .group_user_cover{
-            margin-top:15px;
+            display:inline-block;
+            margin:5px 15px 0px 15px;
+
+            vertical-align: middle;
             .group_img_cover{
               text-align: center;
+              vertical-align: middle;
               .group_img {
                 width: 50px;
                 height: 50px;
@@ -54,18 +61,19 @@
               }
             }
             .group_name{
-              padding-top:1px;
               font-size:15px;
               text-align: center;
             }
           }
           .post_content_cover{
-            font-size:20px;
-            float:left;
-            padding-left:0px;
+            display:inline-block;
+            font-size:18px;
+            margin-top:-10px;
+            vertical-align: middle;
             .post_content{
-              height:55px;
-              width:180px;
+              vertical-align: middle;
+              width:250px;
+              overflow-wrap: break-word;
               .post_content_text{
                 margin:auto;
               }
@@ -79,7 +87,8 @@
           }
           .lang_type{
             float: right;
-            margin-top:20px;
+            margin-top:10px;
+            margin-right:10px;
             .lang-show{
               border-radius: 5px;
               font-size:15px;

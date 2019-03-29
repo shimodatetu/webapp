@@ -8,14 +8,16 @@
         <div class="panel panel-warning thread_content_cover">
           <% if post.id == post_first_id %>
             <div class="panel-heading thread_content_header">
-              <div class="panel-title">
-                Title : <%= group.title_en %>
-              </div>
+              Title : <%= group.title_en %>
             </div>
           <% end %>
-          <div class="panel-body thread_content">
+          <div class="panel-body thread_content
+            <% if post.id == post_first_id %>
+              first_thread_content
+            <% end %>
+          ">
             <div class="row">
-              <div class="col-sm-3 group_user_cover">
+              <div class="group_user_cover">
                 <div class="group_img_cover">
                   <% if post.user.image.url.nil? %>
                     <%= image_tag("/user.png", :class => "group_img") %>
@@ -23,12 +25,11 @@
                     <%= image_tag(post.user.image.url, :class => "group_img") %>
                   <% end %>
                 </div>
-                <p class="group_name">
+                <div class="group_name">
                   <%= post.user.name %>
-                </p>
+                </div>
               </div>
-
-              <div class="col-sm-9 post_content_cover">
+              <div class="post_content_cover">
                 <div class="post_content">
                   <% if post.image.url.nil? %>
                     <div class="post_content_text">
@@ -40,32 +41,33 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="lang_type">
-                  <% if post.lang == "ja" %>
-                    <div class="lang-show">Original</div>
-                  <% else %>
-                    <div class="lang-show">Translated</div>
-                  <% end %>
-                </div>
               </div>
+              <!--<div class="lang_type">
+                <% if post.lang == "en" %>
+                  <div class="lang-show">Original / 原文</div>
+                <% else %>
+                  <div class="lang-show">Translated / 翻訳済</div>
+                <% end %>
+              </div>-->
             </div>
           </div>
         </div>
       </div>
 
-      <!--日本語-->
       <div class="col-sm-6">
         <div class="panel panel-warning thread_content_cover">
           <% if post.id == post_first_id %>
             <div class="panel-heading thread_content_header">
-              <div class="panel-title">
-                タイトル : <%= group.title_jp %>
-              </div>
+              タイトル : <%= group.title_jp %>
             </div>
           <% end %>
-          <div class="panel-body thread_content">
+          <div class="panel-body thread_content
+            <% if post.id == post_first_id %>
+              first_thread_content
+            <% end %>
+            ">
             <div class="row">
-              <div class="col-sm-3 group_user_cover">
+              <div class="group_user_cover">
                 <div class="group_img_cover">
                   <% if post.user.image.url.nil? %>
                     <%= image_tag("/user.png", :class => "group_img") %>
@@ -73,12 +75,11 @@
                     <%= image_tag(post.user.image.url, :class => "group_img") %>
                   <% end %>
                 </div>
-                <p class="group_name">
+                <div class="group_name">
                   <%= post.user.name %>
-                </p>
+                </div>
               </div>
-
-              <div class="col-sm-9 post_content_cover">
+              <div class="post_content_cover">
                 <div class="post_content">
                   <% if post.image.url.nil? %>
                     <div class="post_content_text">
@@ -90,14 +91,14 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="lang_type">
-                  <% if post.lang == "en" %>
-                    <div class="lang-show">原文</div>
-                  <% else %>
-                    <div class="lang-show">翻訳済</div>
-                  <% end %>
-                </div>
               </div>
+              <!--<div class="lang_type">
+                <% if post.lang == "ja" %>
+                  <div class="lang-show">Original / 原文</div>
+                <% else %>
+                  <div class="lang-show">Translated / 翻訳済</div>
+                <% end %>
+              </div>-->
             </div>
           </div>
         </div>

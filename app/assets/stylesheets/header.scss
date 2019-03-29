@@ -1,5 +1,4 @@
 .header {
-
   z-index: 10;
   position:fixed;
   background-color: rgba(255,255,255,1);
@@ -32,14 +31,14 @@
     padding: 0px 0px;
   }
   .nav-fall{
-
-    border-bottom:solid 2px #cd853f;
     z-index:20;
-    height:50px;
-    font-size: 18px;
-    background-color: rgba(255,255,255,1);
+    padding-left:20px;
+    height:52px;
+    font-size: 14px;
     color:#cd853f;
-    //background-color: rgba(255,255,255,1);
+    border-bottom-width: thin;
+    border-bottom-color: #BF8454;
+    border-bottom-style: solid;
     .icon{
       height:25px;
       width:25px;
@@ -47,42 +46,76 @@
     .login_button:hover{
       color:#C8A580;
     }
+
     .login_button{
+      height:100%;
       padding-right:40px;
-      padding-top:2px;
+      padding-top:8px;
       float:right;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       text-decoration: none;
-      color:#8A562B;
-      .float_jap{
-        font-size:10px;
-        margin-left:5px;
+      color:#BF8454;
+      .icon{
+        display: inline-block;
+        font-size:20px;
+        margin-top:2px;
+      }
+      .now_page{
+        height:100%;
+        margin-bottom:10px;
+        border-bottom:solid 2px #BF8454;
+      }
+      .text_fill{
+        height:100%;
+        .text{
+          padding-left:5px;
+          padding-right:5px;
+          height:100%;
+          color:#BF8454;
+          margin-left:-3px;
+          display: inline-block;
+          font-weight:lighter;
+          .float_jap{
+            font-size:10px;
+            margin-left:2px;
+          }
+          .base_en{
+            margin-top:-3px;
+          }
+        }
       }
     }
-    .link_tab {
-      margin-top:-15px;
+    .text_fill:hover{
+      color:#D8B590;
+      border-bottom:solid 2px #D8B590;
+    }
+    .link_text{
+      margin-left:-4px;
+      height:100%;
+      display: inline-block;
       text-align:center;
-      a{
-        height:42px;
+      color:#BF8454;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      .now_page{
+        height:100%;
+        margin-bottom:10px;
+        border-bottom:solid 2px #BF8454;
       }
-      .link_text:hover{
-        height:60px;
-        color:#C8A580;
-      }
-      .link_text{
-        color:#BF8454;
-        font-size: 20px;
-        font-weight: bold;
-        text-decoration: none;
-        .now_page{
-          height:45px;
-          padding-left:15px;
-          padding-right:15px;
-          border-bottom-left-radius:10px;
-          border-bottom-right-radius:10px;
-          background:#ffeb6e;
+      .text_fill{
+        height:100%;
+        font-weight: lighter;
+        .icon{
+          display: inline-block;
         }
+        .float_text{
+          display: inline-block;
+        }
+        padding:10px;
+        padding-left: 5px;
+        padding-top: 8px;
         .float_jap{
           font-size:10px;
         }
@@ -91,17 +124,23 @@
         }
       }
     }
-  }
-
-
-  .login_button_all {
-    .login_button {
-      font-size:20px;
-      width:110px;
-      background-color: rgba(255,235,110,1);
-      margin-top:10px;
-      margin-left:10px;
-      float:left;
+    .search_all{
+      margin-left:400px;
+      height:100%;
+      display: inline-block;
+      width:300px;
+      vertical-align: middle;
+      .search {
+        color:#888888;
+        z-index:50;
+        position:absolute;
+        margin-left:270px;
+        margin-top:-27px;
+      }
+      .search_form {
+        display: inline-block;
+        width:300px !important;
+      }
     }
   }
   .lang_button_all {
@@ -116,95 +155,11 @@
     position:relative;
     float:left;
     padding-left:110px;
-    //padding-left:calc(200px + 10px);
   }
-  #nav-input,#nav-open,.nav-unshown{
-    display: none;
-  }
-  @media screen and (max-width: 800px) {
-    #nav-open{
-      display: inline-block;
-    }
-    #nav-drawer {
-      position: relative;
-    }
 
-    /*チェックボックス等は非表示に*/
-    .nav-unshown {
-      display:none;
-    }
-
-    /*アイコンのスペース*/
-    #nav-open {
-      display: inline-block;
-      width: 30px;
-      height: 22px;
-      vertical-align: middle;
-    }
-
-    /*ハンバーガーアイコンをCSSだけで表現*/
-    #nav-open span, #nav-open span:before, #nav-open span:after {
-      position: absolute;
-      height: 3px;/*線の太さ*/
-      width: 25px;/*長さ*/
-      border-radius: 3px;
-      background: #555;
-      display: block;
-      content: '';
-      cursor: pointer;
-    }
-    #nav-open span:before {
-      bottom: -8px;
-    }
-    #nav-open span:after {
-      bottom: -16px;
-    }
-
-    /*閉じる用の薄黒カバー*/
-    #nav-close {
-      display: none;/*はじめは隠しておく*/
-      position: fixed;
-      z-index: 99;
-      top: 0;/*全体に広がるように*/
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      opacity: 0;
-      transition: .3s ease-in-out;
-    }
-
-    /*中身*/
-    #nav-content {
-      overflow: auto;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999;/*最前面に*/
-      width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
-      max-width: 330px;/*最大幅（調整してください）*/
-      height: 100%;
-      background: #fff;/*背景色*/
-      transition: .3s ease-in-out;/*滑らかに表示*/
-      -webkit-transform: translateX(-105%);
-      transform: translateX(-105%);/*左に隠しておく*/
-    }
-
-    /*チェックが入ったらもろもろ表示*/
-    #nav-input:checked ~ #nav-close {
-      display: block;/*カバーを表示*/
-      opacity: .5;
-    }
-
-    #nav-input:checked ~ #nav-content {
-      -webkit-transform: translateX(0%);
-      transform: translateX(0%);/*中身を表示（右へスライド）*/
-      box-shadow: 6px 0 25px rgba(0,0,0,.15);
-    }
-  }
 }
 .header_plus{
-  padding-top:130px;
+  padding-top:70px;
 }
 .add_header{
   z-index: 9;
@@ -217,14 +172,7 @@
     float:left;
     padding-left:10px;
   }
-  .search_all{
-    .search {
-      display: inline-block;
-    }
-    .search_form {
-      display: inline-block;
-    }
-  }
+
   .thread_button_all{
     position:absolute;
     right:40px;
@@ -249,5 +197,11 @@
       background-color: rgba(237,204,177,1.0);
       border-style: none;
     }
+  }
+
+}
+@media screen and (max-width: 1200px){
+  .link_text .text_fill .float_jap{
+    display: none !important;
   }
 }

@@ -38,7 +38,7 @@ translate=(title,coment,lang,category) ->
     headers:{
       'Content-Type': 'application/json'
       'Accept': 'application/jwt'
-      'Ocp-Apim-Subscription-Key': ENV["MICROSOFT_KEY"]
+      'Ocp-Apim-Subscription-Key': window.ENV.RailsEnv
     }
     async: false
   .done (data) ->

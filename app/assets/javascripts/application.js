@@ -16,4 +16,5 @@
 //= require activestorage
 //= require jquery.turbolinks
 //= require turbolinks
+//= require env
 //= require_tree .
