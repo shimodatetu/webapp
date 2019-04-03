@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'search/show'
   get 'category/new'
-  get 'category/thread/:id' => 'category#thread'
+  get 'category/smallcategory/:id' => 'category#smallcategory'
   match '/small_new' => 'category#small_new', via: [ :post ]
   match '/big_new' => 'category#big_new', via: [ :post ]
 
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   root 'pv_page#show'
   #root 'users#index'
 
-  
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

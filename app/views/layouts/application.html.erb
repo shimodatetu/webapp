@@ -9,23 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <script>
-      $(function(){
-        $(".alert").fadeOut(5000);
-      });
-
-    </script>
-    <%#= @test_base %>
-    <%#= @test_trans %>
     <%= render partial:'layouts/header' %>
-    <%#= render partial:'layouts/menu' %>
-    <% flash.each do |key, value| %>
-      <% if key != "search" && key != "search_big_en" && key != "search_big_jp" &&
-        key != "search_big_id" && key != "search_sub_en" &&
-        key != "search_sub_jp" && key != "search_sub_id"%>
-        <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
-      <% end %>
-    <% end %>
     <div class="main_content_cover">
       <%= yield %>
     </div>

@@ -1,9 +1,14 @@
 .main_content_cover{
-  padding-left:100px;
+  padding-top:70px;
   padding-bottom:450px;
+  padding-left:calc(5vw);
+  width:calc(30vw + 500px);
   .obj-fit-img {
     object-fit: cover;
     object-position: 0 100%;
     font-family: 'object-fit: cover; object-position: 0 100%;'
   }
+}
+body{
+  background:#fff0a042;
 }

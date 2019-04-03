@@ -1,0 +1,85 @@
+<% search_text = "" %>
+<% if session["search_text"].nil? == false %>
+  <% search_text = session["search_text"] %>
+<% end %>
+<div class="search_result">
+  <div class="category_show">
+    <%= form_tag('/search/header',method: :post,class: "input-group search_form") do %>
+      <%= text_field_tag :search_text ,search_text, class: "form-control form_input",placeholder:"Search / 検索" %>
+      <span class="input-group-btn">
+        <button type="submit"class="btn btn-warning form_button">
+          <span class="glyphicon glyphicon-search"></span>
+          検索
+        </button>
+      </span>
+    <% end %>
+  </div>
+  <div class="pvpage_head">
+    <div class="pvpage_lang">
+      <div class="lang_show en_position">
+        <div class="float_jp">
+          英語
+        </div>
+        English
+      </div>
+      <div class="lang_show jp_position">
+        <div class="float_jp">
+          日本語
+        </div>
+        Japanese
+      </div>
+    </div>
+  </div>
+  <% search_text = search_text.downcase %>
+  <div class="thread_all">
+    <% @groups.each do |group| %>
+      <% if group.title_en.downcase.include?(search_text) || group.title_jp.downcase.include?(search_text) %>
+        <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
+          <div class="thread_cover">
+            <div class="group_user_cover">
+              <div class="group_img_cover">
+                <% if group.user.image.url.nil? ==false%>
+                  <%= image_tag("/user.png", :class => "group_img") %>
+                <% else %>
+                  <%= image_tag(group.user.image.url, :class => "group_img") %>
+                <% end %>
+              </div>
+              <div class="group_name">
+                <%= group.user.name %>
+              </div>
+            </div>
+            <div class="thread_content">
+
+              <div class="row post_content_cover">
+                <div class="col-sm-6">
+                  <div class="thread_title">
+                    <div class="title_padding">
+                      <%= group.title_en %>
+                    </div>
+                  </div>
+                  <div class="post_content">
+                    <div class="post_content_text">
+                      <%= group.posts.first.content_eng %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="thread_title">
+                    <div class="title_padding">
+                      <%= group.title_jp %>
+                    </div>
+                  </div>
+                  <div class="post_content">
+                    <div class="post_content_text">
+                      <%= group.posts.first.content_jap %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

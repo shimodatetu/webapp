@@ -6,4 +6,8 @@ module ApplicationHelper
   def logged_in?
     !current_user.nil?
   end
+
+   def logout
+     session[:user_id] = nil
+   end
 end

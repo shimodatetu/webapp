@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
    !current_user.nil?
  end
 
+ def logout
+   current_user = nil
+ end
+
  def user_image_default
    return "/user.png"
  end

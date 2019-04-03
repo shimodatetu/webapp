@@ -9,7 +9,7 @@ class CategoryController < ApplicationController
     @category = Bigcategory.all
   end
 
-  def thread
+  def smallcategory
     @categories = Smallcategory.all
     @test_id = params[:id]
   end
