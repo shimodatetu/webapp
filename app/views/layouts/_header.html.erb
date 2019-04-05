@@ -1,4 +1,4 @@
-<% logout %>
+<%# logout %>
 <% url = request.fullpath %>
 <div class="header">
   <div class="width_set"style="width:100vw;">
@@ -104,7 +104,7 @@
       <span class="search_all">
         <%= form_tag('/search/header',method: :post) do %>
           <%= text_field_tag :search_text ,"", class:"form-control search_form",placeholder:"Search / 検索" %>
-          <button type="submit"class="search" style="background: no-repeat;border: none;">
+          <button type="submit"class="search" style="border: none;">
             <span class="glyphicon glyphicon-search"></span>
           </button>
         <% end %>

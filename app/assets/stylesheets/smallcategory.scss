@@ -1,5 +1,4 @@
 .smallcategory_search{
-  width:800px;
   .thread_link:hover{
     .thread_cover{
       background-color: rgba(252,248,210,1);
@@ -24,7 +23,6 @@
     }
   }
   .pvpage_head{
-    padding-left:60px;
     border-top:3px solid #fff2a0;
   }
   .col-sm-6{
@@ -35,17 +33,14 @@
   .pvpage_lang{
     display:inline-block;
     vertical-align: bottom;
-    width:calc(100% - 200px);
-    margin-left:120px;
+    width:100%;
     padding-top:10px;
-    .jp_position{
-      padding-left:120px;
-    }
+    
     .en_position{
-      margin-left:50px;
+      margin-left:calc(20% + 70px);
     }
     .jp_position{
-      margin-left:120px;
+      margin-left:calc(55% - 195px);
     }
     .lang_show{
       display:inline-block;

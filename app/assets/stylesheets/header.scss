@@ -136,15 +136,16 @@
       margin-top:10px;
       .search {
         color:#888888;
-        z-index:50;
         position:absolute;
         margin-left:calc(15vw + 20px);
         margin-top:-27px;
-        background:#ffffff;
+        //background:#ffffff;
+        outline: none;
       }
       .search_form {
         display: inline-block;
         width:calc(15vw + 50px);
+        z-index:50;
       }
     }
   }

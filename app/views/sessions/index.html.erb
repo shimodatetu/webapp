@@ -1,13 +1,49 @@
-<h1>ログイン</h1>
-<%= form_for :session, url: login_path do |f| %>
-  <div class="form-group">
-    <%= f.label :email, class: "text-white" %>
-    <%= f.text_field :email, class: "form-control" %>
+<div class="login_page_cover">
+  <div class="login_page">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="first_coment">Welcome to Tripal !!</div>
+        <div class="title">
+          <div class="float_jp">
+            サインイン
+          </div>
+          <div class="base_en">
+            Sign In
+          </div>
+        </div>
+        <%= form_for :session, url: login_path do |f| %>
+          <div class="input-groups row">
+            <div class="title col-sm-5">
+              <div class="float_jp">
+                メールアドレス
+              </div>
+              Mail Address：
+            </div>
+            <div class="col-sm-7">
+              <%= f.text_field :email, class: "form-control input_form" %>
+            </div>
+          </div>
+          <div class="input-groups row">
+            <div class="title col-sm-5">
+              <div class="float_jp">
+                パスワード
+              </div>
+              Passwords：
+            </div>
+            <div class="col-sm-7">
+              <%= f.password_field :password, class: "form-control input_form" %>
+            </div>
+          </div>
+          <div class="submit_button_cover">
+            <button type="submit"class="submit_button btn btn-default">
+              <div class="float_jp">
+                サインイン
+              </div>
+              Sign In
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :password, class: "text-white" %>
-    <%= f.password_field :password, class: "form-control" %>
-  </div>
-
-  <%= f.submit "ログイン", class: "btn-block btn-white" %>
-<% end %>
+</div>

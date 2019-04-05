@@ -5,7 +5,61 @@
       background-color: rgba(252,248,210,1);
     }
   }
+  .scroll_cover {
+    height:60px;
+    margin-left:50px;
+    display:inline-block;
+    .example{
+      margin-top:10px;
+      overflow-x: scroll;
+      width:390px;
+    }
+    .image_cover{
+      position:absolute;
+      .image{
+        margin-top:-50px;
+        margin-bottom:10px;
+        margin-left:10px;
+        width:35px;
+        height:25px;
+      }
+      .jp{
+        margin-left:340px;
+      }
+    }
+    .image_covers{
+      display: inline-block;
+      .image{
+        margin-top:10px;
+        margin-bottom:10px;
+        margin-left:10px;
+        width:50px;
+        height:33px;
+      }
+    }
+    .image_space{
+      display: inline-block;
+      padding-left:250px;
+    }
+    div::-webkit-scrollbar{
+      width:40px;
+      height:40px;
+    }
+    div::-webkit-scrollbar-track{
+      background: #fff;
+      border: none;
+      border-radius: 15px;
+      box-shadow: inset 0 0 2px #BF8454;
+    }
+    div::-webkit-scrollbar-thumb{
+      background:#fff0a0;
+      border-radius: 50%;
+      width:40px;
+      height:40px;
+    }
+  }
   .panel-title{
+    display: inline-block;
     margin-bottom:10px;
     padding-left:20px;
     font-size:20px;
@@ -15,22 +69,17 @@
     }
   }
   .pvpage_head{
-    padding-left:60px;
     border-top:3px solid #fff2a0;
     .pvpage_lang{
       display:inline-block;
       vertical-align: bottom;
-      width:calc(100% - 200px);
-      margin-left:120px;
+      width:100%;
       padding-top:10px;
-      .jp_position{
-        padding-left:120px;
-      }
       .en_position{
-        margin-left:50px;
+        margin-left:calc(20% + 70px);
       }
       .jp_position{
-        margin-left:120px;
+        margin-left:calc(55% - 195px);
       }
       .lang_show{
         display:inline-block;
@@ -42,6 +91,41 @@
         .base_en{
           margin-top:-2px;
         }
+      }
+    }
+  }
+  .lang_bar{
+    padding-left:calc(28% - 30px);
+    margin-top: 5px;
+    .slider{
+      width:calc(65% - 30px);
+      display: inline-block;
+      .tooltip{
+        display: none !important;
+      }
+      .slider-handle{
+        top: -5px !important;
+        width: 30px !important;
+        height: 30px !important;
+      }
+      .slider-selection{
+        height: 20px !important;
+        top: -5px !important;
+        background: rgb(46, 82, 189);
+      }
+      .slider-track-high{
+        top: -5px;
+        height:20px;
+        background: #fff;
+        -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2)
+      }
+    }
+    .country_flag{
+      display: inline-block;
+      margin-right: 5px;
+      .image{
+        height:28px;
+        width:40px;
       }
     }
   }
@@ -57,11 +141,6 @@
       .float_jp{
         font-size:12px;
       }
-      .title_padding{
-        text-align: center;
-        font-size:18px;
-        background:#fff7cf;
-      }
     }
 
     .thread_cover{
@@ -72,9 +151,10 @@
       border:solid thin #dddddd;
       .group_user_cover{
         display: inline-block;
+        vertical-align: middle;
         height:100%;
         margin-right: 10px;
-        vertical-align: middle;
+        margin-top:10px;
         .group_img_cover{
           text-align: center;
           .group_img {
@@ -93,21 +173,50 @@
       }
       .thread_content{
         display: inline-block;
+        vertical-align: top;
         color:#000000;
         width:calc(100% - 60px);
         .thread_title{
+          padding-left:10px;
+          padding-right:10px;
           font-size:18px;
+          background:#fff7cf;
+          .title_padding{
+            text-align: center;
+            font-size:18px;
+
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+          }
         }
         .post_content_cover{
           display: inline-block;
           font-size:16px;
-          vertical-align:middle;
           margin-left:20px;
           width:calc(100% - 40px);
-          .col-sm-6{
+          .post_content_position{
+            display:inline-block;
+            vertical-align:top;
+            width:calc(50% - 15px);
+          }
+          .post_content_position_space{
+            display: inline-block;
+            margin-top: 30px;
+            .img{
+              width:20px;
+              height:20px;
+            }
           }
           .post_content{
             text-align: center;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
             .post_content_text{
               margin:auto;
               margin-top:5px;
