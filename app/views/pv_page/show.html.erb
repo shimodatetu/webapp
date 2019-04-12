@@ -1,86 +1,35 @@
 <% lang = session["lang"] %>
 <script>
   $(function(){
-    //$(".example").scrollLeft(3000 - 300);
-    $(".example").scroll(function(){
-      console.log($(".example").scrollLeft())
-      var scroll = $(".example").scrollLeft();
-      var en_per = scroll / 5760 * 100;
-      var jp_per = 100 - en_per;
-      if(scroll < 750){
-        $(".en_position").attr("style","display:none;");
-        $(".jp_position").attr("style","width:calc(100% - 50px)");
-      }
-      else if(scroll > 5000){
-        $(".en_position").attr("style","width:calc(100% - 50px)");
-        $(".jp_position").attr("style","display:none");
-      }
-      else{
-        $(".en_position").attr("style","width:calc("+en_per+"% - 15px)");
-        $(".jp_position").attr("style","width:calc("+jp_per+"% - 15px)");
-      }
-
-    });
-
-    $('#slider').slider({
-      formatter: function(value) {
-        if(value != 0){
-          var en_per = value / 10;
-          var jp_per = (1000 - value) / 10;
-          if(value < 100){
-            $(".en_position").attr("style","display:none;");
-            $(".jp_position").attr("style","width:calc(100% - 50px)");
-            $(".post_content_position_space").attr("style","display:none;");
-          }
-          else if(value > 900){
-            $(".en_position").attr("style","width:calc(100% - 50px)");
-            $(".jp_position").attr("style","display:none");
-            $(".post_content_position_space").attr("style","display:none;");
-          }
-          else{
-            $(".en_position").attr("style","width:calc("+en_per+"% - 15px)");
-            $(".jp_position").attr("style","width:calc("+jp_per+"% - 15px)");
-            $(".post_content_position_space").removeAttr("style");
-          }
-        }
-      }
-    });
-
-    $(".en_position").attr("style","width:calc(50% - 15px");
-    $(".jp_position").attr("style","width:calc(50% - 15px)");
+    //$('.lang_bar_cover').tooltip(".slider_handle")
   })
 </script>
+<style>
+  .ui-tooltip{background: #F2FBEF}
+  .tooltip-title{
+    background:#000;
+  }
+</style>
 <div class=" pvpage_all">
+  <div class="lang_bar_cover" data-toggle="tooltip" data-placement="bottom" data-original-title="説明">
+    <div class="lang_bar">
+      <div class="country_flag">
+        <%= image_tag "ダウンロード (1).png", class: "image" %>
+      </div>
+      <input id="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0"
+          data-slider-max="1000" data-slider-step="1" data-slider-value="500"/>
+      <div class="country_flag jp_country">
+        <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
+      </div>
+    </div>
+  </div>
   <div class="panel-title"style="display:inline-block">
     <div class="float_jp">
       人気スレッド
     </div>
     Popular Thread
   </div>
-
-  <!--<div class="scroll_cover">
-    <div class="example">
-      <div style="width:6000px;height:1px;"></div>
-    </div>
-    <div class="image_cover en_image">
-      <%= image_tag "ダウンロード (1).png", class: "image" %>
-    </div>
-    <div class="image_spaces"></div>
-    <div class="image_cover jp_image">
-      <%= image_tag "21hb-GV4ZtL.jpg", class: "image jp" %>
-    </div>
-  </div>-->
   <div class="pvpage_head">
-  </div>
-  <div class="lang_bar">
-    <div class="country_flag">
-      <%= image_tag "ダウンロード (1).png", class: "image" %>
-    </div>
-    <input id="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0"
-        data-slider-max="1000" data-slider-step="1" data-slider-value="500"/>
-    <div class="country_flag">
-      <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
-    </div>
   </div>
   <div class="thread_all"style="padding-top:10px;">
     <% @groups.each do |group| %>
@@ -88,19 +37,18 @@
         <div class="thread_cover">
           <div class="group_user_cover">
             <div class="group_img_cover">
-              <% if group.user.image.url.nil? ==false%>
+              <% if group.user.image.url.nil?%>
                 <%= image_tag("/user.png", :class => "group_img") %>
               <% else %>
                 <%= image_tag(group.user.image.url, :class => "group_img") %>
               <% end %>
             </div>
-            <div class="group_name">
-              <%= group.user.name %>
-            </div>
           </div>
           <div class="thread_content">
-
             <div class="post_content_cover">
+              <div class="user_name">
+                <%= group.user.name %>
+              </div>
               <div class="post_content_position en_position">
                 <div class="thread_title">
                   <div class="title_padding">
@@ -129,11 +77,17 @@
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       <% end %>
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(window).on("scroll", function(){
+    if($(window).width() < 600){
+      //$(".lang_bar_cover").css("left", -$(window).scrollLeft());
+    }
+  });
+</script>

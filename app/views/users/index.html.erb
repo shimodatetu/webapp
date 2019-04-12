@@ -1,22 +1,77 @@
-<h1>登録</h1>
 
-<%= form_for @user do |f| %>
-  <div class="form-group">
-    <%= f.label :name, class: 'text-white' %>
-    <%= f.text_field :name, class: 'form-control' %>
+<div class="sign_page_cover">
+  <div class="login_page">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="title">
+          <div class="float_jp">
+            会員登録
+          </div>
+          <div class="base_en">
+            Sign Up
+          </div>
+        </div>
+        <%= form_for @user, url: "/users" do |f| %>
+          <div class="input-groups">
+            <div class="input_title">
+              <div class="float_jp">
+                ユーザーネーム
+              </div>
+              User Name
+            </div>
+            <div class="">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="input-groups">
+            <div class="input_title">
+              <div class="float_jp">
+                メールアドレス
+              </div>
+              Mail Address
+            </div>
+            <div class="">
+              <%= f.text_field :email, class: "form-control input_form" %>
+            </div>
+          </div>
+          <div class="input-groups">
+            <div class="input_title">
+              <div class="float_jp">
+                パスワード
+              </div>
+              <div class="base_en">
+                Passwords
+              </div>
+            </div>
+            <div class="">
+              <%= f.password_field :password, class: "form-control input_form" %>
+            </div>
+          </div>
+          <div class="input-groups">
+            <div class="input_title">
+              <div class="float_jp">
+                パスワード確認
+              </div>
+              <div class="base_en">
+                Passwords Confirmation
+              </div>
+            </div>
+            <div class="">
+              <%= f.password_field :password_confirmation, class: "form-control input_form" %>
+            </div>
+          </div>
+          <div class="submit_button_cover">
+            <button type="submit"class="submit_button btn btn-default">
+              <div class="float_jp">
+                サインイン
+              </div>
+              <div class="base_en">
+                Sign Up
+              </div>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :email, class: 'text-white' %>
-    <%= f.text_field :email, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :password, class: 'text-white' %>
-    <%= f.password_field :password, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :password_confirmation, class: 'text-white' %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-  </div>
-  <%= f.submit "登録", class: 'btn-block btn-white' %>
-<% end %>
+</div>

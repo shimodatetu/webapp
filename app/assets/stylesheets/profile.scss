@@ -32,9 +32,15 @@
   }
   .profile_contents_change{
     width:160px;
-    border-radius:2px;
-    border:solid 2px #dddddd;
+    border-radius:5px;
+    .nav{
+      border-radius: 5px;
+      border: solid 2px #dddddd;
+      border-bottom: solid 1px #dddddd;
+    }
     .profile_contents_button{
+      background: #fff;
+      border-bottom:solid 2px #dddddd;
       .jp{
         font-size:10px;
       }
@@ -80,7 +86,6 @@
         }
         .content_name{
           padding-top:5px;
-          padding-left:20px;
           color:#cd853f;
           .jp{
             font-size:12px;

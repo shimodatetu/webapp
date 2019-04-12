@@ -34,4 +34,6 @@ $(function(){
         alert("Please Select Category At First(Not Sub Category) 初めに大カテゴリーを選択してください");
     }
   });
+
+  
 });

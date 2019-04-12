@@ -1,6 +1,19 @@
 <% smallcategory_id = params[:id].to_i %>
 <% smallcategory =  @categories.find(smallcategory_id)%>
+<% lang = session["lang"] %>
 <div class="smallcategory_search">
+  <div class="lang_bar_cover">
+    <div class="lang_bar">
+      <div class="country_flag">
+        <%= image_tag "ダウンロード (1).png", class: "image" %>
+      </div>
+      <input id="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0"
+          data-slider-max="1000" data-slider-step="1" data-slider-value="500"/>
+      <div class="country_flag jp_country">
+        <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
+      </div>
+    </div>
+  </div>
   <div class="category_show">
     <div class="text">
       <div class="float_jp">
@@ -11,40 +24,26 @@
     </div>
   </div>
   <div class="pvpage_head">
-    <div class="pvpage_lang">
-      <div class="lang_show en_position">
-        <div class="float_jp">
-          英語
-        </div>
-        English
-      </div>
-      <div class="lang_show jp_position">
-        <div class="float_jp">
-          日本語
-        </div>
-        Japanese
-      </div>
-    </div>
   </div>
-  <div class="thread_all">
+  <div class="thread_all"style="padding-top:10px;">
     <% smallcategory.groups.each do |group| %>
       <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
         <div class="thread_cover">
           <div class="group_user_cover">
             <div class="group_img_cover">
-              <% if group.user.image.url.nil? ==false%>
+              <% if group.user.image.url.nil?%>
                 <%= image_tag("/user.png", :class => "group_img") %>
               <% else %>
                 <%= image_tag(group.user.image.url, :class => "group_img") %>
               <% end %>
             </div>
-            <div class="group_name">
-              <%= group.user.name %>
-            </div>
           </div>
           <div class="thread_content">
-            <div class="row post_content_cover">
-              <div class="col-sm-6">
+            <div class="post_content_cover">
+              <div class="user_name">
+                <%= group.user.name %>
+              </div>
+              <div class="post_content_position en_position">
                 <div class="thread_title">
                   <div class="title_padding">
                     <%= group.title_en %>
@@ -56,7 +55,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="post_content_position_space">
+                <%= image_tag("矢印.png", :class => "img") %>
+              </div>
+              <div class="post_content_position jp_position">
                 <div class="thread_title">
                   <div class="title_padding">
                     <%= group.title_jp %>

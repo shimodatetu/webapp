@@ -1,6 +1,6 @@
 $(function(){
-  $(".thread_post .post_file").on("change",function(){
+  $(".post_footer .post_file").on("change",function(){
     alert("asd");
-    $('.thread_post .img_send').trigger('click');
+    $('.post_footer .img_post').trigger('click');
   });
 });

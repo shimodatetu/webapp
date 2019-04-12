@@ -27,18 +27,41 @@ words_check=(title,coment,category)->
   else
     lang = "en"
   #alert lang
-  translate(title,coment,lang,category)
+  translate_microsoft(title,coment,lang,category)
 
-translate=(title,coment,lang,category) ->
-  words = title+" {} "+coment
+translate_google=(title,coment,lang,category) ->
+  words = title+" </> "+coment
+  key = 'AIzaSyD5ObO8hLybjA6FQbV6b4VkYxuHzSdm_wQ'
+  url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
+  data = new FormData
+  data.append 'q', words
+  data.append 'target', lang
+  settings =
+    method: 'POST'
+    body: data
+  fetch(url, settings).then((res) ->
+    res.text()
+  ).then (text) ->
+
+    ary = text.split('"');
+    translation = ary[7]#7番はテキスト
+    get_text = translation.split('</>')
+    if lang == "ja"
+      App.thread.make(lang,get_text[0],get_text[1],title,coment,category)
+    else
+      App.thread.make(lang,title,coment,get_text[0],get_text[1],category)
+    return defer.promise()
+
+translate_microsoft=(title,coment,lang,group_id) ->
+  words = title+" </> "+coment
   defer = $.Deferred()
   $.ajax
     url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
     type: 'POST'
-    headers:{
+    headers: {
       'Content-Type': 'application/json'
       'Accept': 'application/jwt'
-      'Ocp-Apim-Subscription-Key': window.ENV.RailsEnv
+      'Ocp-Apim-Subscription-Key': 'd0d8d178e5f54dcaab373fe9896fdb3a'
     }
     async: false
   .done (data) ->
@@ -56,15 +79,15 @@ translate=(title,coment,lang,category) ->
         'to': lang
       }
       async: false
-
     data = response.responseText
     translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-    get_text = translation.split('{}')
+    get_text = translation.split('</>')
     if lang == "ja"
       App.thread.make(lang,get_text[0],get_text[1],title,coment,category)
     else
       App.thread.make(lang,title,coment,get_text[0],get_text[1],category)
     return defer.promise()
+
 
 bytes=(str) ->
   return(encodeURIComponent(str).replace(/%../g,"x").length);

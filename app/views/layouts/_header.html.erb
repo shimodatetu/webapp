@@ -1,4 +1,3 @@
-<%# logout %>
 <% url = request.fullpath %>
 <div class="header">
   <div class="width_set"style="width:100vw;">
@@ -55,23 +54,6 @@
           </div>
         </div>
       <% end %>
-      <%= link_to '/',class:"link_text" do %>
-        <div class="text_fill
-        <% if url == '#'%>
-          <%= "now_page" %>
-        <% end %>">
-          <div class="height_control"></div>
-          <span class="icon glyphicon glyphicon-question-sign"></span>
-          <div class="float_text">
-            <div class="float_jap">
-              ガイド
-            </div>
-            <div class="base_en">
-              Guide
-            </div>
-          </div>
-        </div>
-      <% end %>
       <% if logged_in?  %>
         <%= link_to("/profile" , class:"login_button") do %>
           <div class="text_fill
@@ -88,17 +70,30 @@
         <% end %>
       <% else %>
         <%= link_to("/login" , class:"login_button") do %>
-        <div class="text_fill
-        <% if url.include?('/login') %>
-          <%= "now_page" %>
-        <% end %>">
-          <div class="height_control"></div>
-          <span class="icon glyphicon glyphicon-user"></span>
-          <div class="text">
-            <div class="float_jap"style="margin-left:8px">サインイン</div>
-            <div class="base_en">Sign In</div>
+          <div class="text_fill
+          <% if url.include?('/login') %>
+            <%= "now_page" %>
+          <% end %>">
+            <div class="height_control"></div>
+            <span class="icon glyphicon glyphicon-log-in"></span>
+            <div class="text">
+              <div class="float_jap"style="padding-left:10px">ログイン</div>
+              <div class="base_en">Log In</div>
+            </div>
           </div>
-        </div>
+        <% end %>
+        <%= link_to("/users" , class:"login_button",style:"padding-right:2px") do %>
+          <div class="text_fill
+          <% if url.include?('/users') %>
+            <%= "now_page" %>
+          <% end %>">
+            <div class="height_control"></div>
+            <span class="icon glyphicon glyphicon-user"></span>
+            <div class="text">
+              <div class="float_jap"style="padding-left:15px">会員登録</div>
+              <div class="base_en">Sign In</div>
+            </div>
+          </div>
         <% end %>
       <% end %>
       <span class="search_all">

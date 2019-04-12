@@ -36,6 +36,7 @@
       .category_search{
       }
       .search_explain{
+        font-size:14px;
         padding-top:5px;
         margin-left:20px;
         .en{
@@ -95,12 +96,14 @@
       border:solid 1px #dddddd;
     }
   }
+  .content_cover{
+    margin-left: 10px;
+    margin-right: 50px;
+  }
   .title_input_name{
-    text-align:center;
     margin-top:5px;
   }
   .content_input_name{
-    text-align:center;
     margin-top:5px;
   }
   .submit_cover{
@@ -173,4 +176,33 @@ select:-moz-focusring {
   font-weight: normal !important;
   font-size: 15px !important;
   margin-top:-2px;
+}
+.button_panel_cover{
+  font-size:14px;
+  display: inline-block;
+  vertical-align: top;
+  width:calc(33% - 10px);
+  margin-left:5px;
+  .button_panel{
+    background: #fff0a042;
+    width:100%;
+  }
+}
+
+.post_button{
+  margin-top: 20px;
+  background: #fff0a0;
+  border:none;
+  color:#cd853f;
+  padding-left:20px;
+  padding-right:20px;
+  word-wrap: break-word;
+  margin-left:calc(50% - 30px);
+  .picture_send{
+    display: inline-block;
+    margin-right:10px;
+  }
+}
+.especial{
+  margin-left:calc(50% - 50px);
 }

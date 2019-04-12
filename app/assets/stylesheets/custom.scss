@@ -3,6 +3,7 @@
   padding-bottom:450px;
   padding-left:calc(5%);
   width:calc(30% + 500px);
+  display: inline-block;
   .obj-fit-img {
     object-fit: cover;
     object-position: 0 100%;
@@ -11,4 +12,12 @@
 }
 body{
   background:#fff0a042;
+}
+@media screen and (max-width: 600px){
+  .main_content_cover{
+    width:680px !important;
+  }
+  .lang_bar_cover{
+    width:600px !important;
+  }
 }

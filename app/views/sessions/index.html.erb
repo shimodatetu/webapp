@@ -2,44 +2,47 @@
   <div class="login_page">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="first_coment">Welcome to Tripal !!</div>
         <div class="title">
           <div class="float_jp">
-            サインイン
+            ログイン
           </div>
           <div class="base_en">
-            Sign In
+            Log In
           </div>
         </div>
         <%= form_for :session, url: login_path do |f| %>
-          <div class="input-groups row">
-            <div class="title col-sm-5">
+          <div class="input-groups">
+            <div class="input_title">
               <div class="float_jp">
                 メールアドレス
               </div>
-              Mail Address：
+              Mail Address
             </div>
-            <div class="col-sm-7">
+            <div class="">
               <%= f.text_field :email, class: "form-control input_form" %>
             </div>
           </div>
-          <div class="input-groups row">
-            <div class="title col-sm-5">
+          <div class="input-groups">
+            <div class="input_title">
               <div class="float_jp">
                 パスワード
               </div>
-              Passwords：
+              <div class="base_en">
+                Passwords
+              </div>
             </div>
-            <div class="col-sm-7">
+            <div class="">
               <%= f.password_field :password, class: "form-control input_form" %>
             </div>
           </div>
           <div class="submit_button_cover">
             <button type="submit"class="submit_button btn btn-default">
               <div class="float_jp">
-                サインイン
+                ログイン
               </div>
-              Sign In
+              <div class="base_en">
+                Log In
+              </div>
             </button>
           </div>
         <% end %>
