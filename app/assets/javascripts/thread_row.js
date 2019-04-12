@@ -38,7 +38,7 @@ $(function(){
     }
   })
   $(".words_post_button").click(function(){
-    if($(".user_login").attr("id") == "true" || 1 == 1){
+    if($(".user_login").attr("id") == "true"){
       var options ={"backdrop":"static"}
       $('#sampleModal').modal(options);
     }

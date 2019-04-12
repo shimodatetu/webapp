@@ -1,7 +1,7 @@
 <% lang = session["lang"] %>
 <% session["now_group"] = params[:id] %>
 <% thread = Group.find_by(id: params[:id]) %>
-<%  %>
+<% logout %>
 <% lang = session["lang"] %>
 <div class="user_login"id="<%= logged_in? %>"></div>
 <div class="thread_page">
