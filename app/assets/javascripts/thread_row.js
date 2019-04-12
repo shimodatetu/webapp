@@ -37,6 +37,15 @@ $(function(){
       $(".en_data").append(text);
     }
   })
+  $(".words_post_button").click(function(){
+    if($(".user_login").attr("id") == "true" || 1 == 1){
+      var options ={"backdrop":"static"}
+      $('#sampleModal').modal(options);
+    }
+    else {
+      alert("If you want to post, you need to login or sign in.\n投稿するには、ログインかサインインが必要です。");
+    }
+  });
   $(".enjp_post").click(function(){
     $(".en_data").empty();
     $(".jp_data").empty();

@@ -1,9 +1,9 @@
 <% lang = session["lang"] %>
 <% session["now_group"] = params[:id] %>
 <% thread = Group.find_by(id: params[:id]) %>
-
+<%  %>
 <% lang = session["lang"] %>
-
+<div class="user_login"id="<%= logged_in? %>"></div>
 <div class="thread_page">
   <div class="lang_bar_cover" data-toggle="tooltip" data-placement="bottom" data-original-title="説明">
     <div class="lang_bar">
@@ -38,7 +38,7 @@
   </div>
   <div class="post_footer">
     <%= form_for @post, :html => {:class => "post_form"},remote: true do |f| %>
-      <button type="button" class="post_button btn btn-primary btn-lg" data-toggle="modal" data-target="#sampleModal">
+      <button type="button" class="post_button btn btn-primary btn-lg words_post_button">
         <div class="glyphicon glyphicon-comment picture_send"></div>
         <div class="button_text">
           <div class="float_jp">
@@ -47,7 +47,7 @@
           Post Comment
         </div>
       </button>
-      <label for="file_send"class="post_button btn btn-prmary btn-lg post_button">
+      <label for="file_send"class="post_button btn btn-prmary btn-lg image_post_button">
         <div class="glyphicon glyphicon-picture picture_send"></div>
         <div class="button_text">
           <div class="float_jp">

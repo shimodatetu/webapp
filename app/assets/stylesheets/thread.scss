@@ -1,9 +1,11 @@
+
 .thread_page{
   .thread_link:hover{
     .thread_cover{
       background-color: rgba(252,248,210,1);
     }
   }
+
   .lang_bar_cover{
     background: #ffffff;
     position:fixed;
@@ -451,11 +453,5 @@
   }
   .especial{
     margin-left:calc(50% - 50px);
-  }
-}
-
-@media screen and (max-width: 770px){
-  .thread_post_cover .modal-dialog{
-    width:770px;
   }
 }
