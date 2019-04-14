@@ -1,44 +1,5 @@
 <% lang = session["lang"] %>
 <div class="category_list_all_cover">
-  <% if !flash["search"].nil? %>
-    <div class="search_result row">
-      <div class="col-sm-1">
-        <span class="icon glyphicon glyphicon-arrow-right"></span>
-      </div>
-      <div class="col-sm-10 search_panel">
-        <% if !flash["search_big_en"].nil? && !flash["search_big_jp"].nil? && !flash["search_big_id"].nil? %>
-          <div class="bigcategory">
-            <button id='<%= flash["search_big_id"] %>'class="btn btn-lg btn-default category_title">
-              <%=flash["search_big_en"]%> / <%= flash["search_big_jp"] %>
-              <span class="change_icon glyphicon glyphicon-chevron-down"></span>
-            </button>
-          </div>
-        <% else %>
-          <div class="not_found">
-            Not Found / 見つかりませんでした
-          </div>
-        <% end %>
-        <% if !flash["search_sub_en"].nil? && !flash["search_sub_jp"].nil? && !flash["search_sub_id"].nil? %>
-          <div class="smallcategory">
-            ＞
-            <span class="text">
-              <%= link_to "/category/thread/#{flash["search_sub_id"]}" do %>
-                <%= flash["search_sub_en"] %> / <%= flash["search_sub_jp"] %>
-              <% end %>
-            </span>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <% flash["search"] = nil %>
-    <% flash["search_big_en"] = nil %>
-    <% flash["search_big_jp"] = nil %>
-    <% flash["search_big_id"] = nil %>
-    <% flash["search_sub_en"] = nil %>
-    <% flash["search_sub_jp"] = nil %>
-    <% flash["search_sub_id"] = nil %>
-  <% end %>
   <div class="category_head">
     <div class="panel-title">
       <div class="float_jp">
@@ -51,10 +12,6 @@
     <div class="panel-body category_content">
       <% @category.each do |cate| %>
         <div class="bigcategory_only">
-          <!--<button id="<%= cate.id %>"class="btn btn-lg btn-default category_title">
-            <%= cate.name_en %> / <%= cate.name_jp %>
-            <span class="change_icon glyphicon glyphicon-chevron-down"></span>
-          </button>-->
           <div id="<%= cate.id %>"class="category_title">
             <div class="cate_icon">
               <div class="change_icon glyphicon glyphicon-chevron-down"></div>

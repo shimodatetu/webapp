@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @user = User.new
   end
@@ -7,7 +8,8 @@ class UsersController < ApplicationController
     p "-----------------------------------------"
     @user = User.new(user_params)
     if @user.save
-      flash.now[:success] = "登録に成功しました"
+      flash.now[:success] = "メールに届いたURLをクリックして、アカウントを有効かしてください。"
+      UserMailer.account_activation(@user).deliver_now
       RegisterMailer.send_confirm_mail(@user).deliver_now
 
       redirect_to root_path

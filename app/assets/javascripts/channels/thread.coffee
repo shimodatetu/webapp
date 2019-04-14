@@ -15,26 +15,53 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     category = Number(category)
     @perform 'make',lang:lang,title_jp:title_jp,message_jp:mes_jp,title_en:title_en,message_en:mes_en,category:category
 
-$(document).on 'click', '.make_thread_category .submit_button', (event) ->
-  alert($(".big_select").val())
-  words_check($('#title').val(), $('#content').val(),$('.small_select').val())
+$(document).on 'click', '.submit_button_cover .post_button', (event) ->
+  type_check($(@).attr("id"),$('#title').val(), $('#content').val(),$('.small_select').val())
   event.preventDefault()
 
-words_check=(title,coment,category)->
-  lang = ""
-  if isHalf(title) == true && isHalf(coment) == true
-    lang = "ja"
-  else
-    lang = "en"
-  #alert lang
-  translate_microsoft(title,coment,lang,category)
+type_check=(id,title,coment,lang,category)->
+  if category == "" || category == undefined
+    alert("カテゴリーが選択されていません\nCategory is not selected.");
+  else if id == "enjp"
+    title_en = $(".en_data_title").html();
+    title_jp = $(".jp_data_title").html();
+    content_en = $(".en_data_content").html();
+    content_jp = $(".jp_data_content").html();
+    if title_en == ""
+      alert("Title in English is empty.\n英語のタイトルの欄に何も書かれていません");
+    else if title_jp == ""
+      alert("Tille in Japanese is empty.\n日本語のタイトルの欄に何も書かれていません");
+    else if content_en == ""
+      alert("Title in English is empty.\n英語のタイトルの欄に何も書かれていません");
+    else if content_jp == ""
+      alert("Content in Japanese is empty.\n日本語入力欄に何も書かれていません");
+    else
+      App.thread.make("enjp",title_jp,content_jp,title_en,content_en,category);
+  else if id == "en"
+    title_en = $(".en_data_title").val();
+    content_en = $(".en_data_content").val();
+    if title_en == ""
+      alert("Title in English is empty.");
+    else if content_en == ""
+      alert("Title in English is empty.");
+    else
+      translate_google(title_en,content_en,"ja",category)
+  else if id == "jp"
+    title_jp = $(".jp_data_title").html();
+    content_jp = $(".jp_data_content").html();
+    if title_jp == ""
+      alert("日本語のタイトルの欄に何も書かれていません");
+    else if content_jp == ""
+      alert("日本語入力欄に何も書かれていません");
+    else
+      translate_google(title,coment,"en",category)
 
 translate_google=(title,coment,lang,category) ->
-  words = title+" </> "+coment
-  key = 'AIzaSyD5ObO8hLybjA6FQbV6b4VkYxuHzSdm_wQ'
+  key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
-  data.append 'q', words
+  data.append 'q', title
+  data.append 'q', coment
   data.append 'target', lang
   settings =
     method: 'POST'
@@ -42,15 +69,14 @@ translate_google=(title,coment,lang,category) ->
   fetch(url, settings).then((res) ->
     res.text()
   ).then (text) ->
-
+    console.log(text)
     ary = text.split('"');
-    translation = ary[7]#7番はテキスト
-    get_text = translation.split('</>')
+    trans_title = ary[7]#7番はテキスト
+    trans_content = ary[15]
     if lang == "ja"
-      App.thread.make(lang,get_text[0],get_text[1],title,coment,category)
+      App.thread.make(lang,ary[7],ary[15],title,coment,category)
     else
-      App.thread.make(lang,title,coment,get_text[0],get_text[1],category)
-    return defer.promise()
+      App.thread.make(lang,title,coment,ary[7],ary[15],category)
 
 translate_microsoft=(title,coment,lang,group_id) ->
   words = title+" </> "+coment

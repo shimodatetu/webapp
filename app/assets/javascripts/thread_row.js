@@ -22,7 +22,7 @@ $(function(){
   "border-bottom-left-radius:5px");
   var options ={"backdrop":"static"}
   //$('#sampleModal').modal(options);
-  $(".en_post").click(function(){
+  $("#sampleModal .en_post").click(function(){
     $(".en_data").empty();
     $(".jp_data").empty();
     $(".from_jp").attr("style","display:none");
@@ -46,7 +46,7 @@ $(function(){
       alert("If you want to post, you need to login or sign in.\n投稿するには、ログインかサインインが必要です。");
     }
   });
-  $(".enjp_post").click(function(){
+  $("#sampleModal .enjp_post").click(function(){
     $(".en_data").empty();
     $(".jp_data").empty();
     $(".from_jp").attr("style","display:none");
@@ -68,7 +68,7 @@ $(function(){
       $(".jp_data").append(text_jp);
     }
   })
-  $(".jp_post").click(function(){
+  $("#sampleModal .jp_post").click(function(){
     $(".en_data").empty();
     $(".jp_data").empty();
     $(".from_jp").attr("style","");

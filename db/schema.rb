@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(version: 2019_02_05_124136) do
     t.string "profile_en"
     t.string "profile_jp"
     t.string "password_digest"
+    t.string "activation_digest"
+    t.string "activation_token"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

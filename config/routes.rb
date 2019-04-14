@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   root 'pv_page#show'
   #root 'users#index'
 
-
+  resources :account_activations, only: [:edit]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

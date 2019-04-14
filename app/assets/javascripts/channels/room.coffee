@@ -47,7 +47,7 @@ type_check=(id,group)->
         alert("English form is empty.");
       else
         $('#sampleModal').modal('hide');
-        translate("en",text,group)
+        translate_google("ja",text,group)
   else if id == "jp"
       alert("jp")
       text = $(".jp_data").html();
@@ -55,12 +55,12 @@ type_check=(id,group)->
         alert("英語の欄に何も書かれていません");
       else
         $('#sampleModal').modal('hide');
-        translate("ja",text,group);
+        translate_google("en",text,group);
     # body...
 
 
 
-translate=(lang,words,group_id) ->
+translate_microsoft=(lang,words,group_id) ->
   defer = $.Deferred()
   $.ajax
     url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
@@ -89,6 +89,27 @@ translate=(lang,words,group_id) ->
     data = response.responseText
     translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
 
+    if lang == "ja"
+      App.room.speak lang,translation,words,group_id
+    else
+      App.room.speak lang,words,translation,group_id
+    return defer.promise()
+
+translate_google=(lang,words,group_id) ->
+  key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
+  url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
+  data = new FormData
+  data.append 'q', words
+  data.append 'target', lang
+  settings =
+    method: 'POST'
+    body: data
+  fetch(url, settings).then((res) ->
+    res.text()
+  ).then (text) ->
+    ary = text.split('"');
+    translation = ary[7]#7番はテキスト
+    get_text = translation.split('</>')
     if lang == "ja"
       App.room.speak lang,translation,words,group_id
     else
