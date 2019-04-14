@@ -1,7 +1,6 @@
 <% url = request.fullpath %>
 <div class="header">
   <div class="width_set"style="width:100vw;">
-
     <div class="nav-fall border border-primary">
       <%= link_to '/',class:"link_text" do %>
         <div class="text_fill
@@ -54,6 +53,7 @@
           </div>
         </div>
       <% end %>
+      
       <% if logged_in?  %>
         <%= link_to("/profile" , class:"login_button") do %>
           <div class="text_fill

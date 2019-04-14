@@ -10,8 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       flash.now[:success] = "メールに届いたURLをクリックして、アカウントを有効かしてください。"
       UserMailer.account_activation(@user).deliver_now
-      RegisterMailer.send_confirm_mail(@user).deliver_now
-
+      #RegisterMailer.send_confirm_mail(@user).deliver_now
       redirect_to root_path
     else
       flash.now[:danger] = "登録に失敗しました"
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
     end
   end
   def update
-
   end
 
   private
