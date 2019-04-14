@@ -13,7 +13,6 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-  # 渡された文字列のハッシュ値を返す
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

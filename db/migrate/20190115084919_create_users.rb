@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :profile_jp
       t.string :password_digest
       t.string :activation_digest
-      t.string :activation_token
+      # t.string :activation_token
       t.boolean :activated, default: false
       t.datetime :activated_at
 
