@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :create_activation_digest
+  attr_accessor :activation_token
 
   has_many :posts
   has_many :groups
