@@ -1,9 +1,8 @@
 
 
 $(function(){
-  $('#slider').slider({
+  $('.lang_bar_cover #slider').slider({
     formatter: function(value) {
-      //console.log(value);
       if(true){
         var en_per = value / 10;
         var jp_per = (1000 - value) / 10;

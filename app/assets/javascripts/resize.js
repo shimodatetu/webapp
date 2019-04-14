@@ -1,15 +1,4 @@
-/*
- * 	exResize 0.2.0 - jQuery plugin
- *	written by Cyokodog
- *
- *	Copyright (c) 2015 Cyokodog (http://d.hatena.ne.jp/cyokodog/)
- *	Dual licensed under the MIT (MIT-LICENSE.txt)
- *	and GPL (GPL-LICENSE.txt) licenses.
- *
- *	Built for jQuery library
- *	http://jquery.com
- *
- */
+
 (function($){
 	var API = function(api){
 		var api = $(api),api0 = api[0];

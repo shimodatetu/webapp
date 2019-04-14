@@ -19,7 +19,7 @@ $(document).on 'click', '.submit_button_cover .post_button', (event) ->
   type_check($(@).attr("id"),$('#title').val(), $('#content').val(),$('.small_select').val())
   event.preventDefault()
 
-type_check=(id,title,coment,lang,category)->
+type_check=(id,title,coment,category)->
   if category == "" || category == undefined
     alert("カテゴリーが選択されていません\nCategory is not selected.");
   else if id == "enjp"

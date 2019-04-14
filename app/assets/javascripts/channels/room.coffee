@@ -8,7 +8,6 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     plus_post = $(data["message"])
     $(".thread_cover_cover").append plus_post
     plus_post.ready ->
-      alert 'asd'
       console.log $(@).height()
 
       jp_height = $(@).find(".jp_content_row .post_content_text").height();
@@ -30,7 +29,6 @@ $(document).on 'click', '.thread_post_cover .btn_send', (event) ->
 
 type_check=(id,group)->
   if id == "enjp"
-    alert("enjp")
     text_en = $(".en_data").html();
     text_jp = $(".jp_data").html();
     if text_en == "Nothing is written." || text_en == ""
@@ -41,7 +39,6 @@ type_check=(id,group)->
       $('#sampleModal').modal('hide');
       App.room.speak("enjp",text_jp,text_en, group)
   else if id == "en"
-      alert("en")
       text = $(".en_data").html();
       if text == "Nothing is written." || text == ""
         alert("English form is empty.");
@@ -49,7 +46,6 @@ type_check=(id,group)->
         $('#sampleModal').modal('hide');
         translate_google("ja",text,group)
   else if id == "jp"
-      alert("jp")
       text = $(".jp_data").html();
       if text == "Nothing is written." || text == ""
         alert("英語の欄に何も書かれていません");
