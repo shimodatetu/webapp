@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'search/show'
   get 'category/new'
   get 'category/smallcategory/:id' => 'category#smallcategory'
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   root 'pv_page#show'
   #root 'users#index'
-
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

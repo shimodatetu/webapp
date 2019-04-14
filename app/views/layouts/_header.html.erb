@@ -1,5 +1,7 @@
 <% url = request.fullpath %>
 <div class="header">
+
+      <%= link_to "(forgot password)", new_password_reset_path %>
   <div class="width_set"style="width:100vw;">
     <div class="nav-fall border border-primary">
       <%= link_to '/',class:"link_text" do %>
@@ -53,7 +55,7 @@
           </div>
         </div>
       <% end %>
-      
+
       <% if logged_in?  %>
         <%= link_to("/profile" , class:"login_button") do %>
           <div class="text_fill
