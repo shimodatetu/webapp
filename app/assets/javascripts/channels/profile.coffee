@@ -14,11 +14,14 @@ App.profile = App.cable.subscriptions.create "ProfileChannel",
 
 
 $(document).on 'click', '.save_button', (event) ->
+  #year = $(".profile_page #year").val();
+  #month = $(".profile_page #month").val();
+  #date = $(".profile_page #date").val();
+  year = 1;
+  month = 1;
+  date = 1;
   username = $(".profile_page #username").val();
   gender = $(".profile_page #gender").val();
-  year = $(".profile_page #year").val();
-  month = $(".profile_page #month").val();
-  date = $(".profile_page #date").val();
   country = $(".profile_page #country").val();
   profile_en = $(".profile_page #profile_en").val();
   profile_jp = $(".profile_page #profile_jp").val();
@@ -30,11 +33,11 @@ $(document).on 'click', '.save_button', (event) ->
       buttons:
         'to English / 英語に翻訳': ->
           $(this).dialog 'close'
-          translate(username,gender,year,month,date,country,profile_en,profile_jp,"en")
+          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"en")
           return
         'to Japanese / 日本語に翻訳': ->
           $(this).dialog 'close'
-          translate(username,gender,year,month,date,country,profile_en,profile_jp,"ja")
+          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"ja")
           return
         'No Translation / 翻訳しない': ->
           $(this).dialog 'close'
@@ -50,7 +53,7 @@ $(document).on 'click', '.save_button', (event) ->
       buttons:
         'to English / 英語に翻訳': ->
           $(this).dialog 'close'
-          translate(username,gender,year,month,date,country,profile_en,profile_jp,"en")
+          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"en")
           return
         'No Translation / 翻訳しない': ->
           $(this).dialog 'close'
@@ -66,7 +69,7 @@ $(document).on 'click', '.save_button', (event) ->
       buttons:
         'to Japanese / 日本語に翻訳': ->
           $(this).dialog 'close'
-          translate(username,gender,year,month,date,country,profile_en,profile_jp,"ja")
+          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"ja")
           return
         'No Translation / 翻訳しない': ->
           $(this).dialog 'close'
@@ -78,7 +81,30 @@ $(document).on 'click', '.save_button', (event) ->
   else
     App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp)
 
-translate=(username,gender,year,month,date,country,profile_en,profile_jp,lang) ->
+translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,lang) ->
+  words = profile_jp
+  if lang == "ja"
+    words = profile_en
+  key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
+  url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
+  data = new FormData
+  data.append 'q', words
+  data.append 'target', lang
+  settings =
+    method: 'POST'
+    body: data
+  fetch(url, settings).then((res) ->
+    res.text()
+  ).then (text) ->
+    console.log(text)
+    ary = text.split('"');
+    trans_text = ary[7]#7番はテキスト
+    if lang == "ja"
+      App.profile.change(username,gender,year,month,date,country,profile_en,trans_text)
+    else
+      App.profile.change(username,gender,year,month,date,country,trans_text,profile_jp)
+
+translate_microsoft=(username,gender,year,month,date,country,profile_en,profile_jp,lang) ->
   words = profile_jp
   if lang == "ja"
     words = profile_en

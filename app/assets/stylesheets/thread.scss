@@ -276,28 +276,29 @@
       }
     }
   }
-  .post_footer{
-    position: fixed;
+  .footer{
+    position:fixed;
+    width:100%;
     bottom:5px;
-    width:calc(30% + 450px);
-    background: #ffffff;
-    border:solid thin #BF8454;
-    padding:10px;
-    border-radius:5px;
-    .post_form{
-      width:calc(30% + 450px);
-    }
     .post_button{
-      display: inline-block;
-      margin-left:calc(100% - 550px);
-      background: #fff0a0;
-      border:none;
+      background: #fff0a08f;    
+      border: solid thin #cd853f75;
       color:#cd853f;
       padding-left:20px;
       padding-right:20px;
+      vertical-align:top;
+      margin-top: 5px;
+      margin-right:1vw;
+      .image{
+        width:28px;
+        height:20px;
+        margin-top:-15px;
+      }
       .picture_send{
         display: inline-block;
-        margin-right:10px;
+        margin-right:0px;
+        width:28px;
+        margin-left:5px!important;
       }
       .button_text{
         display: inline-block;
@@ -306,10 +307,60 @@
         }
       }
     }
-    .image_btn{
-      height:54px;
+    .post_form{
+      display:inline-block;
+      vertical-align: top;
+      margin-top:5px;
+      //display: none;
+      .image_send_button{
+        background: #fff;
+        border: solid thin #BF8454;
+        color:#BF8454;
+        width:60px;
+        height:50px;
+        font-size:20px;
+        .picture_send{
+          margin-top:8px;
+        }
+      }
+      .post_button{
+        vertical-align:top;
+        height:60px;
+        min-width:calc(10%);
+        font-size:25px;
+        .picture_send{
+          margin:10px;
+        }
+      }
+    }
+    .post_footer{
+      display: inline-block;
+      bottom:5px;
+      width:calc(30% + 350px);
+      background: #ffffff;
+      border:solid thin #BF8454;
+      //padding:10px;
+      border-radius:5px;
+      max-height:60px;
       .picture_send{
-        bottom:10px;
+        color: #cd853f;
+        font-size:20px;
+        margin-left: 10px;
+      }
+      .post_text{
+        color: #cd853f;
+        display:inline-block;
+        font-size:18px;
+        padding:10px;
+        .float_jp{
+          font-size:12px;
+        }
+      }
+      .image_btn{
+        height:40px;
+        .picture_send{
+          bottom:10px;
+        }
       }
     }
   }
@@ -317,7 +368,6 @@
 .thread_post_cover{
   .window2{
     margin-top:150px;
-
   }
   .thread_post{
     padding-left:10px;
@@ -343,10 +393,17 @@
         margin-bottom:3px;
       }
     }
+    .post_form_cover_en{
+      width:60%;
+      margin-left:20%;
+    }
+    .post_form_cover_jp{
+      width:60%;
+      margin-left:20%;
+    }
     .connect_btn{
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
-      margin-left:-4px;
     }
     .space_form{
       display: inline-block;
@@ -361,6 +418,8 @@
         width:40px;
         height:28px;
         margin-bottom:3px;
+        margin-left: calc(50% - 20px);
+        display:block;
       }
       .data_show{
         font-size:16px;
@@ -368,8 +427,8 @@
         border:solid thin #ccc;
         height:160px;
         padding:10px;
+        width:100%;
         word-wrap: break-word;
-        overflow-y: scroll;
       }
     }
   }
@@ -411,6 +470,7 @@
   }
   .modal-footer{
     .btn_back{
+      display: inline-block;
       margin-right:30px;
       font-size:16px;
       padding-top:2px;
@@ -420,14 +480,14 @@
       color:#777;
     }
     .btn_send{
-      margin-right:calc(50% - 80px);
+      display: inline-block;
       font-size:16px;
-      padding-top:2px;
-      padding-bottom:2px;
-      padding-left:15px;
-      padding-right:15px;
+      padding-top:3px;
+      padding-bottom:3px;
+      padding-left:16px;
+      padding-right:16px;
       background: #fff0a0;
-      border: none;
+      border:solid thin #ddd;
       color: #cd853f;
     }
     .float_jp{
@@ -438,8 +498,8 @@
     }
   }
   .post_button{
-    background: #fff0a0;
-    border:none;
+    background: #fff6c6bd;
+    border: solid 1px #cd853f4d;
     color:#cd853f;
     padding-left:20px;
     padding-right:20px;
@@ -452,5 +512,10 @@
   }
   .especial{
     margin-left:calc(50% - 50px);
+  }
+}
+@media screen and (max-width: 720px){
+  .thread_footer{
+    min-width:720px;
   }
 }

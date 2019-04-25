@@ -49,6 +49,46 @@
       font-weight: bold;
       text-decoration: none;
       color:#BF8454;
+      .url_menu{
+        margin-top: -10px;
+        min-width:120px;
+        float:right;
+        .url_tab_li{
+          margin-bottom:5px;
+        }
+        .url_tab_form{
+          padding-left:15px!important;
+          margin-right:5px;
+          padding-bottom:5px;
+          border-radius: 5px;
+
+        }
+        .url_tab_form:hover{
+          background:#f4f4f4;
+        }
+        .url_tab{
+          color:#BF8454;
+          font-size:18px;
+          text-align: center;
+          .logout_button{
+            margin-left:-15px;
+            color:#BF8454;
+            font-weight:normal;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+          }
+          .login_button:hover{
+            background-color: #ccc;
+          }
+          .jp{
+            font-size:10px;
+          }
+        }
+      }
       .height_control{
         display: inline-block;
         vertical-align: middle;
@@ -215,6 +255,9 @@
     .search_all{
       right:70px !important;
     }
+    .url_menu{
+      margin-left: -60px;
+    }
   }
 }
 
@@ -229,5 +272,10 @@
     .search_form{
       width:130px;
     }
+  }
+}
+@media screen and (max-width: 330px){
+  .search_all{
+    display:none;
   }
 }

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'account_activations/check'
   get 'password_resets/new'
+  get 'password_resets/new_check'
   get 'password_resets/edit'
   get 'search/show'
   get 'category/new'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   post 'tasks/jp',to:'tasks#lang_change_jp'
   post 'search/header',to:'tasks#search'
   post 'search/inside',to:'tasks#search_inside'
+  post 'logout/inner',to:'tasks#logout_inner'
   get 'signup',to:'users#index'
   get 'thread/show/:id' => 'thread#show'
   get 'thread_all/show/:id' => 'thread_all#show'
@@ -31,7 +34,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   root 'pv_page#show'
   #root 'users#index'
-  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :password_resets,     only: [:new, :create, :edit, :update, :new_check]
   resources :account_activations, only: [:edit]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

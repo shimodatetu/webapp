@@ -1,7 +1,6 @@
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
-
   disconnected: ->
     # Called when the subscription has been terminated by the server
   received: (data) ->
@@ -23,75 +22,42 @@ App.room = App.cable.subscriptions.create "RoomChannel",
   speak: (lang,mes_jp,mes_en, group)->
     @perform 'speak',lang: lang,content_jap: mes_jp,content_eng: mes_en, group_id: group
 
-
 $(document).on 'click', '.thread_post_cover .btn_send', (event) ->
-  type_check(this.id,$('#group').val())
+  alert($("#group").val())
+  type_check(this.id,$("#group").val())
 
 type_check=(id,group)->
   if id == "enjp"
-    text_en = $(".en_data").html();
-    text_jp = $(".jp_data").html();
-    if text_en == "Nothing is written." || text_en == ""
+    text_en = $(".en_form").val();
+    text_jp = $(".jp_form").val();
+    if text_en == ""
       alert("English form is empty.\n英語の欄に何も書かれていません");
-    else if text_jp == "何も書かれていません" || text_jp == ""
+    else if text_jp == ""
       alert("Japanese form is empty.\n日本語入力欄に何も書かれていません");
     else
-      $('#sampleModal').modal('hide');
+      $(".en_form").val("");
+      $(".jp_form").val("");
+      $('#sampleModal-enjp').modal('hide');
       App.room.speak("enjp",text_jp,text_en, group)
   else if id == "en"
-      text = $(".en_data").html();
-      if text == "Nothing is written." || text == ""
-        alert("English form is empty.");
+      text = $(".only_en_form").val();
+      if text == ""
+        alert("Input form is empty.\n入力欄に何も書かれていません");
       else
-        $('#sampleModal').modal('hide');
         translate_google("ja",text,group)
   else if id == "jp"
-      text = $(".jp_data").html();
-      if text == "Nothing is written." || text == ""
-        alert("英語の欄に何も書かれていません");
+      text = $(".only_jp_form").val();
+      if text == ""
+        alert("Input form is empty.\n入力欄に何も書かれていません");
       else
-        $('#sampleModal').modal('hide');
+        $(".from_jp").attr("style","");
+        $(".from_enjp").attr("style","display:none");
+        $(".from_en").attr("style","display:none");
         translate_google("en",text,group);
     # body...
 
-
-
-translate_microsoft=(lang,words,group_id) ->
-  defer = $.Deferred()
-  $.ajax
-    url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
-    type: 'POST'
-    headers: {
-      'Content-Type': 'application/json'
-      'Accept': 'application/jwt'
-      'Ocp-Apim-Subscription-Key': 'd0d8d178e5f54dcaab373fe9896fdb3a'
-    }
-    async: false
-  .done (data) ->
-    token = data
-    defer.resolve(token)
-    key = 'Bearer ' + token
-    text = words
-    response = $.ajax
-      url: 'https://api.microsofttranslator.com/v2/http.svc/Translate'
-      type: 'GET'
-      data: {
-        'appid': key
-        'Accept': 'application/xml'
-        'text': words
-        'to': lang
-      }
-      async: false
-    data = response.responseText
-    translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-
-    if lang == "ja"
-      App.room.speak lang,translation,words,group_id
-    else
-      App.room.speak lang,words,translation,group_id
-    return defer.promise()
-
-translate_google=(lang,words,group_id) ->
+translate_google=(lang,words,group) ->
+  #alert(words)
   key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
@@ -105,12 +71,14 @@ translate_google=(lang,words,group_id) ->
   ).then (text) ->
     ary = text.split('"');
     translation = ary[7]#7番はテキスト
-    get_text = translation.split('</>')
     if lang == "ja"
-      App.room.speak lang,translation,words,group_id
+      $(".only_en_form").val("");
+      $('#sampleModal-en').modal('hide');
+      App.room.speak(lang,translation,words, group)
     else
-      App.room.speak lang,words,translation,group_id
-    return defer.promise()
+      $(".only_jp_form").val("");
+      $('#sampleModal-jp').modal('hide');
+      App.room.speak(lang,words,translation, group)
 
 bytes=(str) ->
   return(encodeURIComponent(str).replace(/%../g,"x").length);

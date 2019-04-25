@@ -4,7 +4,6 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
-
   received: (data) ->
     local = '/thread/show/'+data['id']
     $('#groups').append data['message']
@@ -23,10 +22,10 @@ type_check=(id,title,coment,category)->
   if category == "" || category == undefined
     alert("カテゴリーが選択されていません\nCategory is not selected.");
   else if id == "enjp"
-    title_en = $(".en_data_title").html();
-    title_jp = $(".jp_data_title").html();
-    content_en = $(".en_data_content").html();
-    content_jp = $(".jp_data_content").html();
+    title_en = $(".en_data_title").val();
+    title_jp = $(".jp_data_title").val();
+    content_en = $(".en_data_content").val();
+    content_jp = $(".jp_data_content").val();
     if title_en == ""
       alert("Title in English is empty.\n英語のタイトルの欄に何も書かれていません");
     else if title_jp == ""
@@ -41,20 +40,20 @@ type_check=(id,title,coment,category)->
     title_en = $(".en_data_title").val();
     content_en = $(".en_data_content").val();
     if title_en == ""
-      alert("Title in English is empty.");
+      alert("Title in English is empty.\n英語のタイトルの欄に何も書かれていません");
     else if content_en == ""
-      alert("Title in English is empty.");
+      alert("Content in Japanese is empty.\n日本語入力欄に何も書かれていません");
     else
       translate_google(title_en,content_en,"ja",category)
   else if id == "jp"
-    title_jp = $(".jp_data_title").html();
-    content_jp = $(".jp_data_content").html();
+    title_jp = $(".jp_data_title").val();
+    content_jp = $(".jp_data_content").val();
     if title_jp == ""
-      alert("日本語のタイトルの欄に何も書かれていません");
+      alert("Title in Japanese is empty.\n日本語のタイトルの欄に何も書かれていません");
     else if content_jp == ""
       alert("日本語入力欄に何も書かれていません");
     else
-      translate_google(title,coment,"en",category)
+      translate_google(title_jp,content_jp,"en",category)
 
 translate_google=(title,coment,lang,category) ->
   key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
@@ -69,7 +68,6 @@ translate_google=(title,coment,lang,category) ->
   fetch(url, settings).then((res) ->
     res.text()
   ).then (text) ->
-    console.log(text)
     ary = text.split('"');
     trans_title = ary[7]#7番はテキスト
     trans_content = ary[15]

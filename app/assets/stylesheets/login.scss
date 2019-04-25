@@ -10,6 +10,11 @@
       margin-top:20px;
       margin-bottom:20px;
     }
+    .alert-message{
+      margin-top:5px;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
     .title{
       font-size: 23px;
       margin-top:5px;
@@ -38,8 +43,17 @@
         margin-top:5px;
       }
     }
+    .password_reset{
+      text-align: center;
+      float:right;
+      margin-right:50px;
+      font-size:15px;
+      .jp{
+        font-size:12px;
+      }
+    }
     .submit_button_cover{
-      margin-top:40px;
+      margin-top:60px;
       text-align: center;
       .submit_button{
         padding-left:20px;

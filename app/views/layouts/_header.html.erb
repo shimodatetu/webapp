@@ -1,7 +1,5 @@
 <% url = request.fullpath %>
 <div class="header">
-
-      <%= link_to "(forgot password)", new_password_reset_path %>
   <div class="width_set"style="width:100vw;">
     <div class="nav-fall border border-primary">
       <%= link_to '/',class:"link_text" do %>
@@ -55,21 +53,46 @@
           </div>
         </div>
       <% end %>
-
       <% if logged_in?  %>
-        <%= link_to("/profile" , class:"login_button") do %>
-          <div class="text_fill
+        <div class="login_button dropdown">
+          <div class="text_fill dropdown-toggle
           <% if url.include?('/profile') %>
             <%= "now_page" %>
-          <% end %>">
-            <div class="height_control"></div>
-            <span class="icon glyphicon glyphicon-user"></span>
-            <div class="text">
-              <div class="float_jap"style="margin-left:8px">マイページ</div>
-              <div class="base_en">My Page</div>
-            </div>
+          <% end %>"data-toggle="dropdown">
+            <%= link_to '/category/show',class:"link_text",onclick:"window.location.href = '/profile';" do %>
+              <div class="height_control"></div>
+              <span class="icon glyphicon glyphicon-user"></span>
+              <div class="text">
+                <div class="float_jap"style="margin-left:8px">マイページ</div>
+                <div class="base_en">My Page</div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+          <ul class="dropdown-menu url_menu">
+            <li class="url_tab_li"><%= link_to("/profile" , class:"url_tab") do%>
+              <div class="jp">
+                プロフィール
+              </div>
+              Profile
+            <% end %></li>
+            <li><%= link_to("/profile/2" , class:"url_tab") do%>
+              <div class="jp">
+                ヒストリー
+              </div>
+              History
+            <% end %></li>
+            <li>
+              <%= form_tag('/logout/inner',method: :post,class:"url_tab url_tab_form") do %>
+                <button type="submit"class="logout_button">
+                  <div class="jp">
+                    ログアウト
+                  </div>
+                  Logout
+                </button>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       <% else %>
         <%= link_to("/login" , class:"login_button") do %>
           <div class="text_fill
@@ -129,3 +152,9 @@
     <% end %>
   </div>
 </div>
+
+<style>
+  .dropdown:hover > .dropdown-menu{
+    display:block;
+  }
+</style>

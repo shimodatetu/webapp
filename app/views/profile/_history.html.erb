@@ -1,0 +1,143 @@
+<div class="profile_history">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item
+    <% if params[:id] == "2" %>
+      <%= "active" %>
+    <% end %>">
+      <a class="nav-link profile_history_change2" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+        <div class="jp">
+          作成したスレッド
+        </div>
+        <div class="en">
+          Thread you made
+        </div>
+      </a>
+    </li>
+    <li class="nav-item
+    <% if params[:id] == "3" %>
+      <%= "active" %>
+    <% end %>">
+      <a class="nav-link profile_history_change3" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+        <div class="jp">
+          過去の投稿
+        </div>
+        <div class="en">
+          Past Post
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show
+    <% if params[:id] == "2" %>
+      <%= "active" %>
+    <% end %>" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <% current_user.groups.each do |group| %>
+        <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
+          <div class="thread_cover">
+            <div class="group_user_cover">
+              <div class="group_img_cover">
+                <% if group.user.image.url.nil?%>
+                  <%= image_tag("/user.png", :class => "group_img") %>
+                <% else %>
+                  <%= image_tag(group.user.image.url, :class => "group_img") %>
+                <% end %>
+              </div>
+            </div>
+            <div class="thread_content">
+              <div class="post_content_cover">
+                <div class="user_name">
+                  <%= group.user.name %>
+                </div>
+                <div class="post_content_position en_position">
+                  <div class="thread_title">
+                    <div class="title_padding">
+                      <%= group.title_en %>
+                    </div>
+                  </div>
+                  <div class="post_content">
+                    <div class="post_content_text">
+                      <%= group.posts.first.content_eng %>
+                    </div>
+                  </div>
+                </div>
+                <div class="post_content_position_space">
+                  <%= image_tag("/矢印.png", :class => "img") %>
+                </div>
+                <div class="post_content_position jp_position">
+                  <div class="thread_title">
+                    <div class="title_padding">
+                      <%= group.title_jp %>
+                    </div>
+                  </div>
+                  <div class="post_content">
+                    <div class="post_content_text">
+                      <%= group.posts.first.content_jap %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade
+    <% if params[:id] == "3" %>
+      <%= "active" %>
+    <% end %>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <% show_group_id = -1 %>
+      <% current_user.posts.order(:group_id).each do |post| %>
+        <% if show_group_id != post.group_id %>
+          <% show_group_id = post.group_id %>
+
+          <%= link_to("/thread/show/#{post.group_id}" , class:"thread_link") do %>
+            <div class="panel-title"style="display:inline-block">
+              <div class="float_jp">
+                <%= post.group.title_jp %>
+              </div>
+              <%= post.group.title_en %>
+            </div>
+          <% end %>
+          <div class="pvpage_head">
+          </div>
+        <% end %>
+        <div class="thread_cover">
+          <div class="group_user_cover">
+            <div class="group_img_cover">
+              <% if post.user.image.url.nil?%>
+                <%= image_tag("/user.png", :class => "group_img") %>
+              <% else %>
+                <%= image_tag(post.user.image.url, :class => "group_img") %>
+              <% end %>
+            </div>
+          </div>
+          <div class="thread_content">
+            <div class="post_content_cover">
+              <div class="user_name">
+                <%= post.user.name %>
+              </div>
+              <div class="post_content_position en_position">
+                <div class="post_content">
+                  <div class="post_content_text text_down">
+                    <%= post.content_jap %>
+                  </div>
+                </div>
+              </div>
+              <div class="post_content_position_space"style="margin-top:0px;">
+                <%= image_tag("/矢印.png", :class => "img") %>
+              </div>
+              <div class="post_content_position jp_position">
+                <div class="post_content">
+                  <div class="post_content_text text_down">
+                    <%= post.content_jap %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   after_update { ProfileBroadcastJob.perform_later self  }
 
+  validates :name, presence: true
+  validates :email, uniqueness:true,presence: true
 
   def User.new_token
     SecureRandom.urlsafe_base64

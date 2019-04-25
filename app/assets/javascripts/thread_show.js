@@ -1,5 +1,5 @@
 $(function(){
-  $(".post_footer .post_file").on("change",function(){
-    $('.post_footer .img_post').trigger('click');
+  $(".post_form .post_file").on("change",function(){
+    $('.post_form .img_post').trigger('click');
   });
 });

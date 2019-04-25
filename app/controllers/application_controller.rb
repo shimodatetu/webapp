@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  protect_from_forgery with: :exception
 
- add_flash_types :success, :info, :warning, :danger
+ add_flash_types :success, :info, :warning, :danger ,:search_big_id,:search_small_id
  def current_user
    @current_user ||= User.find_by(id: session[:user_id])
  end
@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
  def logout
    current_user = nil
+   session[:user_id] = nil
  end
 
  def user_image_default

@@ -38,39 +38,21 @@
           <li class="nav-item profile_contents_button">
             <%= link_to '/profile/2',class:"nav-link" do %>
               <div class="jp">
-                アカウント
-              </div>
-              <div class="en">
-                Account
-              </div>
-            <% end %>
-          </li>
-          <li class="nav-item profile_contents_button">
-            <%= link_to '/profile/3',class:"nav-link" do %>
-              <div class="jp">
-                フォトアルバム
-              </div>
-              <div class="en">
-                Photo Album
-              </div>
-            <% end %>
-          </li>
-          <li class="nav-item profile_contents_button">
-            <%= link_to '/profile/4',class:"nav-link" do %>
-              <div class="jp">
                 履歴
               </div>
               <div class="en">
-                Personal History
+                History
               </div>
             <% end %>
           </li>
         </ul>
       </div>
     </div>
-    <div class=""style="display:inline-block;width:50%;position:absolute;">
+    <div class=""style="display:inline-block;width:70%;position:absolute;">
       <% if params[:id].nil? || params[:id] == "1" %>
         <%= render partial:"profile_page" %>
+      <% elsif params[:id] == "2" || params[:id] == "3" %>
+        <%= render partial:"history" %>
       <% end %>
     </div>
   </div>

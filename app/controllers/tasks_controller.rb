@@ -9,10 +9,41 @@ class TasksController < ApplicationController
   end
 
   def search
-    p "-----------------------------------------------"
-    p "-----------------------------------------------"
-    p "-----------------------------------------------"
     session["search_text"] = params[:search_text]
     redirect_to "/search/show"
+  end
+
+  def search_inside
+    search_text = params[:search_text]
+    search_en = Bigcategory.find_by(name_en: search_text)
+
+    if !search_en.nil?
+      flash[:search_big_id] = search_en.id
+      redirect_to "/groups"
+    else
+      search_jp = Bigcategory.find_by(name_jp: search_text)
+      if !search_jp.nil?
+        flash[:search_big_id] = search_en.id
+        redirect_to "/groups"
+      else
+        search_en_small = Smallcategory.find_by(name_en: search_text)
+        if !search_en_small.nil?
+          flash[:search_sub_id] = search_en_small.id
+          flash[:search_big_id] = search_en_small.bigcategory.id
+          redirect_to "/groups"
+        else
+          search_jp_small = Bigcategory.find_by(name_en: search_text)
+          if !search_jp_small.nil?
+              flash[:search_sub_id] = search_jp_small.id
+              flash[:search_big_id] = search_jp_small.bigcategory.id
+              redirect_to "/groups"
+          end
+        end
+      end
+    end
+  end
+  def logout_inner
+    logout
+    redirect_to root_path
   end
 end

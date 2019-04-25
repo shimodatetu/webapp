@@ -1,7 +1,10 @@
+
 <% lang = session["lang"] %>
 <% session["now_group"] = params[:id] %>
 <% thread = Group.find_by(id: params[:id]) %>
 <% lang = session["lang"] %>
+<% thread.seen_num+=1 %>
+<% thread.save %>
 <div class="user_login"id="<%= logged_in? %>"></div>
 <div class="thread_page">
   <div class="lang_bar_cover" data-toggle="tooltip" data-placement="bottom" data-original-title="説明">
@@ -35,37 +38,87 @@
       <%= render thread.posts %>
     </div>
   </div>
-  <div class="post_footer">
+  <div class="footer thread_footer">
     <%= form_for @post, :html => {:class => "post_form"},remote: true do |f| %>
-      <button type="button" class="post_button btn btn-primary btn-lg words_post_button">
-        <div class="glyphicon glyphicon-comment picture_send"></div>
-        <div class="button_text">
-          <div class="float_jp">
-             コメント投稿
-          </div>
-          Post Comment
-        </div>
-      </button>
-      <label for="file_send"class="post_button btn btn-prmary btn-lg image_post_button">
+      <label for="file_send"class="image_send_button btn btn-prmary image_post_button">
         <div class="glyphicon glyphicon-picture picture_send"></div>
-        <div class="button_text">
-          <div class="float_jp">
-             写真投稿
-          </div>
-          Post Picture
-        </div>
       </label>
       <%= f.file_field :image,:id => "file_send", :class => "post_file", :style => "display:none"%>
       <input type="hidden"id="group" name="group" value="<%= params[:id] %>">
       <%= f.hidden_field :group_id,value: params[:id] %>
-      <button type="submit"class="img_post"style="display:none">
+      <button type="submit"class="img_post"style="display:none"></button>
     <% end %>
+
+    <div class="post_footer">
+      <div class="glyphicon glyphicon-comment picture_send"></div>
+      <div class="post_text">
+        <div class="float_jp">
+           投稿
+        </div>
+        Post
+      </div>
+      <button type="button" class="post_button btn btn-primary words_post_button"id="en">
+        <div class="button_text">
+          <div class="float_jp">
+             書き込み
+          </div>
+          Write
+        </div>
+        <%= image_tag "/english.png", class: "image picture_send" %>
+      </button>
+      <button type="button" class="post_button btn btn-primary words_post_button"id="enjp">
+        <div class="button_text">
+          <div class="float_jp">
+             　書き込み
+          </div>
+          Write
+        </div>
+        <%= image_tag "/english.png", class: "image picture_send" %>
+        <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+      </button>
+      <button type="button" class="post_button btn btn-primary words_post_button"id="jp">
+        <div class="button_text">
+          <div class="float_jp">
+             書き込み
+          </div>
+          Write
+        </div>
+        <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+      </button>
+    </div>
   </div>
 </div>
 <!-- モーダル・ダイアログ -->
 
 <div class="thread_post_cover">
-  <div class="modal fade" id="sampleModal" tabindex="-1">
+  <div class="modal fade" id="sampleModal-en" tabindex="-1">
+  	<div class="modal-dialog"style="width:90vw">
+  		<div class="modal-content">
+  			<div class="modal-body">
+          <div class="thread_post">
+            <div class="post_form_cover post_form_cover_en connect_btn">
+              <%= image_tag "/english.png", class: "image" %>
+              <textarea name="content"class="only_en_form connect_btn content_post form-control" rows="6"
+              placeholder="&#13;&#10;This side is English form.&#13;&#10;こちらは英語投稿欄です"></textarea>
+            </div>
+          </div>
+  			</div>
+  			<div class="modal-footer">
+          <button type="button" class="btn btn-default btn_send"id="en">
+            <div class="float_jp">投稿</div>
+            <div class="base_en">Post</div>
+          </button>
+          <button type="button" class="btn btn-default btn_back" data-dismiss="modal"style="margin-right:calc(50% - 70px);">
+            <div class="float_jp">戻る</div>
+            <div class="base_en">Back</div>
+          </button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div>
+<div class="thread_post_cover">
+  <div class="modal fade" id="sampleModal-enjp" tabindex="-1">
   	<div class="modal-dialog"style="width:90vw">
   		<div class="modal-content">
   			<div class="modal-body">
@@ -82,50 +135,13 @@
               placeholder="&#13;&#10;This side is Japanese form.&#13;&#10;こちらは日本語投稿欄です"></textarea>
             </div>
           </div>
-
-          <div class=""style="margin-top:20px;">
-            <div class="button_panel_cover">
-              <div class="panel panel-default button_panel">
-                <div class="panel-body">
-                  <div style="button_text">
-                    You write only English<br>
-                     (Automatically translate to Japanese)
-                  </div>
-                  <button type="button" class="en_post post_button btn btn-primary" data-toggle="modal" data-target="#sampleModal2">
-                     Post
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="button_panel_cover">
-              <div class="panel panel-default button_panel">
-                <div class="panel-body">
-                  <div style="button_text">
-                    自分で日本語と英語を両方書いて投稿<br>
-                    You write both Japanese and English by yourself.
-                  </div>
-                  <button type="button" class="enjp_post especial post_button btn btn-primary" data-toggle="modal" data-target="#sampleModal2">
-                     Post / 投稿
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="button_panel_cover">
-              <div class="panel panel-default button_panel">
-                <div class="panel-body">
-                  <div style="button_text">
-                    日本語のみ書いて投稿 <br>(英語へは自動翻訳されます)
-                  </div>
-                  <button type="button" class="jp_post post_button btn btn-primary" data-toggle="modal" data-target="#sampleModal2">
-                     投稿
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
   			</div>
   			<div class="modal-footer">
-          <button type="button" class="btn btn-default btn_back" data-dismiss="modal"style="margin-right:calc(50% - 30px);">
+          <button type="button" class="btn btn-default btn_send"id="enjp">
+            <div class="float_jp">投稿</div>
+            <div class="base_en">Post</div>
+          </button>
+          <button type="button" class="btn btn-default btn_back" data-dismiss="modal"style="margin-right:calc(50% - 70px);">
             <div class="float_jp">戻る</div>
             <div class="base_en">Back</div>
           </button>
@@ -134,53 +150,27 @@
   	</div>
   </div>
 </div>
-
 <div class="thread_post_cover">
-  <div class="modal fade" id="sampleModal2" tabindex="-1">
-  	<div class="modal-dialog window2"style="width:90vw">
+  <div class="modal fade" id="sampleModal-jp" tabindex="-1">
+  	<div class="modal-dialog"style="width:90vw">
   		<div class="modal-content">
   			<div class="modal-body">
           <div class="thread_post">
-            <div class="post_data_cover connect_btn">
-              <%= image_tag "/english.png", class: "image" %>
-              <div class="pane-body data_show en_data">
-              </div>
-            </div>
-
-            <div class="translate_cover from_jp"style="display:none">
-              <div class="explain_text">
-                投稿すると自動的に英語に翻訳されます
-              </div>
-              <%= image_tag "矢印2.png", class: "image" %>
-            </div>
-            <div class="translate_cover from_en"style="display:none">
-              <div class="explain_text">Your text will be
-                translated to Japanese Automatically.
-              </div>
-              <%= image_tag "矢印2.png", class: "image",style:"transform: scale(-1, 1);" %>
-            </div>
-            <div class="translate_cover from_enjp"style="display:none">
-              <div class="explain_text">
-                Your text both Japanese and English will be posted.
-                <br><br>
-                あなたの書いた両言語の文章が投稿されます
-              </div>
-            </div>
-            <div class="post_data_cover">
+            <div class="post_form_cover post_form_cover_jp">
               <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
-              <div class="pane-body data_show jp_data">
-              </div>
+              <textarea name="content"class="only_jp_form content_post form-control" rows="6"
+              placeholder="&#13;&#10;This side is Japanese form.&#13;&#10;こちらは日本語投稿欄です"></textarea>
             </div>
           </div>
   			</div>
   			<div class="modal-footer">
-  				<button type="button" class="btn btn-default btn_back" data-dismiss="modal">
-            <div class="float_jp">戻る</div>
-            <div class="base_en">Back</div>
-          </button>
-    			<button type="button" class="btn btn-default btn_send" data-dismiss="modal">
+          <button type="button" class="btn btn-default btn_send"id="jp">
             <div class="float_jp">投稿</div>
             <div class="base_en">Post</div>
+          </button>
+          <button type="button" class="btn btn-default btn_back" data-dismiss="modal"style="margin-right:calc(50% - 70px);">
+            <div class="float_jp">戻る</div>
+            <div class="base_en">Back</div>
           </button>
   			</div>
   		</div>
