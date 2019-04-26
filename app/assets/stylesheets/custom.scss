@@ -15,9 +15,42 @@ body{
 }
 @media screen and (max-width: 600px){
   .main_content_cover{
-    width:680px !important;
+    width:680px;
   }
   .lang_bar_cover{
-    width:600px !important;
+    //width:600px;
+  }
+}
+@media screen and (max-width: 480px){
+  .search_form{
+    display: none!important;
+  }
+  .main_content_cover{
+    width:100%!important;
+  }
+  .lang_bar_cover{
+    width:100%;
+    .lang_bar{
+      padding-left:2px;
+      .slider{
+        width:calc(60vw);
+      }
+    }
+    .country_flag{
+      width:8vw;
+      height:6vw;
+      margin-right:1vw!important;
+      .image{
+        width:100%!important;
+        height:100%!important;
+      }
+    }
+    .slider-handle{
+      top: -5px !important;
+      width: 10px !important;
+      height: 10px !important;
+      background: rgb(80, 120, 220);
+      z-index:50;
+    }
   }
 }

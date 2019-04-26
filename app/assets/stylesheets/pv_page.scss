@@ -8,17 +8,17 @@
     background: #ffffff;
     position:fixed;
     width:100%;
-      padding-top:8px;
+    padding-top:8px;
     margin-left:-5%;
     padding-left:5%;
     margin-top:-20px;
     border-bottom: solid thin #BF8454;
     .lang_bar{
-      padding-left:calc(10% + 80px);
+      padding-left:2px;
       padding-top:8px;
       padding-bottom:8px;
       .slider{
-        width:calc(10% + 250px);
+        width:calc(70%);
         display: inline-block;
         .tooltip{
           display: none !important;
