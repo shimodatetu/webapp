@@ -67,7 +67,7 @@
               </div>
             </div>
             <div class="col-sm-7">
-              <div class="option_category_search">
+              <div class="option_category_search"style="display:none">
                 <%= form_tag('/search/inside', method: :post) do %>
                   <div class="input-group category_search">
                     <span class="input-group-btn">
@@ -128,50 +128,42 @@
             <textarea id="content"class="content_input_form form-control form_lang jp_data_content" rows="3" cols="65"></textarea>
           </div>
         </div>
-        <div class="submit_cover"style="display:none">
-          <button type="submit"class="btn btn-default submit_button">
-            Make / 作成
+        <div class="post_footer">
+          <div class="glyphicon glyphicon-comment picture_send"></div>
+          <div class="post_text">
+            <div class="float_jp">
+               投稿
+            </div>
+            Post
+          </div>
+          <button type="button" class="post_button btn btn-primary words_post_button"id="en">
+            <div class="button_text">
+              <div class="float_jp">
+                書き込み
+              </div>
+              Write
+            </div>
+            <%= image_tag "/english.png", class: "image picture_send" %>
           </button>
-        </div>
-        <div class="submit_button_cover"style="margin-top:20px;">
-          <div class="button_panel_cover">
-            <div class="panel panel-default button_panel">
-              <div class="panel-body">
-                <div style="button_text">
-                  You write only English<br>
-                   (Automatically translate to Japanese)
-                </div>
-                <button type="button" class="post_button btn btn-primary"id="en"data-toggle="modal" data-target="#sampleModal2">
-                   Make
-                </button>
+          <button type="button" class="post_button btn btn-primary words_post_button"id="enjp">
+            <div class="button_text">
+              <div class="float_jp">
+                書き込み
               </div>
+              Write
             </div>
-          </div>
-          <div class="button_panel_cover">
-            <div class="panel panel-default button_panel">
-              <div class="panel-body">
-                <div style="button_text">
-                  自分で日本語と英語を両方書いて作成<br>
-                  You write both Japanese and English by yourself.
-                </div>
-                <button type="button" class="especial post_button btn btn-primary"id="enjp"data-toggle="modal" data-target="#sampleModal2">
-                   Make / 作成
-                </button>
+            <%= image_tag "/english.png", class: "image picture_send" %>
+            <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+          </button>
+          <button type="button" class="post_button btn btn-primary words_post_button"id="jp">
+            <div class="button_text">
+              <div class="float_jp">
+                 書き込み
               </div>
+              Write
             </div>
-          </div>
-          <div class="button_panel_cover">
-            <div class="panel panel-default button_panel">
-              <div class="panel-body">
-                <div style="button_text">
-                  日本語のみ書いて作成 <br>(英語へは自動翻訳されます)
-                </div>
-                <button type="button" class="post_button btn btn-primary"id="jp"data-toggle="modal" data-target="#sampleModal2">
-                   作成
-                </button>
-              </div>
-            </div>
-          </div>
+            <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+          </button>
         </div>
       </div>
   </div>

@@ -21,7 +21,7 @@ $(function(){
   $(last_elem).attr("style","border-bottom-right-radius:5px;"+
   "border-bottom-left-radius:5px");
   var options ={"backdrop":"static"}
-  $(".words_post_button").click(function(){
+  $(".thread_page .words_post_button").click(function(){
     if(gon.login){
       var options = {"backdrop":"static"};
       $('#sampleModal-'+this.id).modal(options);

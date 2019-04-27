@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
  def logged_in?
    !current_user.nil?
  end
-
+ def log_in(user)
+   session[:user_id] = user.id
+ end
  def logout
    current_user = nil
    session[:user_id] = nil

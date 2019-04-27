@@ -9,7 +9,7 @@
 <div class="thread_page">
   <div class="lang_bar_cover" data-toggle="tooltip" data-placement="bottom" data-original-title="説明">
     <div class="lang_bar">
-      <div class="country_flag">
+      <div class="country_flag en_country">
         <%= image_tag "/english.png", class: "image" %>
       </div>
       <input id="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0"
@@ -60,7 +60,7 @@
       <button type="button" class="post_button btn btn-primary words_post_button"id="en">
         <div class="button_text">
           <div class="float_jp">
-             書き込み
+            書き込み
           </div>
           Write
         </div>
@@ -69,7 +69,7 @@
       <button type="button" class="post_button btn btn-primary words_post_button"id="enjp">
         <div class="button_text">
           <div class="float_jp">
-             　書き込み
+            書き込み
           </div>
           Write
         </div>
@@ -102,6 +102,9 @@
               placeholder="&#13;&#10;This side is English form.&#13;&#10;こちらは英語投稿欄です"></textarea>
             </div>
           </div>
+          <div class="explain_text">
+            Your English will be translated to Japanese.
+          </div>
   			</div>
   			<div class="modal-footer">
           <button type="button" class="btn btn-default btn_send"id="en">
@@ -123,17 +126,21 @@
   		<div class="modal-content">
   			<div class="modal-body">
           <div class="thread_post">
-            <div class="post_form_cover connect_btn">
+            <div class="post_form_cover post_form_cover_enjp connect_btn">
               <%= image_tag "/english.png", class: "image" %>
               <textarea name="content"class="en_form connect_btn content_post form-control" rows="6"
               placeholder="&#13;&#10;This side is English form.&#13;&#10;こちらは英語投稿欄です"></textarea>
             </div>
             <div class="space_form"></div>
-            <div class="post_form_cover">
+            <div class="post_form_cover post_form_cover_enjp">
               <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
               <textarea name="content"class="jp_form content_post form-control" rows="6"
               placeholder="&#13;&#10;This side is Japanese form.&#13;&#10;こちらは日本語投稿欄です"></textarea>
             </div>
+          </div>
+          <div class="explain_text">
+            You have to write both English and Japanese.<br>
+            ここでは英語と日本語を入力して投稿します。
           </div>
   			</div>
   			<div class="modal-footer">
@@ -161,6 +168,9 @@
               <textarea name="content"class="only_jp_form content_post form-control" rows="6"
               placeholder="&#13;&#10;This side is Japanese form.&#13;&#10;こちらは日本語投稿欄です"></textarea>
             </div>
+          </div>
+          <div class="explain_text">
+            書いた日本語の文は英語に翻訳されます。
           </div>
   			</div>
   			<div class="modal-footer">

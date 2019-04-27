@@ -14,7 +14,7 @@ App.thread = App.cable.subscriptions.create "ThreadChannel",
     category = Number(category)
     @perform 'make',lang:lang,title_jp:title_jp,message_jp:mes_jp,title_en:title_en,message_en:mes_en,category:category
 
-$(document).on 'click', '.submit_button_cover .post_button', (event) ->
+$(document).on 'click', '.make_thread_cover .post_button', (event) ->
   type_check($(@).attr("id"),$('#title').val(), $('#content').val(),$('.small_select').val())
   event.preventDefault()
 

@@ -81,6 +81,11 @@
     .small-category{
       margin-left:40px;
       margin-top:10px;
+      #ui-id-2-button{
+        position: absolute;
+        margin-top:-57px;
+        margin-left: 190px;
+      }
     }
     font-size:20px;
     margin-left:10px;
@@ -156,6 +161,64 @@
         padding:7px;
         padding-left:15px;
         padding-right:15px;
+      }
+    }
+  }
+  .post_footer{
+    margin-left:30px;
+    display: inline-block;
+    bottom:5px;
+    width:calc(30% + 350px);
+    background: #ffffff;
+    border:solid thin #BF8454;
+    //padding:10px;
+    border-radius:5px;
+    max-height:60px;
+    .picture_send{
+      color: #cd853f;
+      font-size:20px;
+      margin-left: 10px;
+    }
+    .post_text{
+      color: #cd853f;
+      display:inline-block;
+      font-size:18px;
+      padding:10px;
+      .float_jp{
+        font-size:12px;
+      }
+    }
+    .image_btn{
+      height:40px;
+      .picture_send{
+        bottom:10px;
+      }
+    }
+    .post_button{
+      background: #fff0a08f;
+      border: solid thin #cd853f75;
+      color:#cd853f;
+      padding-left:20px;
+      padding-right:20px;
+      vertical-align:top;
+      margin-top: 5px;
+      margin-right:1vw;
+      .image{
+        width:28px;
+        height:20px;
+        margin-top:-15px;
+      }
+      .picture_send{
+        display: inline-block;
+        margin-right:0px;
+        width:28px;
+        margin-left:5px!important;
+      }
+      .button_text{
+        display: inline-block;
+        .float_jp{
+          font-size:11px;
+        }
       }
     }
   }
