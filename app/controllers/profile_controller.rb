@@ -1,7 +1,6 @@
 class ProfileController < ApplicationController
   def show
     @user = User.new
-    gon.google_key = ENV['GOOGLE_KEY']
   end
 
   def update

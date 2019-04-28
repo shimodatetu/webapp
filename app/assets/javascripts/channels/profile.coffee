@@ -85,7 +85,7 @@ translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,
   words = profile_jp
   if lang == "ja"
     words = profile_en
-  key = gon.google_key
+  key = window.ENV.RailsEnv
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
   data.append 'q', words

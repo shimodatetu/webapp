@@ -57,7 +57,6 @@ type_check=(id,group)->
       App.room.speak("enjp",text_jp,text_en, group)
   else if id == "en"
       text = $(".only_en_form").val();
-      console.log("before："+escape(text))
       if text == ""
         alert("Input form is empty.\n入力欄に何も書かれていません");
       else
@@ -74,7 +73,7 @@ type_check=(id,group)->
     # body...
 
 translate_google=(lang,words,group) ->
-  key = gon.google_key
+  key = window.ENV.RailsEnv
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
   data.append 'q', words

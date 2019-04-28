@@ -56,7 +56,7 @@ type_check=(id,title,coment,category)->
       translate_google(title_jp,content_jp,"en",category)
 
 translate_google=(title,coment,lang,category) ->
-  key = gon.google_key
+  key = window.ENV.RailsEnv
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
   data.append 'q', title
