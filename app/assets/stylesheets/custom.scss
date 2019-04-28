@@ -17,6 +17,11 @@ body{
   .main_content_cover{
     width:680px;
   }
+  .profile{
+    .lang_bar_cover{
+      width:400px!important;
+    }
+  }
   .lang_bar_cover{
     width:600px!important;
   }
@@ -125,7 +130,43 @@ body{
     width:90%!important;
     margin-left:5%!important;
   }
+
   .profile{
+    .profile_title .title{
+      .jp{
+        font-size:calc(3vw - 3px)!important;
+      }
+      font-size:calc(5vw - 3px)!important;
+    }
+    .content_name{
+      .en{
+        font-size:calc(5vw - 3px);
+      }
+      .jp{
+        font-size:calc(3vw - 3px)!important;
+      }
+    }
+    .tab-content{
+      padding-top:calc(14vw + 20px)!important;
+    }
+    .profile_picture_change{
+      .en{
+        font-size: calc(4vw - 3px)!important;
+        margin-top: 1px!important;
+      }
+      .jp{
+        font-size: calc(3vw - 3px)!important;
+      }
+    }
+    .profile_contents_button{
+      .en{
+        font-size: calc(4vw - 2px)!important;
+        margin-top: 1px!important;
+      }
+      .jp{
+        font-size: calc(3vw - 3px)!important;
+      }
+    }
     .en_country{
       margin-left: 10px!important;
     }
@@ -138,7 +179,7 @@ body{
         }
       }
       .jp_country{
-        margin-left: 2px!important;
+        margin-left: 10px!important;
       }
       .country_flag{
         width:7vw;
