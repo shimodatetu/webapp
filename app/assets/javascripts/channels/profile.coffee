@@ -85,7 +85,7 @@ translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,
   words = profile_jp
   if lang == "ja"
     words = profile_en
-  key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
+  key = gon.google_key
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
   data.append 'q', words
@@ -103,40 +103,3 @@ translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,
       App.profile.change(username,gender,year,month,date,country,profile_en,trans_text)
     else
       App.profile.change(username,gender,year,month,date,country,trans_text,profile_jp)
-
-translate_microsoft=(username,gender,year,month,date,country,profile_en,profile_jp,lang) ->
-  words = profile_jp
-  if lang == "ja"
-    words = profile_en
-  defer = $.Deferred()
-  $.ajax
-    url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
-    type: 'POST'
-    headers:{
-      'Content-Type': 'application/json'
-      'Accept': 'application/jwt'
-      'Ocp-Apim-Subscription-Key': 'd0d8d178e5f54dcaab373fe9896fdb3a'
-    }
-    async: false
-  .done (data) ->
-    token = data
-    defer.resolve(token)
-    key = 'Bearer ' + token
-    text = words
-    response = $.ajax
-      url: 'https://api.microsofttranslator.com/v2/http.svc/Translate'
-      type: 'GET'
-      data: {
-        'appid': key
-        'Accept': 'application/xml'
-        'text': words
-        'to': lang
-      }
-      async: false
-    data = response.responseText
-    translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-    if lang == "ja"
-      App.profile.change(username,gender,year,month,date,country,profile_en,translation)
-    else
-      App.profile.change(username,gender,year,month,date,country,translation,profile_jp)
-    return defer.promise()

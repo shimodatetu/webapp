@@ -56,7 +56,7 @@ type_check=(id,title,coment,category)->
       translate_google(title_jp,content_jp,"en",category)
 
 translate_google=(title,coment,lang,category) ->
-  key = 'AIzaSyC0LbKvoTxUt-7Cwu0P2kjsmOqlnLADZG4'
+  key = gon.google_key
   url = 'https://translation.googleapis.com/language/translate/v2?key=' + key
   data = new FormData
   data.append 'q', title
@@ -75,42 +75,6 @@ translate_google=(title,coment,lang,category) ->
       App.thread.make(lang,ary[7],ary[15],title,coment,category)
     else
       App.thread.make(lang,title,coment,ary[7],ary[15],category)
-
-translate_microsoft=(title,coment,lang,group_id) ->
-  words = title+" </> "+coment
-  defer = $.Deferred()
-  $.ajax
-    url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
-    type: 'POST'
-    headers: {
-      'Content-Type': 'application/json'
-      'Accept': 'application/jwt'
-      'Ocp-Apim-Subscription-Key': 'd0d8d178e5f54dcaab373fe9896fdb3a'
-    }
-    async: false
-  .done (data) ->
-    token = data
-    defer.resolve(token)
-    key = 'Bearer ' + token
-    text = words
-    response = $.ajax
-      url: 'https://api.microsofttranslator.com/v2/http.svc/Translate'
-      type: 'GET'
-      data: {
-        'appid': key
-        'Accept': 'application/xml'
-        'text': words
-        'to': lang
-      }
-      async: false
-    data = response.responseText
-    translation = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-    get_text = translation.split('</>')
-    if lang == "ja"
-      App.thread.make(lang,get_text[0],get_text[1],title,coment,category)
-    else
-      App.thread.make(lang,title,coment,get_text[0],get_text[1],category)
-    return defer.promise()
 
 
 bytes=(str) ->
