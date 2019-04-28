@@ -1,5 +1,15 @@
 .profile_history{
   margin-left:20px;
+  .nav-tabs{
+    position: fixed;
+    width:70%;
+    background: #fffbe6;
+    margin-top:-20px;
+    padding-top:10px;
+  }
+  .tab-content{
+    padding-top:100px;
+  }
   .nav-link:hover{
     color: #555555;
     background-color: #fffbe6;
@@ -15,9 +25,6 @@
   }
   .nav-link:hover{
     color:#BF8454!important;
-  }
-  .profile_history_change2{
-    margin-left:10px;
   }
   .active{
     .nav-link{
@@ -146,6 +153,55 @@
           padding-right:7px;
           background-color: #fff0b0;
         }
+      }
+    }
+  }
+  .lang_bar_cover{
+    background: #ffffff;
+    width:70%;
+    margin-top:56px;
+    position:fixed;
+    border: solid thin #ddd;
+    border-top:none;
+    .lang_bar{
+      padding-left:calc(10% + 80px);
+      padding-top:8px;
+      padding-bottom:8px;
+      .slider{
+        width:calc(10% + 250px);
+        display: inline-block;
+        .tooltip{
+          display: none !important;
+        }
+        .slider-handle{
+          top: -5px !important;
+          width: 30px !important;
+          height: 30px !important;
+          background: rgb(80, 120, 220);
+          z-index:50;
+        }
+        .slider-selection{
+          //height: 20px !important;
+          //top: -5px !important;
+          background: rgb(46, 82, 189);
+        }
+        .slider-track-high{
+          //top: -5px;
+          //height:20px;
+          background: #fff;
+          -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2)
+        }
+      }
+      .country_flag{
+        display: inline-block;
+        margin-right: 10px;
+        .image{
+          height:28px;
+          width:40px;
+        }
+      }
+      .jp_country{
+        margin-left:18px;
       }
     }
   }

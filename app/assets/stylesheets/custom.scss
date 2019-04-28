@@ -23,9 +23,9 @@ body{
 }
 @media screen and (max-width: 480px){
   .nav-link{
-    font-size: 4vw!important;
+    font-size: calc(4vw - 3px)!important;
     .jp{
-      font-size: 3vw!important;
+      font-size: calc(3vw - 3px)!important;
     }
   }
   .profile_sub{
@@ -124,6 +124,32 @@ body{
   .post_form_cover_jp{
     width:90%!important;
     margin-left:5%!important;
+  }
+  .profile{
+    .en_country{
+      margin-left: 10px!important;
+    }
+    .lang_bar_cover{
+      width:70%!important;
+      margin-top:calc(17px + 7vw)!important;
+      .lang_bar{
+        .slider{
+          width:calc(65%)!important;
+        }
+      }
+      .jp_country{
+        margin-left: 2px!important;
+      }
+      .country_flag{
+        width:7vw;
+        height:5vw;
+        margin-right:1vw!important;
+        .image{
+          width:100%!important;
+          height:100%!important;
+        }
+      }
+    }
   }
   .lang_bar_cover{
     width:100%;
