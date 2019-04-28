@@ -1,10 +1,15 @@
-<h1>Sample App</h1>
+<p>日本語の文は下の方にあります↓</p>
+<p>Notice from the FreFre administrative office -------------------</ p>
+<p>We accepted temporary registration of FreFre members. ▼▼ Please access the following URL and complete registration ▼▼ </ p>
 
-<p>Hi <%= @user.name %>,</p>
+<%= link_to "Completing member registration", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email)%>
 
-<p>
-Welcome to the Sample App! Click on the link below to activate your account:
-</p>
+<p> ※ If the above URL can not be opened, please copy and paste the URL into the address field of the web browser. </ P>
+<p>FreFre フレフレ運営事務局からのお知らせ ―――――――――――――――――― </p>
+<p>FreFre フレフレの会員の仮登録を受け付けました。  ▼▼ 下記URLにアクセスし、登録を完了させてください ▼▼</p>
 
-<%= link_to "Activate", edit_account_activation_url( @user.activation_token,
+<%= link_to "会員登録を完了する", edit_account_activation_url( @user.activation_token,
                                                     email: @user.email) %>
+
+<p>※上記URLが開けない場合は、Webブラウザのアドレス欄に、URLをコピーし、貼り付けてアクセスして下さい。 </p>

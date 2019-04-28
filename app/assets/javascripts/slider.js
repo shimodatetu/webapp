@@ -30,4 +30,5 @@ $(function(){
       }
     }
   });
+  $(".slider-handle").append('<span class="slider_icon glyphicon glyphicon-resize-horizontal"></span>');
 });

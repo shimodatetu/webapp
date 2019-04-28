@@ -48,20 +48,8 @@
       <% current_user.groups.each do |group| %>
         <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
           <div class="thread_cover">
-            <div class="group_user_cover">
-              <div class="group_img_cover">
-                <% if group.user.image.url.nil?%>
-                  <%= image_tag("/user.png", :class => "group_img") %>
-                <% else %>
-                  <%= image_tag(group.user.image.url, :class => "group_img") %>
-                <% end %>
-              </div>
-            </div>
             <div class="thread_content">
               <div class="post_content_cover">
-                <div class="user_name">
-                  <%= group.user.name %>
-                </div>
                 <div class="post_content_position en_position">
                   <div class="thread_title">
                     <div class="title_padding">
@@ -116,20 +104,8 @@
           </div>
         <% end %>
         <div class="thread_cover">
-          <div class="group_user_cover">
-            <div class="group_img_cover">
-              <% if post.user.image.url.nil?%>
-                <%= image_tag("/user.png", :class => "group_img") %>
-              <% else %>
-                <%= image_tag(post.user.image.url, :class => "group_img") %>
-              <% end %>
-            </div>
-          </div>
           <div class="thread_content">
             <div class="post_content_cover">
-              <div class="user_name">
-                <%= post.user.name %>
-              </div>
               <div class="post_content_position en_position">
                 <div class="post_content">
                   <div class="post_content_text text_down">
