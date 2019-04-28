@@ -1,7 +1,9 @@
 $(function(){
   var last_elem;
+  var id = -1;
   $('.thread_page .thread_cover').each(function(i, elem){
     last_elem = elem;
+    id = i;
     if(i == 0){
       $(elem).attr("style","border-radius:5px;");
     }
@@ -18,7 +20,7 @@ $(function(){
     $(elem).find(".jp_content_row").attr("style","margin:7px; -webkit-line-clamp:"+Math.floor(row));
     $(elem).find(".en_content_row").attr("style","margin:7px; -webkit-line-clamp:"+Math.floor(row));
   });
-  if(i > 1){
+  if(id > 1){
     $(last_elem).attr("style","border-bottom-right-radius:5px;"+
     "border-bottom-left-radius:5px");
   }
