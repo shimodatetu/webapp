@@ -51,7 +51,7 @@
                 </div>
                 <div class="post_content">
                   <div class="post_content_text">
-                    <%= group.posts.first.content_eng %>
+                    <%= simple_format(h(group.posts.first.content_eng)) %>
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="post_content">
                   <div class="post_content_text">
-                    <%= group.posts.first.content_jap %>
+                    <%= simple_format(h(group.posts.first.content_jap)) %>
                   </div>
                 </div>
               </div>

@@ -33,7 +33,7 @@
           <% end %>
           <div class="post_content en_content_row">
             <div class="post_content_text">
-              <%= post.content_eng %>
+              <%= simple_format(h(post.content_eng)) %>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
           <% end %>
           <div class="post_content jp_content_row">
             <div class="post_content_text">
-              <%= post.content_jap %>
+              <%= simple_format(h(post.content_jap)) %>
             </div>
           </div>
         </div>
