@@ -15,8 +15,8 @@ $(function(){
     var jp_height = $(elem).find(".jp_content_row .post_content_text").height();
     var en_height = $(elem).find(".en_content_row .post_content_text").height();
     var row = (Math.max(jp_height,en_height) - 10) / 22;
-    $(elem).find(".jp_content_row").attr("style","margin:7px; -webkit-line-clamp:"+row.to_i);
-    $(elem).find(".en_content_row").attr("style","margin:7px; -webkit-line-clamp:"+row.to_i);
+    $(elem).find(".jp_content_row").attr("style","margin:7px; -webkit-line-clamp:"+Math.floor(row));
+    $(elem).find(".en_content_row").attr("style","margin:7px; -webkit-line-clamp:"+Math.floor(row));
   });
   if(i > 1){
     $(last_elem).attr("style","border-bottom-right-radius:5px;"+
