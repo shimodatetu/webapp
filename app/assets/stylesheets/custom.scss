@@ -40,6 +40,16 @@ body{
       width:100%!important;
     }
   }
+  .login_page{
+    width:99%!important;
+    .input-groups{
+      margin-left: 20px!important;
+      margin-right: 20px!important;
+    }
+    .password_reset{
+      margin-right: 15px!important;
+    }
+  }
   .not_logined_cover {
     margin-left:0px!important;
     width: 100%!important;
