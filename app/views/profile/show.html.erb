@@ -1,61 +1,59 @@
 
 <% if logged_in? %>
   <div class="profile">
-    <div class="row">
-      <div class="profile_sub"style="display:inline-block">
-        <div class="profile_picture">
-          <% if current_user.image.url.nil? %>
-            <%= image_tag("/user.png", :class => "group_img") %>
-          <% else %>
-            <%= image_tag(current_user.image.url, :class => "group_img") %>
+    <div class="profile_sub"style="display:inline-block">
+      <div class="profile_picture">
+        <% if current_user.image.url.nil? %>
+          <%= image_tag("/user.png", :class => "group_img") %>
+        <% else %>
+          <%= image_tag(current_user.image.url, :class => "group_img") %>
+        <% end %>
+        <%= form_for current_user,url: "/profile" do |f| %>
+          <%= button_tag type: 'button',class:"profile_picture_change" do %>
+            <label type="button" for="image">
+              <div class="jp">
+                写真を変更する
+              </div>
+              <div class="en">
+                Change Photo
+              </div>
+              <%= f.file_field :image,id:"image",class:"profile_image_input",style:"display:none" %>
+            </label>
           <% end %>
-          <%= form_for current_user,url: "/profile" do |f| %>
-            <%= button_tag type: 'button',class:"profile_picture_change" do %>
-              <label type="button" for="image">
-                <div class="jp">
-                  写真を変更する
-                </div>
-                <div class="en">
-                  Change Photo
-                </div>
-                <%= f.file_field :image,id:"image",class:"profile_image_input",style:"display:none" %>
-              </label>
-            <% end %>
-            <%= f.submit "send",id:"image_submit",style:"display:none" %>
-          <% end %>
-        </div>
-        <div class="profile_contents_change">
-          <ul class="nav flex-column">
-            <li class="nav-item profile_contents_button">
-              <%= link_to '/profile/1',class:"nav-link" do %>
-                <div class="jp">
-                  プロフィール
-                </div>
-                <div class="en">
-                  My Profile
-                </div>
-              <% end %>
-            </li>
-            <li class="nav-item profile_contents_button">
-              <%= link_to '/profile/2',class:"nav-link" do %>
-                <div class="jp">
-                  履歴
-                </div>
-                <div class="en">
-                  History
-                </div>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class=""style="display:inline-block;width:72%;position:absolute;">
-        <% if params[:id].nil? || params[:id] == "1" %>
-          <%= render partial:"profile_page" %>
-        <% elsif params[:id] == "2" || params[:id] == "3" %>
-          <%= render partial:"history" %>
+          <%= f.submit "send",id:"image_submit",style:"display:none" %>
         <% end %>
       </div>
+      <div class="profile_contents_change">
+        <ul class="nav flex-column">
+          <li class="nav-item profile_contents_button">
+            <%= link_to '/profile/1',class:"nav-link" do %>
+              <div class="jp">
+                プロフィール
+              </div>
+              <div class="en">
+                My Profile
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item profile_contents_button">
+            <%= link_to '/profile/2',class:"nav-link" do %>
+              <div class="jp">
+                履歴
+              </div>
+              <div class="en">
+                History
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class=""style="display:inline-block;width:70%;position:absolute;">
+      <% if params[:id].nil? || params[:id] == "1" %>
+        <%= render partial:"profile_page" %>
+      <% elsif params[:id] == "2" || params[:id] == "3" %>
+        <%= render partial:"history" %>
+      <% end %>
     </div>
   </div>
 
