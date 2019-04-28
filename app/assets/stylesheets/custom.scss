@@ -130,7 +130,26 @@ body{
     width:90%!important;
     margin-left:5%!important;
   }
-
+  .image_post_button{
+    width:50px!important;
+  }
+  .make_thread_cover{
+    .post_footer{
+      margin-left:10px!important;
+      width:calc(95%)!important;
+    }
+    .post_text{
+      padding-left:1vw!important;
+      padding-right:1vw!important;
+      .picture_send{
+        font-size:calc(4vw)!important;
+      }
+    }
+    .words_post_button{
+      padding-left: calc(5vw - 15px)!important;
+      padding-right: calc(5vw - 10px)!important;
+    }
+  }
   .profile{
     .profile_title .title{
       .jp{
