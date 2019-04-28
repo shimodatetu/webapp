@@ -1,9 +1,15 @@
 
 
 $(function(){
+  var first_value = 500;
+  if(localStorage.getItem("frefre_slider") != null){
+    first_value = localStorage.getItem("frefre_slider")
+  }
   $('.lang_bar_cover #slider').slider({
+    value:first_value,
     formatter: function(value) {
       if(true){
+        localStorage.setItem("frefre_slider",value);
         var en_per = value / 10;
         var jp_per = (1000 - value) / 10;
         if(value < 100){
