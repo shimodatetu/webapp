@@ -18,8 +18,10 @@ $(function(){
     $(elem).find(".jp_content_row").attr("style","margin:7px; -webkit-line-clamp:"+row);
     $(elem).find(".en_content_row").attr("style","margin:7px; -webkit-line-clamp:"+row);
   });
-  $(last_elem).attr("style","border-bottom-right-radius:5px;"+
-  "border-bottom-left-radius:5px");
+  if(i > 1){
+    $(last_elem).attr("style","border-bottom-right-radius:5px;"+
+    "border-bottom-left-radius:5px");  
+  }
   var options ={"backdrop":"static"}
   $(".thread_page .words_post_button").click(function(){
     if(gon.login){
