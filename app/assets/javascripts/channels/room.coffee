@@ -11,7 +11,7 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
       jp_height = $(@).find(".jp_content_row .post_content_text").height();
       en_height = $(@).find(".en_content_row .post_content_text").height();
-      row = Math.max(jp_height,en_height) / 22;
+      row = (Math.max(jp_height,en_height) - 10) / 22;
       $(@).find(".jp_content_row").attr("style","-webkit-line-clamp:"+row);
       $(@).find(".en_content_row").attr("style","-webkit-line-clamp:"+row);
       return
