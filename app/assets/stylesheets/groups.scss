@@ -1,3 +1,11 @@
+
+.ui-selectmenu-open{
+  overflow-y: scroll!important;
+  height: 150px!important;
+  .ui-corner-bottom{
+    height: 150px!important;
+  }
+}
 .make_thread_cover{
   .make_header{
     font-size: 20px;
@@ -81,7 +89,7 @@
     .small-category{
       margin-left:40px;
       margin-top:10px;
-      #ui-id-2-button{
+      .ui-selectmenu-button:nth-child(2){
         position: absolute;
         margin-top:-57px;
         margin-left: 190px;

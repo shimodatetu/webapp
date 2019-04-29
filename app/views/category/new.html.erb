@@ -1,6 +1,5 @@
 <div>
   <table class="category"border="1"style="font-size:20px;">
-    
     <% @categories.each do |cate| %>
       <tr>
         <th >
@@ -10,14 +9,14 @@
       </tr>
       <% cate.smallcategories.each do |s_cate|%>
         <tr>
-          <th >　　|------------------------------------------------------------</th>
+          <th >　　|-------------------------------------------</th>
           <th >
             <duv>　<%= s_cate.name_jp %>／<%= s_cate.name_en %></duv>
           </th>
         </tr>
       <% end %>
       <tr>
-        <th >　　|------------------------------------------------------------</th>
+        <th >　　|--------------------------------------------</th>
         <th >
           <%= form_for @small_new, url: small_new_path do |s_new| %>
             <%= s_new.text_field :name_jp ,placeholder:"　小カテゴリー(日)"%>
