@@ -10,8 +10,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
       jp_height = plus_post.find(".jp_content_row .post_content_text").height();
       en_height = plus_post.find(".en_content_row .post_content_text").height();
       row = (Math.max(jp_height,en_height) - 10) / 22;
-      plus_post.find(".jp_content_row").attr("style","margin:7px;-webkit-line-clamp:"+Math.floor(row));
-      plus_post.find(".en_content_row").attr("style","margin:7px;-webkit-line-clamp:"+Math.floor(row));
+      plus_post.find(".jp_content_row").attr("style","margin:7px;-webkit-line-clamp:"+Math.ceil(row));
+      plus_post.find(".en_content_row").attr("style","margin:7px;-webkit-line-clamp:"+Math.ceil(row));
       slider = $(".slider-handle").attr("aria-valuenow");
       en_per = slider / 10;
       jp_per = (1000 - slider) / 10;
