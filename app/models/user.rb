@@ -1,11 +1,10 @@
 class User < ApplicationRecord
-  has_one_attached :image
   before_create :create_activation_digest
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :posts
   has_many :groups
   has_secure_password
-  mount_uploader :image, ImageUploader
+  #mount_uploader :image, ImageUploader
   after_update { ProfileBroadcastJob.perform_later self  }
 
   validates :name, presence: true

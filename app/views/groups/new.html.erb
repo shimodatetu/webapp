@@ -1,11 +1,3 @@
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
-<link rel="stylesheet" href="https://rawgit.com/ainterpreting/jquery-multilineSelectmenu/master/jquery.multilineSelectmenu.css">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="https://rawgit.com/ainterpreting/jquery-multilineSelectmenu/master/jquery.multilineSelectmenu.js"></script>
-<script src="group_make.js"></script>
 <style>
   .ui-widget-content .ui-state-focus{
     background:#4e91f7;
@@ -14,6 +6,7 @@
 </style>
 <% if logged_in? %>
   <div class="make_thread_cover">
+    <div class="get_user_id"id="<%= current_user.id %>"></div>
     <div class="category_head">
       <div class="panel-title">
         <div class="float_jp">
@@ -22,150 +15,155 @@
         Make Thread
       </div>
     </div>
-
-      <div class="panel panel-warning make_thread_category">
-        <div class='make_content panel-body'>
-          <div class="row">
-            <div class="col-sm-5">
-              <div class="select_category_title">
-                Category Selector / カテゴリー選択
-              </div>
-              <div class="big-category">
-                <select class="selectpicker big_select" style="font-size:15px;">
-                  <option style="font-size:15px;">
-                    メインカテゴリー|Main Category
-                  </option>
-                  <% @category.each do |cate| %>
-                    <div style="margin-top:10px"></div>
-                    <option
-                    <% if cate.id == flash["search_big_id"] %>
-                      selected
-                    <% end %>
-                    class="big_select"id="<%= cate.id %>"value="<%= cate.id %>">
-                      <%= cate.name_jp %>|<%= cate.name_en %>
-                    </option>
-                  <% end %>
-                </select>
-              </div>
-              <div class="row small-category">
-                <select class="selectpicker small_select" style="font-size:15px;">
-                  <option class="small_first_option"style="font-size:15px;"value="">
-                    小カテゴリー|Sub Category
-                  </option>
-                  <% if !flash["search_sub_id"].nil? %>
-                    <% @category.find(flash["search_big_id"].to_i).smallcategories.each do |s_cate| %>
-                      <option
-                      <% if s_cate.id == flash["search_sub_id"] %>
-                        selected
-                      <% end %>
-                      class="small_select"id="<%= s_cate.id %>"value="<%= s_cate.id %>">
-                        <%= s_cate.name_jp %>|<%= s_cate.name_en %>
-                      </option>
-                    <% end %>
-                  <% end %>
-                </select>
-              </div>
+    <div class="panel panel-warning make_thread_category">
+      <div class='make_content panel-body'>
+        <div class="row">
+          <div class="select_category_title">
+            <div class="jp">
+              カテゴリー選択
             </div>
-            <div class="col-sm-7">
-              <div class="option_category_search"style="display:none">
-                <%= form_tag('/search/inside', method: :post) do %>
-                  <div class="input-group category_search">
-                    <span class="input-group-btn">
-                      <%= button_tag type:"submit",class: "search btn btn-default" do %>
-                        <span class="glyphicon glyphicon-search"></span>
-                      <% end %>
-                    </span>
-                    <%= text_field_tag :search_text ,"", class:"form-control",placeholder:"Search Categories / カテゴリーを検索" %>
+            Category Select
+          </div>
+          <button type="button" class="category_modal_open btn btn-primary" data-toggle="modal" data-target="#category_modal">
+            <div class="jp">
+              カテゴリーを選ぶ
+            </div>
+            Choose category
+          </button>
+        </div>
+        <input class="small_select"type="text"value=""style="display:none">
+        <div class="now_category">
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-warning make_thread_category">
+      <div class="flag_show">
+        <div class="flag_image">
+          <%= image_tag "/english.png", class: "image" %>
+        </div>
+        <div class="flag_image flag_jp">
+          <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
+        </div>
+      </div>
+      <div class="panel-body content_cover">
+        <div class="title_input_name">
+          <div class="sub_jp">
+            タイトル
+          </div>
+          <div class="main_en">
+            Title
+          </div>
+        </div>
+        <div class="title_input">
+          <input id="title"class="form-control form_lang en_data_title"id="title" rows="2" cols="65">
+          <input id="title"class="form-control form_lang jp_data_title"id="title" rows="2" cols="65">
+        </div>
+      </div>
+      <div class="panel-body content_cover">
+        <div class="content_input_name">
+          <div class="sub_jp">
+            内容
+          </div>
+          <div class="main_en">
+            Content
+          </div>
+        </div>
+        <div class="content_input">
+          <textarea id="content"class="content_input_form form-control form_lang en_data_content" rows="3" cols="65"></textarea>
+          <textarea id="content"class="content_input_form form-control form_lang jp_data_content" rows="3" cols="65"></textarea>
+        </div>
+      </div>
+      <div class="post_footer">
+        <div class="glyphicon glyphicon-comment picture_send"></div>
+        <div class="post_text">
+          <div class="float_jp">
+             投稿
+          </div>
+          Post
+        </div>
+        <button type="button" class="post_button btn btn-primary words_post_button"id="en">
+          <div class="button_text">
+            <div class="float_jp">
+              書き込み
+            </div>
+            Write
+          </div>
+          <%= image_tag "/english.png", class: "image picture_send" %>
+        </button>
+        <button type="button" class="post_button btn btn-primary words_post_button"id="enjp">
+          <div class="button_text">
+            <div class="float_jp">
+              書き込み
+            </div>
+            Write
+          </div>
+          <%= image_tag "/english.png", class: "image picture_send" %>
+          <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+        </button>
+        <button type="button" class="post_button btn btn-primary words_post_button"id="jp">
+          <div class="button_text">
+            <div class="float_jp">
+               書き込み
+            </div>
+            Write
+          </div>
+          <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+        </button>
+      </div>
+    </div>
+    <div class="modal fade category_modal" id="category_modal" tabindex="-1">
+    	<div class="modal-dialog"style="width:90vw">
+    		<div class="modal-content">
+    			<div class="modal-body">
+            <div class="panel panel-warning all_category_list">
+              <div class="panel-body category_content">
+                <% @category.each do |cate| %>
+                  <div class="bigcategory_only">
+                    <div id="<%= cate.id %>"class="category_title">
+                      <div class="cate_icon">
+                        <div class="change_icon glyphicon glyphicon-chevron-down"></div>
+                      </div>
+                      <div class="cate_name">
+                        <div class="float_jp">
+                          <%= cate.name_jp %>
+                        </div>
+                        <%= cate.name_en %>
+                      </div>
+                    </div>
                   </div>
                 <% end %>
-                <div class="search_explain">
-                  <div class="en">
-                    You can search the nearest category title.
+              </div>
+              <div class="panel-body category_all_content row">
+                <% @category.each do |cate| %>
+                  <div class="panel panel-warning category_panel<%= cate.id %>">
+                    <div class="bigcategory_add panel-heading">
+                      <div class="category_title panel-title">
+                        <div class="float_jp">
+                          <%= cate.name_jp %>
+                        </div>
+                        <%= cate.name_en %>
+                      </div>
+                    </div>
+                    <ul class="smallcategory panel-body">
+                      <% cate.smallcategories.each do |s_cate| %>
+                        <li class="text col-sm-4">
+                          <div class="select_category_url"id="<%= s_cate.id %>"name="<%=s_cate.name_jp%>"value="<%=s_cate.name_en%>">
+                            <div class="float_jp">
+                              <%= s_cate.name_jp %>
+                            </div>
+                            <%= s_cate.name_en %>
+                          </div>
+                        </li>
+                      <% end %>
+                    </ul>
                   </div>
-                  <div class="jp">
-                    最も近いカテゴリーを検索できます。
-                  </div>
-                </div>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="panel panel-warning make_thread_category">
-        <div class="flag_show">
-          <div class="flag_image">
-            <%= image_tag "/english.png", class: "image" %>
-          </div>
-          <div class="flag_image flag_jp">
-            <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
-          </div>
-        </div>
-        <div class="panel-body content_cover">
-          <div class="title_input_name">
-            <div class="sub_jp">
-              タイトル
-            </div>
-            <div class="main_en">
-              Title
-            </div>
-          </div>
-          <div class="title_input">
-            <input id="title"class="form-control form_lang en_data_title"id="title" rows="2" cols="65">
-            <input id="title"class="form-control form_lang jp_data_title"id="title" rows="2" cols="65">
-          </div>
-        </div>
-        <div class="panel-body content_cover">
-          <div class="content_input_name">
-            <div class="sub_jp">
-              内容
-            </div>
-            <div class="main_en">
-              Content
-            </div>
-          </div>
-          <div class="content_input">
-            <textarea id="content"class="content_input_form form-control form_lang en_data_content" rows="3" cols="65"></textarea>
-            <textarea id="content"class="content_input_form form-control form_lang jp_data_content" rows="3" cols="65"></textarea>
-          </div>
-        </div>
-        <div class="post_footer">
-          <div class="glyphicon glyphicon-comment picture_send"></div>
-          <div class="post_text">
-            <div class="float_jp">
-               投稿
-            </div>
-            Post
-          </div>
-          <button type="button" class="post_button btn btn-primary words_post_button"id="en">
-            <div class="button_text">
-              <div class="float_jp">
-                書き込み
-              </div>
-              Write
-            </div>
-            <%= image_tag "/english.png", class: "image picture_send" %>
-          </button>
-          <button type="button" class="post_button btn btn-primary words_post_button"id="enjp">
-            <div class="button_text">
-              <div class="float_jp">
-                書き込み
-              </div>
-              Write
-            </div>
-            <%= image_tag "/english.png", class: "image picture_send" %>
-            <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
-          </button>
-          <button type="button" class="post_button btn btn-primary words_post_button"id="jp">
-            <div class="button_text">
-              <div class="float_jp">
-                 書き込み
-              </div>
-              Write
-            </div>
-            <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
-          </button>
-        </div>
-      </div>
+    </div>
   </div>
 <% else %>
   <div class="panel panel-warning make_thread_category not_logined_cover">
@@ -189,29 +187,16 @@
 <% end %>
 
 <script type="text/javascript">
-  $(function(){
-    $(".make_thread_cover .big_select").multilineSelectmenu({
-      change:function(event,data){
-        id = parseInt(data.item.value);
-        var html_text = "";
-        for(var i = 0;i < gon.subcategory.length;i++){
-          if(gon.subcategory[i].bigcategory_id == id){
-            html_text += "<option class='add_option'value='"+ gon.subcategory[i].id +"'>"
-              +gon.subcategory[i].name_jp+"|"+gon.subcategory[i].name_en+"</option>"
-          }
-        }
-        $(".small_select").append(html_text);
-        $(".small_first_option").html("小カテゴリー|Sub Category");
-        $(".small_select").multilineSelectmenu('destroy');
-        $(".small_select").multilineSelectmenu();
-      }
-    });
-
-    $(".make_thread_cover .small_select").multilineSelectmenu();
-    $(".make_thread_cover .small-category .ui-selectmenu-button").on("click",function(){
-      if($('.small_select').length == 1){
-        alert("Please Select Category At First(Not Sub Category) \n初めに大カテゴリーを選択してください");
-      }
-    });
+  $(".category_title").on("click",function(){
+    var scroll_place = $(".category_panel"+$(this).attr("id")).offset().top;
+    scroll_place -= 10;
+    $("#category_modal").animate({scrollTop:scroll_place},"normal");
   });
+  $(".select_category_url").on("click",function(){
+    //name : jp
+    //value : en
+    $('.make_thread_category .small_select').val(this.id)
+    $(".category_modal").modal('hide')
+    $(".now_category").html("<div class='add_category'>" + $(this).attr("value") + "</div><div class='add_category'>＞　" + $(this).attr("name") + "</div>")
+  })
 </script>

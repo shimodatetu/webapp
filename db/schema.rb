@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_04_30_001020) do
     t.string "image"
     t.integer "user_id"
     t.integer "group_id"
+    t.binary "photo", limit: 1048576
+    t.string "file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,7 +89,8 @@ ActiveRecord::Schema.define(version: 2019_04_30_001020) do
     t.string "email"
     t.string "country"
     t.string "gender"
-    t.string "image"
+    t.binary "photo", limit: 1048576
+    t.string "file_name"
     t.string "profile_en"
     t.string "profile_jp"
     t.string "password_digest"

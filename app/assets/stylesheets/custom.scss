@@ -103,7 +103,9 @@ body{
     margin-left: 0px!important;
   }
   .make_content{
-    margin-bottom:50px;
+    .category_modal_open{
+      display:block;
+    }
   }
   .post_form_cover_en{
     width:90%!important;

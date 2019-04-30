@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :country
       t.string :gender
-      t.string :image
+      t.binary :photo, :limit => 1.megabyte
+      t.string :file_name
       t.string :profile_en
       t.string :profile_jp
       t.string :password_digest

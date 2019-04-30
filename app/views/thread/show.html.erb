@@ -43,7 +43,7 @@
       <label for="file_send"class="image_send_button btn btn-prmary image_post_button">
         <div class="glyphicon glyphicon-picture picture_send"></div>
       </label>
-      <%= f.file_field :image,:id => "file_send", :class => "post_file", :style => "display:none"%>
+      <%= f.file_field :photo,:id => "file_send", :class => "post_file", :style => "display:none"%>
       <input type="hidden"id="group" name="group" value="<%= params[:id] %>">
       <%= f.hidden_field :group_id,value: params[:id] %>
       <button type="submit"class="img_post"style="display:none"></button>

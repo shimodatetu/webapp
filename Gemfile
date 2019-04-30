@@ -21,7 +21,7 @@ gem 'bcrypt'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'bootstrap-sass'
-gem "carrierwave"
+gem 'carrierwave'
 gem 'gon'
 gem 'dropzonejs-rails'
 gem 'google-cloud-translate'

@@ -1,13 +1,12 @@
 App.thread = App.cable.subscriptions.create "ThreadChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
-
   disconnected: ->
     # Called when the subscription has been terminated by the server
   received: (data) ->
     local = '/thread/show/'+data['id']
     $('#groups').append data['message']
-    if data['user_id'] == gon.current_user.id
+    if $(".user_login").attr("id") == "true"
       location.href=local
     # Called when there's incoming data on the websocket for this channel
   make: (lang, title_jp,mes_jp,title_en,mes_en,category) ->

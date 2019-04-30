@@ -3,10 +3,10 @@
   <div class="profile">
     <div class="profile_sub"style="display:inline-block">
       <div class="profile_picture">
-        <% if current_user.image.url.nil? %>
+        <% if current_user.photo.nil? %>
           <%= image_tag("/user.png", :class => "group_img") %>
         <% else %>
-          <%= image_tag(current_user.image.url, :class => "group_img") %>
+          <%= image_tag show_image_profile_path(current_user), :class => "group_img" %>
         <% end %>
         <%= form_for current_user,url: "/profile" do |f| %>
           <%= button_tag type: 'button',class:"profile_picture_change" do %>
@@ -17,7 +17,7 @@
               <div class="en">
                 Change Photo
               </div>
-              <%= f.file_field :image,id:"image",class:"profile_image_input",style:"display:none" %>
+              <%= f.file_field :photo,id:"image",class:"profile_image_input",style:"display:none" %>
             </label>
           <% end %>
           <%= f.submit "send",id:"image_submit",style:"display:none" %>

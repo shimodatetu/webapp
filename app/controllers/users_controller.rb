@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-
   def index
     @user = User.new
   end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -13,7 +11,6 @@ class UsersController < ApplicationController
       redirect_to '/account_activations/check'
     else
       flash.now[:failed_jp] = "登録に失敗しました"
-      p "---------------------------------------"
       if @user.errors.any?
         @user.errors.full_messages.each do |message|
           flash.now[:failed_en] = message

@@ -26,7 +26,7 @@ $(function(){
   }
   var options ={"backdrop":"static"}
   $(".thread_page .words_post_button").click(function(){
-    if(gon.login){
+    if($(".user_login").attr("id") == "true"){
       var options = {"backdrop":"static"};
       $('#sampleModal-'+this.id).modal(options);
     }

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'account_activations/check'
   get 'password_resets/new'
   get 'password_resets/new_check'
@@ -28,9 +27,25 @@ Rails.application.routes.draw do
   get '/profile/:id' => 'profile#show'
   patch '/profile', to: 'profile#update'
   get '/groups',to:'groups#new'
+  post 'profile/send_img'
+  get 'users/index'
   resources :users
-
-
+  resources :profile
+  resources :profile do
+    member do
+      get "show_image"
+    end
+  end
+  resources :thread do
+    member do
+      get "show_post_image"
+    end
+  end
+  resources :pv_page do
+    member do
+      get "show_image"
+    end
+  end
   get    '/login',   to: 'sessions#index'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
