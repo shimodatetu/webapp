@@ -9,6 +9,12 @@ class ProfileController < ApplicationController
     else
       render :show
     end
+    photo = image_params[:photo]
+    image_params = {}
+    if photo != nil
+      image_params[:photo] = photo.read
+    end
+    @image = Image.new(image_params)
   end
   private
   def user_params

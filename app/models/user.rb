@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :image
   before_create :create_activation_digest
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :posts
