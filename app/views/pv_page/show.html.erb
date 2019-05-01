@@ -29,8 +29,10 @@
   <div class="pvpage_head">
   </div>
   <div class="thread_all"style="padding-top:10px;">
+    <% there_be = false %>
     <% @groups.order(seen_num: "DESC").each do |group| %>
       <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
+        <% there_be = true %>
         <div class="thread_cover">
           <div class="group_user_cover">
             <div class="group_img_cover">
@@ -59,6 +61,7 @@
                 </div>
               </div>
               <div class="post_content_position_space">
+                <span class="slider_icon glyphicon glyphicon-resize-horizontal"></span>
               </div>
               <div class="post_content_position jp_position">
                 <div class="thread_title">
@@ -76,6 +79,16 @@
           </div>
         </div>
       <% end %>
+    <% end %>
+    <% if there_be == false %>
+      <div class="not_found">
+        <div class="en">
+          There is no thread created.
+        </div>
+        <div class="jp">
+          まだスレッドが作成されていません。
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

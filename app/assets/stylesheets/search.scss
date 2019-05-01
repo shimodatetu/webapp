@@ -12,11 +12,12 @@
     padding-top:8px;
     margin-left:-5%;
     padding-left:5%;
+    z-index:5;
     border-bottom: solid thin #BF8454;
     .lang_bar{
       padding-left:calc(10% + 80px);
-      padding-top:8px;
       padding-bottom:8px;
+      z-index:200;
       .slider{
         width:calc(10% + 250px);
         display: inline-block;
@@ -61,11 +62,12 @@
       }
     }
   }
-  .search_form{
+  .search_form_top{
     margin-top:50px;
     font-weight: bold;
     margin-left:20px;
     padding-bottom:10px;
+    display:table;
     .form_input{
       font-size:16px;
       height:40px;
@@ -294,9 +296,10 @@
             width:calc(50% - 15px);
           }
           .post_content_position_space{
-            width:10px;
+            width:15px;
+            font-size:15px;
             display: inline-block;
-            margin-top: 30px;
+            vertical-align: -webkit-baseline-middle;
             .img{
               width:20px;
               height:20px;
@@ -327,6 +330,14 @@
           }
         }
       }
+    }
+  }
+  .not_found{
+    font-size:20px;
+    margin-left:20px;
+    .jp{
+      margin-top:20px;
+      margin-left:-5px;
     }
   }
 }

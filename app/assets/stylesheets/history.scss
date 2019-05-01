@@ -2,6 +2,7 @@
   margin-left:20px;
   .nav-tabs{
     position: fixed;
+    z-index:5;
     width:70%;
     background: #fffbe6;
     margin-top:-20px;
@@ -84,6 +85,13 @@
         color:#000000;
       }
     }
+    .post_image{
+      margin-top:10px;
+      //margin-left:calc(50% - 75px);
+      margin-left:40px;
+      max-width:180px;
+      max-height:200px;
+    }
     .thread_content{
       display: inline-block;
       vertical-align: top;
@@ -120,8 +128,9 @@
         }
         .post_content_position_space{
           display: inline-block;
-          width:10px;
-          margin-top: 20px!important;
+          width:15px;
+          font-size:15px;
+          vertical-align: -webkit-baseline-middle;
           .img{
             width:20px;
             height:20px;
@@ -138,7 +147,6 @@
             margin-top:5px;
           }
           .text_down{
-            margin-top:10px;
           }
         }
       }
@@ -157,9 +165,10 @@
     }
   }
   .lang_bar_cover{
+    z-index:5;
     background: #ffffff;
     width:70%;
-    margin-top:56px;
+    margin-top:54px;
     position:fixed;
     border: solid thin #ddd;
     border-top:none;

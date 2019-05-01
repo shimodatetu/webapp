@@ -243,6 +243,7 @@
 }
 .slider-track-low,
 .slider-track-high {
+  -webkit-box-shadow: inset -1px 0px 3px rgba(0, 0, 0, 0.4)!important;
   position: absolute;
   background: transparent;
   -webkit-box-sizing: border-box;

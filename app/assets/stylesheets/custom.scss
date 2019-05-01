@@ -19,7 +19,7 @@ body{
   }
   .profile{
     .lang_bar_cover{
-      width:400px!important;
+      width:70%!important;
     }
   }
   .lang_bar_cover{
@@ -27,24 +27,6 @@ body{
   }
 }
 @media screen and (max-width: 800px){
-  .nav-link{
-    font-size: calc(4vw - 3px)!important;
-    .jp{
-      font-size: calc(3vw - 3px)!important;
-    }
-  }
-  .profile_sub{
-    width:25%!important;
-    .profile_picture{
-      width:100%!important;
-      .group_img{
-        width:100%!important;
-      }
-    }
-    .profile_contents_change{
-      width:100%!important;
-    }
-  }
   .login_page{
     width:99%!important;
     .input-groups{
@@ -144,62 +126,21 @@ body{
     }
   }
   .profile{
-    .profile_picture .group_img{
-      height:18vw!important;
-    }
-    .profile_title .title{
-      .jp{
-        font-size:calc(3vw - 3px)!important;
-      }
-      font-size:calc(5vw - 3px)!important;
-    }
-    .content_name{
-      .en{
-        font-size:calc(5vw - 3px);
-      }
-      .jp{
-        font-size:calc(3vw - 3px)!important;
-      }
-    }
-    .tab-content{
-      padding-top:calc(14vw + 20px)!important;
-    }
-    .profile_picture_change{
-      .en{
-        font-size: calc(4vw - 3px)!important;
-        margin-top: 1px!important;
-      }
-      .jp{
-        font-size: calc(3vw - 3px)!important;
-      }
-    }
-    .profile_contents_button{
-      .en{
-        font-size: calc(4vw - 2px)!important;
-        margin-top: 1px!important;
-      }
-      .jp{
-        font-size: calc(3vw - 3px)!important;
-      }
-    }
-    .en_country{
-      margin-left: 10px!important;
-    }
     .lang_bar_cover{
       width:70%!important;
-      margin-top:calc(17px + 7vw)!important;
       .lang_bar{
         .slider{
-          width:calc(65%)!important;
+          width:calc(60%)!important;
         }
       }
       .jp_country{
         margin-left: 10px!important;
       }
       .country_flag{
-        width:7vw;
-        height:5vw;
+        height: 28px;
+        width: 40px;
         margin-right:1vw!important;
+        margin-left:1vw!important;
         .image{
           width:100%!important;
           height:100%!important;
@@ -207,6 +148,7 @@ body{
       }
     }
   }
+
   .lang_bar_cover{
     width:105%!important;
     .en_country{
@@ -257,5 +199,90 @@ body{
   }
   .image_post_button{
     width:50px!important;
+  }
+  .nav-link{
+    font-size: calc(4vw - 3px)!important;
+    .jp{
+      font-size: calc(3vw - 3px)!important;
+    }
+  }
+  .profile_sub{
+    width:25%!important;
+    .profile_picture{
+      width:100%!important;
+      .group_img{
+        width:100%!important;
+      }
+    }
+    .profile_contents_change{
+      width:100%!important;
+    }
+  }
+  .profile{
+    .profile_main{
+      margin-left:calc(30% - 20px)!important;
+    }
+    .profile_picture .group_img{
+      height:18vw!important;
+    }
+    .profile_title .title{
+      .jp{
+        font-size:calc(3vw - 3px)!important;
+      }
+      font-size:calc(5vw - 3px)!important;
+    }
+    .content_name{
+      .en{
+        font-size:calc(5vw - 3px);
+      }
+      .jp{
+        font-size:calc(3vw - 3px)!important;
+      }
+    }
+    .tab-content{
+      padding-top:calc(14vw + 20px)!important;
+    }
+    .profile_picture_change{
+      .en{
+        font-size: calc(4vw - 3px)!important;
+        margin-top: 1px!important;
+      }
+      .jp{
+        font-size: calc(3vw - 3px)!important;
+      }
+    }
+    .profile_contents_button{
+      .en{
+        font-size: calc(4vw - 2px)!important;
+        margin-top: 1px!important;
+      }
+      .jp{
+        font-size: calc(3vw - 3px)!important;
+      }
+    }
+    .en_country{
+      margin-left: 10px!important;
+    }
+    .lang_bar_cover{
+      width:70%!important;
+      margin-top:calc(16px + 7vw)!important;
+      .lang_bar{
+        .slider{
+          width:calc(65%)!important;
+        }
+      }
+      .jp_country{
+        margin-left: 10px!important;
+      }
+      .country_flag{
+        width:7vw;
+        height:5vw;
+        margin-right:1vw!important;
+        .image{
+          width:100%!important;
+          height:100%!important;
+        }
+      }
+    }
   }
 }

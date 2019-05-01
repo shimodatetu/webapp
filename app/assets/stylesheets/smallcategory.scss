@@ -232,9 +232,10 @@
             width:calc(50%);
           }
           .post_content_position_space{
-            width:10px;
+            width:15px;
+            font-size:15px;
             display: inline-block;
-            margin-top: 30px;
+            vertical-align: -webkit-baseline-middle;
             .img{
               width:20px;
               height:20px;
@@ -265,6 +266,14 @@
           }
         }
       }
+    }
+  }
+  .not_found{
+    font-size:20px;
+    margin-left:20px;
+    .jp{
+      margin-top:20px;
+      margin-left:-5px;
     }
   }
 }
