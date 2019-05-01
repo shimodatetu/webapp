@@ -293,11 +293,83 @@
       }
     }
   }
+  .add_button{
+    position: sticky;
+    padding-left: calc(100% - 250px);
+    top: calc(100vh - 100px);
+    z-index:200;
+    .scroll_button{
+      display: inline-block;
+      z-index:100;
+      background: #fff0a0;
+      border: solid thin #cd853f75;
+      color:#cd853f;
+      padding-left:20px;
+      padding-right:20px;
+      vertical-align:top;
+      margin-top: 5px;
+      margin-right:1vw;
+      .image{
+        width:28px;
+        height:20px;
+        margin-top:-15px;
+      }
+      .picture_send{
+        display: inline-block;
+        margin-right:0px;
+        width:28px;
+        margin-left:5px!important;
+      }
+      .button_text{
+        display: inline-block;
+        .float_jp{
+          font-size:11px;
+        }
+      }
+    }
+    .close_button{
+      display: inline-block;
+      z-index:100;
+      background: #fff;
+      border: solid thin #cd853f75;
+      color:#cd853f;
+      padding-left:20px;
+      padding-right:20px;
+      vertical-align:top;
+      margin-top: 5px;
+      margin-right:1vw;
+      .image{
+        width:28px;
+        height:20px;
+        margin-top:-15px;
+      }
+      .picture_send{
+        display: inline-block;
+        margin-right:0px;
+        width:28px;
+        margin-left:5px!important;
+      }
+      .button_text{
+        display: inline-block;
+        .float_jp{
+          font-size:11px;
+        }
+      }
+    }
+  }
+  .select-title{
+    font-weight: inherit;
+    margin:5px;
+    font-size:22px;
+    .float_jp{
+      font-size:14px;
+    }
+  }
   .all_category_list{
     width:100%;
-    margin-left:10px;
+    margin-top:-50px;
     .category_content{
-      padding-left:30px;
+      padding-left:20px;
       border-top-left-radius:10px;
       border-top-right-radius:10px;
       border-bottom:2px solid #faebcc;
@@ -327,6 +399,9 @@
             margin-top:15px;
             margin-right:5px;
             float:left;
+            .change_icon{
+              position:inherit;
+            }
           }
         }
       }

@@ -114,7 +114,33 @@
     <div class="modal fade category_modal" id="category_modal" tabindex="-1">
     	<div class="modal-dialog"style="width:90vw">
     		<div class="modal-content">
+          <div class="modal-header">
+            <h5 class="select-title">
+              <div class="float_jp">
+                 カテゴリー選択
+              </div>
+              Category Select
+            </h5>
+          </div>
     			<div class="modal-body">
+            <div class="add_button">
+              <button type="button" class="scroll_button btn btn-primary">
+                <div class="button_text">
+                  <div class="float_jp">
+                     上へスクロール
+                  </div>
+                  Scroll Top
+                </div>
+              </button>
+              <button type="button" class="close_button btn btn-primary" data-dismiss="modal" aria-label="Close">
+                <div class="button_text">
+                  <div class="float_jp">
+                     閉じる
+                  </div>
+                  Close
+                </div>
+              </button>
+            </div>
             <div class="panel panel-warning all_category_list">
               <div class="panel-body category_content">
                 <% @category.each do |cate| %>
@@ -187,16 +213,5 @@
 <% end %>
 
 <script type="text/javascript">
-  $(".category_title").on("click",function(){
-    var scroll_place = $(".category_panel"+$(this).attr("id")).offset().top;
-    scroll_place -= 10;
-    $("#category_modal").animate({scrollTop:scroll_place},"normal");
-  });
-  $(".select_category_url").on("click",function(){
-    //name : jp
-    //value : en
-    $('.make_thread_category .small_select').val(this.id)
-    $(".category_modal").modal('hide')
-    $(".now_category").html("<div class='add_category'>" + $(this).attr("value") + "</div><div class='add_category'>＞　" + $(this).attr("name") + "</div>")
-  })
+
 </script>
