@@ -45,8 +45,10 @@
     <% if params[:id] == "2" %>
       <%= "active" %>
     <% end %>" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <% there_be = false %>
       <% current_user.groups.each do |group| %>
         <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
+          <% there_be = true %>
           <div class="thread_cover">
             <div class="thread_content">
               <div class="post_content_cover">
@@ -82,17 +84,28 @@
           </div>
         <% end %>
       <% end %>
+      <% if there_be == false %>
+        <div class="not_found">
+          <div class="en">
+            You haven't made any thread.
+          </div>
+          <div class="jp">
+            あなたはまだスレッドを作成していません。
+          </div>
+        </div>
+      <% end %>
     </div>
     <div class="tab-pane fade
     <% if params[:id] == "3" %>
       <%= "active" %>
     <% end %>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <% show_group_id = -1 %>
+      <% there_be = false %>
       <% current_user.posts.order(:group_id).each do |post| %>
         <% if show_group_id != post.group_id %>
           <% show_group_id = post.group_id %>
-
           <%= link_to("/thread/show/#{post.group_id}" , class:"thread_link") do %>
+            <% there_be = true %>
             <div class="panel-title"style="display:inline-block">
               <div class="float_jp">
                 <%= post.group.title_jp %>
@@ -136,6 +149,16 @@
                 </div>
               <% end %>
             </div>
+          </div>
+        </div>
+      <% end %>
+      <% if there_be == false %>
+        <div class="not_found">
+          <div class="en">
+            You haven't post any coment.
+          </div>
+          <div class="jp">
+            まだあなたは投稿をしていません。
           </div>
         </div>
       <% end %>
