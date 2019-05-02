@@ -246,7 +246,9 @@
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 1;
+            padding-left:10px;
+            padding-right:10px;
             .post_content_text{
               margin:auto;
               margin-top:5px;
