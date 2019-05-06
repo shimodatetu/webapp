@@ -2,10 +2,18 @@
 <div class="category_list_all_cover">
   <div class="category_head">
     <div class="panel-title">
-      <div class="float_jp">
-        カテゴリ一覧
+      <div class="panel-title-text">
+        <div class="float_jp">
+          カテゴリ一覧
+        </div>
+        Categoru List
       </div>
-      Category List
+      <%= link_to '/groups', data: {"turbolinks"=>false},class:"thread_post_button btn btn-default" do %>
+        <div class="jp">
+          スレッド作成
+        </div>
+        Make Thread
+      <% end %>
     </div>
   </div>
   <div class="panel panel-warning big_category_list all_category_list">

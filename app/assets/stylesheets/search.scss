@@ -146,6 +146,21 @@
     .float_jp{
       font-size:12px;
     }
+    .panel-title-text{
+      display:inline-block;
+      vertical-align: bottom;
+    }
+    .thread_post_button{
+      display:inline-block;
+      vertical-align: bottom;
+      margin-left:calc(100% - 300px);
+      font-size:18px;
+      color:#fff;
+      background:rgb(181, 206, 255);;
+      .jp{
+        font-size:12px;
+      }
+    }
   }
   .pvpage_head{
     border-top:3px solid #fff2a0;

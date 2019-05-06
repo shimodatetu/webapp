@@ -65,12 +65,29 @@
   .panel-title{
     margin-top:50px;
     display: inline-block;
+    width:100%;
     margin-bottom:10px;
     padding-left:20px;
     font-size:20px;
     color:#BF8454;
     .float_jp{
       font-size:12px;
+    }
+    .panel-title-text{
+      display:inline-block;
+      vertical-align: bottom;
+      margin-top:10px;
+    }
+    .thread_post_button{
+      display:inline-block;
+      vertical-align: bottom;
+      float:right;
+      font-size:18px;
+      color:#fff;
+      background:#2e52bd;
+      .jp{
+        font-size:12px;
+      }
     }
   }
   .pvpage_head{

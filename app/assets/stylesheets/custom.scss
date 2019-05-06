@@ -2,7 +2,7 @@
   padding-top:70px;
   padding-bottom:450px;
   padding-left:calc(5%);
-  width:calc(30% + 500px);
+  width:calc(70%);
   display: inline-block;
   .obj-fit-img {
     object-fit: cover;
@@ -14,9 +14,6 @@ body{
   background:#fff0a042;
 }
 @media screen and (max-width: 600px){
-  .main_content_cover{
-    width:680px;
-  }
   .profile{
     .lang_bar_cover{
       width:70%!important;
@@ -28,7 +25,6 @@ body{
 }
 @media screen and (max-width: 800px){
   .login_page{
-    width:99%!important;
     .input-groups{
       margin-left: 20px!important;
       margin-right: 20px!important;
@@ -46,7 +42,7 @@ body{
     display: none!important;
   }
   .main_content_cover{
-    width:100%!important;
+    width:560px!important;
     padding-left: 5px!important;
   }
   .profile_history{
@@ -189,6 +185,12 @@ body{
 }
 
 @media screen and (max-width: 480px){
+  .main_content_cover{
+    width:100%!important;
+  }
+  .login_page{
+    width:99vw!important;
+  }
   .words_post_button {
     padding-top:20px!important;
     padding-left:5px!important;

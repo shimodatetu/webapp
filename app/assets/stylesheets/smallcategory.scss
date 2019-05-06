@@ -78,6 +78,23 @@
     .content{
       display:inline-block;
     }
+    .panel-title-text{
+      display:inline-block;
+      vertical-align: bottom;
+      margin-top:10px;
+      color:#bf8454;
+    }
+    .thread_post_button{
+      display:inline-block;
+      vertical-align: bottom;
+      float:right;
+      font-size:18px;
+      color:#fff;
+      background:#2e52bd;
+      .jp{
+        font-size:12px;
+      }
+    }
   }
   .panel-title{
     display: inline-block;

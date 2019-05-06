@@ -10,7 +10,6 @@
   .make_header{
     font-size: 20px;
     margin-left:10px;
-    width:800px;
     .make_title{
       background-color: rgba(255,235,110,1);
     }
@@ -26,11 +25,28 @@
       .float_jp{
         font-size:12px;
       }
+      .panel-title-text{
+        display:inline-block;
+        vertical-align: bottom;
+      }
+      .thread_post_button{
+        display:inline-block;
+        vertical-align: bottom;
+        margin-left:calc(100% - 300px);
+        font-size:18px;
+        color:#fff;
+        background:rgb(181, 206, 255);;
+        .jp{
+          font-size:12px;
+        }
+      }
     }
   }
   .make_thread_category{
     margin-left:10px;
-    width:800px;
+    font-size:20px;
+    margin-left:10px;
+    border:1px solid #faebcc;
     ul li {
       list-style: none;
     }
@@ -125,10 +141,6 @@
         margin-left: 190px;
       }
     }
-    font-size:20px;
-    margin-left:10px;
-    width:800px;
-    border:1px solid #faebcc;
     .sub_jp{
       font-size:12px;
     }
@@ -460,7 +472,10 @@
 }
 
 .not_logined_cover{
-  margin-left: calc(180% - 1150px);
+
+  position:absolute;
+  vertical-align: center;
+  margin-left:calc(50% - 225px);
   width:450px;
   .not_logined{
     font-size:16px;

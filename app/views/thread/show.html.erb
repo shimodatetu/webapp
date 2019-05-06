@@ -21,10 +21,18 @@
   </div>
 
   <div class="panel-title"style="display:inline-block">
-    <div class="float_jp">
-      <%= thread.title_jp %>
+    <div class="panel-title-text">
+      <div class="float_jp">
+        <%= thread.title_jp %>
+      </div>
+      <%= thread.title_en %>
     </div>
-    <%= thread.title_en %>
+    <%= link_to '/groups', data: {"turbolinks"=>false},class:"thread_post_button btn btn-default" do %>
+      <div class="jp">
+        スレッド作成
+      </div>
+      Make Thread
+    <% end %>
   </div>
 
   <div class="pvpage_head">
