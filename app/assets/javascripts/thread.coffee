@@ -1,5 +1,4 @@
 # Dropzone.autoDiscover = false
-# console.log("testaaaa")
 # new Dropzone '#upload-dropzone',
 #   uploadMultiple: false
 #   paramName: 'post[image]'

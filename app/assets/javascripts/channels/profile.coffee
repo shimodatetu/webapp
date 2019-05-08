@@ -96,7 +96,6 @@ translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,
   fetch(url, settings).then((res) ->
     res.text()
   ).then (text) ->
-    console.log(text)
     ary = text.split('"');
     trans_text = ary[7]#7番はテキスト
     if lang == "ja"

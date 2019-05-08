@@ -53,16 +53,10 @@ class PasswordResetsController < ApplicationController
 
     # 有効なユーザーかどうか確認する
     def valid_user
-      p "===="
-      p "===="
-      p "===="
       p @user
       p @user.activated?
       p params[:id]
       p @user.authenticated?(:reset, params[:id])
-      p "===="
-      p "===="
-      p "===="
       unless (@user && @user.activated? &&
               @user.authenticated?(:reset, params[:id]))
         redirect_to root_url
