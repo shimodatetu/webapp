@@ -1,40 +1,6 @@
 <% smallcategory_id = params[:id].to_i %>
 <% smallcategory =  @categories.find(smallcategory_id)%>
 <% lang = session["lang"] %>
-<% thread_page_num = 10 %>
-<% page_show_max = 10 %>
-<% group_num = smallcategory.groups.all.count %>
-<% page_num = group_num / thread_page_num %>
-<% if group_num % thread_page_num != 0 %>
-  <% page_num += 1 %>
-<% end %>
-<% page_id = params[:id].to_i %>
-<% if page_id.nil? || page_id.to_i > page_num || page_id.to_i < 1 %>
-  <% page_id = 1 %>
-<% end %>
-<% start_num = 1 %>
-<% end_num = page_num %>
-<% plus_dot_left = false %>
-<% plus_dot_right = false %>
-<% if page_id + page_show_max / 2 > page_show_max %>
-  <% if page_id + page_show_max / 2 <= page_num %>
-    <% start_num = page_id - page_show_max / 2 + 1 %>
-    <% end_num = page_id + page_show_max / 2 %>
-    <% if start_num != 1 %>
-      <% plus_dot_left = true %>
-    <% end %>
-    <% plus_dot_right = true %>
-  <% else %>
-    <% end_num = page_num %>
-    <% start_num = page_num - page_show_max + 1 %>
-    <% plus_dot_left = true %>
-    <% plus_dot_right = true %>
-  <% end %>
-<% else %>
-  <% if page_num > page_show_max %>
-    <% end_num = page_show_max %>
-  <% end %>
-<% end %>
 
 <div class="smallcategory_search">
   <div class="lang_bar_cover">
@@ -67,7 +33,7 @@
   </div>
   <div class="thread_all"style="padding-top:10px;">
     <% there_be = false %>
-    <% smallcategory.groups.offset(thread_page_num*(page_id - 1)).limit(thread_page_num).each do |group| %>
+    <% smallcategory.groups.offset(@thread_page_num*(@page_id - 1)).limit(@thread_page_num).each do |group| %>
       <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
         <% there_be = true %>
         <div class="thread_cover">
@@ -126,37 +92,48 @@
           このカテゴリーではまだスレッドが作成されていません。
         </div>
       </div>
-    <% end %>
-    <div class="page_button_cover">
-      <% if 1 >= page_id %>
-        <div class="page_button no_push">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </div>
-      <% else %>
-        <%= link_to("/category/smallcategory/#{smallcategory_id}/#{page_id - 1}",class:"page_button ok_push") do %>
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        <% end %>
-      <% end %>
-      <% for num in 1..page_num do %>
-        <% if num == page_id %>
-          <div class="page_button now_page">
-            <%= num %>
+    <% else %>
+      <div class="page_button_cover">
+        <% if 1 >= @page_id.round %>
+          <div class="page_button no_push">
+            <span class="glyphicon glyphicon-chevron-left"></span>
           </div>
         <% else %>
-          <%= link_to("/category/smallcategory/#{smallcategory_id}/#{num}",class:"page_button") do %>
-            <%= num %>
+          <%= link_to("/category/smallcategory/#{smallcategory_id}/#{@page_id - 1}",class:"page_button ok_push") do %>
+            <span class="glyphicon glyphicon-chevron-left"></span>
           <% end %>
         <% end %>
-      <% end %>
-      <% if page_num <= page_id %>
-        <div class="page_button no_push">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </div>
-      <% else %>
-        <%= link_to("/category/smallcategory/#{smallcategory_id}/#{page_id + 1}",class:"page_button ok_push") do %>
-          <span class="glyphicon glyphicon-chevron-right"></span>
+        <% if @start_num.round != 1 %>
+          <div class="page_button dot_show">
+            ...
+          </div>
         <% end %>
-      <% end %>
-    </div>
+        <% for num in @start_num.round..@end_num.round do %>
+          <% if num == @page_id.round %>
+            <div class="page_button now_page">
+              <%= num %>
+            </div>
+          <% else %>
+            <%= link_to("/category/smallcategory/#{smallcategory_id}/#{num}",class:"page_button page_move") do %>
+              <%= num %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% if @end_num.round != @page_num.round %>
+          <div class="page_button dot_show">
+            ...
+          </div>
+        <% end %>
+        <% if @page_num.round <= @page_id.round %>
+          <div class="page_button no_push">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </div>
+        <% else %>
+          <%= link_to("/category/smallcategory/#{smallcategory_id}/#{@page_id.round+ 1}",class:"page_button ok_push") do %>
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

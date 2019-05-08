@@ -46,7 +46,7 @@
       <%= "active" %>
     <% end %>" id="home" role="tabpanel" aria-labelledby="home-tab">
       <% there_be = false %>
-      <% current_user.groups.each do |group| %>
+      <% current_user.groups.offset(@thread_page_num*(@page_id - 1)).limit(@thread_page_num).each do |group| %>
         <%= link_to("/thread/show/#{group.id}" , class:"thread_link") do %>
           <% there_be = true %>
           <div class="thread_cover">
@@ -93,6 +93,48 @@
             あなたはまだスレッドを作成していません。
           </div>
         </div>
+      <% else %>
+        <div class="page_button_cover">
+          <% if 1 >= @page_id.round %>
+            <div class="page_button no_push">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </div>
+          <% else %>
+            <%= link_to("/profile/#{params[:id]}/#{@page_id - 1}/#{@page_id2}",class:"page_button ok_push") do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            <% end %>
+          <% end %>
+          <% if @start_num.round != 1 %>
+            <div class="page_button dot_show">
+              ...
+            </div>
+          <% end %>
+          <% for num in @start_num.round..@end_num.round do %>
+            <% if num == @page_id %>
+              <div class="page_button now_page">
+                <%= num %>
+              </div>
+            <% else %>
+              <%= link_to("/profile/#{params[:id]}/#{num}/#{@page_id2}",class:"page_button page_move") do %>
+                <%= num %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if @end_num.round != @page_num.round %>
+            <div class="page_button dot_show">
+              ...
+            </div>
+          <% end %>
+          <% if @page_num.round <= @page_id.round || @page_num.round == 1 %>
+            <div class="page_button no_push">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+          <% else %>
+            <%= link_to("/profile/#{params[:id]}/#{@page_id.round + 1}/#{@page_id2}",class:"page_button ok_push") do %>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="tab-pane fade
@@ -101,7 +143,7 @@
     <% end %>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <% show_group_id = -1 %>
       <% there_be = false %>
-      <% current_user.posts.order(:group_id).each do |post| %>
+      <% current_user.posts.offset(@thread_page_num2*(@page_id2 - 1)).limit(@thread_page_num2).each do |post| %>
         <% if show_group_id != post.group_id %>
           <% show_group_id = post.group_id %>
           <%= link_to("/thread/show/#{post.group_id}" , class:"thread_link") do %>
@@ -160,6 +202,48 @@
           <div class="jp">
             まだあなたは投稿をしていません。
           </div>
+        </div>
+      <% else %>
+        <div class="page_button_cover">
+          <% if 1 >= @page_id2.round %>
+            <div class="page_button no_push">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </div>
+          <% else %>
+            <%= link_to("/profile/#{params[:id]}/#{@page_id}/#{@page_id2 - 1}",class:"page_button ok_push") do %>
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            <% end %>
+          <% end %>
+          <% if @start_num2.round != 1 %>
+            <div class="page_button dot_show">
+              ...
+            </div>
+          <% end %>
+          <% for num in @start_num2.round..@end_num2.round do %>
+            <% if num == @page_id2 %>
+              <div class="page_button now_page">
+                <%= num %>
+              </div>
+            <% else %>
+              <%= link_to("/profile/#{params[:id]}/#{@page_id}/#{num}",class:"page_button page_move") do %>
+                <%= num %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if @end_num2.round != @page_num2.round %>
+            <div class="page_button dot_show">
+              ...
+            </div>
+          <% end %>
+          <% if @page_num2.round <= @page_id2.round || @page_num2.round == 1 %>
+            <div class="page_button no_push">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+          <% else %>
+            <%= link_to("/profile/#{params[:id]}/#{@page_id}/#{@page_id2.round + 1}",class:"page_button ok_push") do %>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
     </div>

@@ -5,43 +5,6 @@
 <% thread.seen_num+=1 %>
 <% thread.save %>
 
-<% thread_page_num = 10 %>
-<% page_show_max = 10 %>
-<% group_num = thread.posts.all.count - 1%>
-<% page_num = group_num / thread_page_num %>
-<% if group_num % thread_page_num != 0 %>
-  <% page_num += 1 %>
-<% end %>
-<% page_id = params[:page].to_i %>
-<% if page_id.nil? || page_id.to_i > page_num || page_id.to_i < 1 %>
-  <% page_id = 1 %>
-<% end %>
-<% start_num = 1 %>
-<% end_num = page_num %>
-<% plus_dot_left = false %>
-<% plus_dot_right = false %>
-<% if page_id + page_show_max / 2 > page_show_max %>
-  <% if page_id + page_show_max / 2 <= page_num %>
-    <% if page_id - page_show_max / 2 + 1 < 1 %>
-      <% start_num = 1 %>
-      <% end_num = page_num %>
-    <% else %>
-      <% start_num = page_id - page_show_max / 2 + 1 %>
-      <% end_num = page_id + page_show_max / 2 %>
-    <% end %>
-  <% else %>
-    <% end_num = page_num %>
-    <% if page_num - page_show_max + 1 < 1 %>
-      <% start_num = 1 %>
-    <% else %>
-      <% start_num = page_num - page_show_max + 1 %>
-    <% end %>
-  <% end %>
-<% else %>
-  <% if page_num > page_show_max %>
-    <% end_num = page_show_max %>
-  <% end %>
-<% end %>
 <div class="user_login"id="<%= logged_in? %>"></div>
 <div class="thread_page">
   <div class="lang_bar_cover" data-toggle="tooltip" data-placement="bottom" data-original-title="説明">
@@ -78,25 +41,25 @@
   <div class="thread_all"style="padding-top:10px;">
     <div class="thread_cover_cover">
       <%= render thread.posts.first %>
-      <%= render thread.posts.offset(thread_page_num*(page_id - 1)+1).limit(thread_page_num) %>
+      <%= render thread.posts.offset(@thread_page_num*(@page_id - 1)+1).limit(@thread_page_num) %>
     </div>
     <div class="page_button_cover">
-      <% if 1 >= page_id %>
+      <% if 1 >= @page_id %>
         <div class="page_button no_push">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </div>
       <% else %>
-        <%= link_to("/thread/show/#{params[:id]}/#{page_id - 1}",class:"page_button ok_push") do %>
+        <%= link_to("/thread/show/#{params[:id]}/#{@page_id - 1}",class:"page_button ok_push") do %>
           <span class="glyphicon glyphicon-chevron-left"></span>
         <% end %>
       <% end %>
-      <% if start_num != 1 %>
+      <% if @start_num != 1 %>
         <div class="page_button dot_show">
           ...
         </div>
       <% end %>
-      <% for num in start_num..end_num do %>
-        <% if num == page_id %>
+      <% for num in @start_num.round..@end_num.round do %>
+        <% if num == @page_id.round %>
           <div class="page_button now_page">
             <%= num %>
           </div>
@@ -106,17 +69,17 @@
           <% end %>
         <% end %>
       <% end %>
-      <% if end_num != page_num %>
+      <% if @end_num.round != @page_num.round %>
         <div class="page_button dot_show">
           ...
         </div>
       <% end %>
-      <% if page_num <= page_id %>
+      <% if @page_num.round <= @page_id.round %>
         <div class="page_button no_push">
           <span class="glyphicon glyphicon-chevron-right"></span>
         </div>
       <% else %>
-        <%= link_to("/thread/show/#{params[:id]}/#{page_id + 1}",class:"page_button ok_push") do %>
+        <%= link_to("/thread/show/#{params[:id]}/#{@page_id.round + 1}",class:"page_button ok_push") do %>
           <span class="glyphicon glyphicon-chevron-right"></span>
         <% end %>
       <% end %>

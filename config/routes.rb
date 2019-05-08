@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post "posts",to: "posts#create",as: "posts"
   get '/profile',to: 'profile#show'
   get '/profile/:id' => 'profile#show'
+  get '/profile/:id/:page1/:page2' => 'profile#show'
   patch '/profile', to: 'profile#update'
   get '/groups',to:'groups#new'
   post 'profile/send_img'

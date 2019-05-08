@@ -244,27 +244,44 @@
 }
 .page_button_cover{
   margin-left:20px;
+  a{
+    text-decoration: none;
+  }
+  .page_move:hover{
+    border-bottom:solid thin #337ab7;
+  }
+  .page_move{
+    padding-bottom:3px;
+  }
   .page_button{
-    font-size:18px;
-    padding-left:4px;
+    font-size:22px;
+    text-align: center;
     margin-left:4px;
-    padding-right:4px;
+    padding-left:5px;
+    margin-right:5px;
   }
   .now_page{
     color:#000;
-    border-bottom:solid thin #000;
+    border-bottom:solid 1px #000;
     display:inline-block;
+    padding-right:5px;
   }
   .no_push{
     color:#ccc;
     display:inline-block;
+    margin:0px;
+    padding:0px;
   }
   .ok_push{
     color:#666;
     display:inline-block;
+    margin:0px;
+    padding:0px;
   }
   .dot_show{
     color:#666;
     display:inline-block;
+    margin:0px;
+    padding:0px;
   }
 }

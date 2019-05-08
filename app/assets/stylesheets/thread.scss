@@ -1,12 +1,12 @@
 
 
 .thread_page{
+  margin-bottom:40px;
   .thread_link:hover{
     .thread_cover{
       background-color: rgba(252,248,210,1);
     }
   }
-
   .lang_bar_cover{
     z-index: 20;
     background: #ffffff;
@@ -281,6 +281,7 @@
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-box-orient: vertical;
+            margin:7px;
             .post_content_text{
               margin:auto;
             }
