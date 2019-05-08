@@ -178,14 +178,11 @@
       margin-top:10px;
       .flag_image{
         display:inline-block;
-        margin-left:200px;
+        margin-left: 30%;
         .image{
           height:27px;
           width:40px;
         }
-      }
-      .flag_jp{
-        margin-left:300px;
       }
     }
     .content_cover{
@@ -248,8 +245,8 @@
       background: #fff0a08f!important;
       border: solid thin #cd853f75;
       color:#cd853f;
-      padding-left:20px;
-      padding-right:20px;
+      padding-left: 10px!important;
+      padding-right: 10px!important;
       vertical-align:top;
       margin-top: 5px;
       margin-right:1vw;
@@ -403,9 +400,7 @@
         font-size:20px;
         .category_title{
           .cate_name{
-            margin-left:2px;
-            margin-right:15px;
-            float:left;
+            margin-left:30px;
             .float_jp{
               font-size:12px;
             }
@@ -414,10 +409,7 @@
             font-size:20px;
             margin-top:15px;
             margin-right:5px;
-            float:left;
-            .change_icon{
-              position:inherit;
-            }
+            position:absolute;
           }
         }
       }
@@ -472,10 +464,9 @@
 }
 
 .not_logined_cover{
-
   position:absolute;
   vertical-align: center;
-  margin-left:calc(50% - 225px);
+  margin-left:calc(50% - 250px);
   width:450px;
   .not_logined{
     font-size:16px;

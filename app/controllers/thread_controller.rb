@@ -4,10 +4,7 @@ class ThreadController < ApplicationController
     gon.login = logged_in?
   end
   def show_post_image
-
-    p "-------------------------------"
     p params[:id]
-    p "-------------------------------"
     @photo = Post.find(params[:id])
     send_data @photo.photo, :type => 'image/jpeg'
   end

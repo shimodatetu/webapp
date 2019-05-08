@@ -5,6 +5,7 @@
     }
   }
   .lang_bar_cover{
+    z-index: 20;
     background: #ffffff;
     position:fixed;
     width:100%;
@@ -239,5 +240,31 @@
       margin-top:20px;
       margin-left:-5px;
     }
+  }
+}
+.page_button_cover{
+  margin-left:20px;
+  .page_button{
+    font-size:18px;
+    padding-left:4px;
+    margin-left:4px;
+    padding-right:4px;
+  }
+  .now_page{
+    color:#000;
+    border-bottom:solid thin #000;
+    display:inline-block;
+  }
+  .no_push{
+    color:#ccc;
+    display:inline-block;
+  }
+  .ok_push{
+    color:#666;
+    display:inline-block;
+  }
+  .dot_show{
+    color:#666;
+    display:inline-block;
   }
 }

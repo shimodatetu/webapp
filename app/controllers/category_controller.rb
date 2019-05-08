@@ -49,13 +49,8 @@ class CategoryController < ApplicationController
         smallcategory.bigcategory_id = big_real_id
         small_id += 1
         if smallcategory.save
-          p "----------------------------------"
-          p "ok"
-          p "----------------------------------"
         else
-          p "----------------------------------"
           p small_id.to_s + "/" + big_real_id.to_s + "/" + smallcategory.name_en + "/" + smallcategory.name_jp
-          p "----------------------------------"
         end
       end
     end

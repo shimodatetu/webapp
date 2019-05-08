@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'search/show'
   get 'category/new'
   get 'category/new2'
+  get 'category/smallcategory/:id/:page' => 'category#smallcategory'
   get 'category/smallcategory/:id' => 'category#smallcategory'
   match '/small_new' => 'category#small_new', via: [ :post ]
   match '/big_new' => 'category#big_new', via: [ :post ]
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   post 'logout/inner',to:'tasks#logout_inner'
   get 'signup',to:'users#index'
   get 'thread/show/:id' => 'thread#show'
+  get 'thread/show/:id/:page' => 'thread#show'
   get 'thread_all/show/:id' => 'thread_all#show'
   get 'sessions/index'
   get 'posts/index'
@@ -50,6 +52,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   root 'pv_page#show'
+
+  get '/:id' => 'pv_page#show'
   #root 'users#index'
   resources :password_resets,     only: [:new, :create, :edit, :update, :new_check]
   resources :account_activations, only: [:edit]

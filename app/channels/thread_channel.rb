@@ -8,7 +8,6 @@ class ThreadChannel < ApplicationCable::Channel
   end
 
   def make(data)
-    p "----------------------------------"
     Group.create()
     group = Group.new()
     group.smallcategory_id = data['category']

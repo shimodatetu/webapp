@@ -33,11 +33,6 @@ body{
       margin-right: 15px!important;
     }
   }
-  .not_logined_cover {
-    margin-left:0px!important;
-    width: 100%!important;
-    margin-right:30px;
-  }
   .search_form{
     display: none!important;
   }
@@ -93,7 +88,15 @@ body{
     padding-left: 0px!important;
   }
   .post_footer{
-    width:90%!important;
+    width:80%!important;
+  }
+  .post_form{
+    width:6%!important;
+    .image_post_button{
+      width:100%!important;
+      font-size:150%!important;
+      padding:0px;
+    }
   }
   .post_form_cover_enjp{
     width:calc(50% - 5px)!important;
@@ -185,6 +188,11 @@ body{
 }
 
 @media screen and (max-width: 480px){
+  .not_logined_cover {
+    margin-left:0px!important;
+    width: 100%!important;
+    margin-right:30px;
+  }
   .main_content_cover{
     width:100%!important;
   }
@@ -199,9 +207,7 @@ body{
       display:none!important;
     }
   }
-  .image_post_button{
-    width:50px!important;
-  }
+
   .nav-link{
     font-size: calc(4vw - 3px)!important;
     .jp{

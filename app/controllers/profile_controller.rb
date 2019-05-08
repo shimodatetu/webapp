@@ -5,9 +5,7 @@ class ProfileController < ApplicationController
   end
   def show_image
     @image = User.find(params[:id])
-    p "--------------------------------------"
     p @image.photo
-    p "--------------------------------------"
     send_data @image.photo, :type => 'image/jpeg'
   end
   def update

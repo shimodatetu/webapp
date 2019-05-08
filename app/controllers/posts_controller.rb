@@ -7,8 +7,6 @@ class PostsController < ApplicationController
     if !params[:post][:photo].nil? && !params[:post][:group_id].nil?
 
       @post = Post.new(photo:params[:post]["photo"].read,group_id: params[:post][:group_id],user_id: current_user.id,file_name: params[:post]["photo"].original_filename)
-      p "-------------------------------------------"
-      p "-------------------------------------------"
       @post.save
     end
   end

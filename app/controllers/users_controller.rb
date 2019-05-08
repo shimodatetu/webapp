@@ -18,7 +18,6 @@ class UsersController < ApplicationController
           p message
         end
       end
-      p "---------------------------------------"
       render :index
     end
   end

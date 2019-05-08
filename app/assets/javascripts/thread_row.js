@@ -1,7 +1,7 @@
 $(function(){
   var last_elem;
   var id = -1;
-  $('.thread_page .thread_cover').each(function(i, elem){
+  /*$('.thread_page .thread_cover').each(function(i, elem){
     last_elem = elem;
     id = i;
     if(i == 0){
@@ -23,7 +23,7 @@ $(function(){
   if(id > 1){
     $(last_elem).attr("style","border-bottom-right-radius:5px;"+
     "border-bottom-left-radius:5px");
-  }
+  }*/
   var options ={"backdrop":"static"}
   $(".thread_page .words_post_button").click(function(){
     if($(".user_login").attr("id") == "true"){
