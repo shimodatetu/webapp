@@ -154,7 +154,7 @@
               </div>
             </div>
             <div class="">
-              <select value="<%= other_user.country %>"class="content_select"disabled id="country"name="country"style="width:70%;>
+              <select value="<%= other_user.country %>"class="content_select"disabled id="country"name="country"style="width:70%;">
                 <option value="">No selected</option>
                 <%= render partial: "country" %>
               </select>
@@ -179,7 +179,7 @@
                 (English)
               </div>
             </div>
-            <textarea id="profile_en"placeholder="Blank"class="form-control content_input textarea"rows="3"disabled><%=simple_format(h(other_user.profile_en))%></textarea>
+            <textarea id="profile_en"placeholder="Blank"class="form-control content_input textarea"rows="3"disabled><%=other_user.profile_en%></textarea>
           </div>
         </div>
         <div class="col-sm-6">
@@ -193,7 +193,7 @@
                 (Japanese)
               </div>
             </div>
-            <textarea id="profile_jp"placeholder="入力されていません"class="form-control content_input textarea"rows="3"disabled><%=simple_format(h(other_user.profile_jp))%></textarea>
+            <textarea id="profile_jp"placeholder="入力されていません"class="form-control content_input textarea"rows="3"disabled><%=other_user.profile_jp%></textarea>
           </div>
         </div>
       </div>
