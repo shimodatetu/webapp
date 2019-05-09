@@ -188,6 +188,7 @@ body{
 }
 
 @media screen and (max-width: 480px){
+
   .not_logined_cover {
     margin-left:0px!important;
     width: 100%!important;
@@ -292,5 +293,21 @@ body{
         }
       }
     }
+  }
+  .yes_text, .no_text{
+    font-size:4vw!important;
+  }
+  .yes_text{
+    margin-left:20px!important;
+  }
+  input.cmn-toggle-round + label {
+    width:5vw!important;
+  }
+  input.cmn-toggle-round + label:before,
+  input.cmn-toggle-round + label:after {
+    margin-left: 10vw!important;
+  }
+  input.cmn-toggle-round:checked + label:after {
+    margin-left: calc(12vw + 40px)!important;
   }
 }
