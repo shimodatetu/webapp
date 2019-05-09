@@ -25,12 +25,12 @@
       </div>
       Popular Thread
     </div>
-    <%= link_to '/groups', data: {"turbolinks"=>false},class:"thread_post_button btn btn-default" do %>
+    <!--<%= link_to '/groups', data: {"turbolinks"=>false},class:"thread_post_button btn btn-default" do %>
       <div class="jp">
         スレッド作成
       </div>
       Make Thread
-    <% end %>
+    <% end %>-->
   </div>
   <div class="pvpage_head">
   </div>
@@ -42,18 +42,26 @@
         <div class="thread_cover">
           <div class="group_user_cover">
             <div class="group_img_cover">
-              <% if group.user.photo.nil? %>
-                <%= image_tag("/user.png", :class => "group_img") %>
-              <% else %>
-                <%= image_tag show_image_profile_path(group.user), :class => "group_img" %>
+              <object>
+              <%= link_to "/other_profile/#{group.user.id}" do %>
+                <% if group.user.photo.nil? %>
+                  <%= image_tag("/user.png", :class => "group_img") %>
+                <% else %>
+                  <%= image_tag show_image_profile_path(group.user), :class => "group_img" %>
+                <% end %>
               <% end %>
+              </object>
             </div>
           </div>
           <div class="thread_content">
             <div class="post_content_cover">
-              <div class="user_name">
-                <%= group.user.name %>
-              </div>
+              <object>
+              <%= link_to "/other_profile/#{group.user.id}" do %>
+                <div class="user_name">
+                  <%= group.user.name %>
+                </div>
+              <% end %>
+              </object>
               <div class="post_content_position en_position">
                 <div class="thread_title">
                   <div class="title_padding">
