@@ -13,6 +13,18 @@
             Reset Password
           </div>
         </div>
+        <% if !flash["failed_en"].nil? || !flash["failed_en"].nil? %>
+          <div class="alert alert-danger alert-message" role="alert">
+            <div class="error_jp">
+              <%= flash["failed_jp"] %>
+            </div>
+            <div class="error_en">
+              <%= flash["failed_en"] %>
+            </div>
+          </div>
+          <% flash["failed_en"] = nil %>
+          <% flash["failed_jp"] = nil %>
+        <% end %>
         <%= form_for(:password_reset, url: password_resets_path) do |f| %>
           <div class="input-groups">
             <div class="input_title">

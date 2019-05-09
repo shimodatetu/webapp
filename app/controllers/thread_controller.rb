@@ -3,7 +3,7 @@ class ThreadController < ApplicationController
     @post =Post.new
     gon.login = logged_in?
     thread = Group.find_by(id: params[:id])
-    thread_page_num = 2.to_f
+    thread_page_num = 10.to_f
     page_show_max = 5.to_f
     page_max_half = (page_show_max / 2).ceil
     group_num = thread.posts.all.count - 1

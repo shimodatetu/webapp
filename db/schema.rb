@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_001020) do
     t.integer "group_id"
     t.binary "photo", limit: 1048576
     t.string "file_name"
+    t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_001020) do
     t.string "profile_jp"
     t.string "password_digest"
     t.string "activation_digest"
+    t.boolean "able_see", default: true
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"

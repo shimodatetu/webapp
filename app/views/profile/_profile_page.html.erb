@@ -20,6 +20,33 @@
         <div class="row profile_content_data">
           <div class="content_name">
             <div class="jp">
+              プロフィールを公開する
+            </div>
+            <div class="en">
+              Disclose Profile
+            </div>
+          </div>
+          <div class=""style="width:70%;">
+            <div class="no_text">
+              NO
+            </div>
+            <div class="switch">
+              <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox"
+              <% if current_user.able_see == true %>
+                checked
+              <% end %>>
+              <label for="cmn-toggle-1"></label>
+            </div>
+            <div class="yes_text">
+              YES
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 profile_content">
+        <div class="row profile_content_data">
+          <div class="content_name">
+            <div class="jp">
               ユーザーネーム
             </div>
             <div class="en">
@@ -139,7 +166,7 @@
               (English)
             </div>
           </div>
-          <textarea id="profile_en"placeholder="Blank"class="form-control content_input textarea"rows="3"><%=current_user.profile_en%></textarea>
+          <textarea id="profile_en"placeholder="Blank"class="form-control content_input textarea"rows="3"><%=simple_format(h(current_user.profile_en))%></textarea>
         </div>
       </div>
       <div class="col-sm-6">
@@ -153,7 +180,7 @@
               (Japanese)
             </div>
           </div>
-          <textarea id="profile_jp"placeholder="入力されていません"class="form-control content_input textarea"rows="3"><%=current_user.profile_jp%></textarea>
+          <textarea id="profile_jp"placeholder="入力されていません"class="form-control content_input textarea"rows="3"><%=simple_format(h(current_user.profile_jp))%></textarea>
         </div>
       </div>
     </div>
@@ -165,8 +192,4 @@
 </div>
 <div id="tojp_change" style="display:none;">
   <p>May I translate your englsh introduction to Japanese?</p>
-</div>
-<div id="enjp_change" style="display:none;">
-  <p>May I translate your englsh introduction to japanese or it of japanese to english?</p>
-  <p>日本語の自己紹介を英語に翻訳しますか？それとも英語の自己紹介を日本語に翻訳しますか？</p>
 </div>

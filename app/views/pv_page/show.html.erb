@@ -72,7 +72,8 @@
               <div class="post_content_position jp_position">
                 <div class="thread_title">
                   <div class="title_padding">
-                    <%= group.title_jp %>
+                    <% require 'uri' %>
+                    <%= URI.decode(group.title_jp) %>
                   </div>
                 </div>
                 <div class="post_content">
@@ -102,7 +103,7 @@
             <span class="glyphicon glyphicon-chevron-left"></span>
           </div>
         <% else %>
-          <%= link_to("/#{@page_id - 1}",class:"page_button ok_push") do %>
+          <%= link_to("/home/#{@page_id - 1}",class:"page_button ok_push") do %>
             <span class="glyphicon glyphicon-chevron-left"></span>
           <% end %>
         <% end %>
@@ -117,7 +118,7 @@
               <%= num %>
             </div>
           <% else %>
-            <%= link_to("/#{num}",class:"page_button page_move") do %>
+            <%= link_to("/home/#{num}",class:"page_button page_move") do %>
               <%= num %>
             <% end %>
           <% end %>
@@ -132,7 +133,7 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
           </div>
         <% else %>
-          <%= link_to("/#{@page_id.round + 1}",class:"page_button ok_push") do %>
+          <%= link_to("/home/#{@page_id.round + 1}",class:"page_button ok_push") do %>
             <span class="glyphicon glyphicon-chevron-right"></span>
           <% end %>
         <% end %>

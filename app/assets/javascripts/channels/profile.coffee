@@ -8,9 +8,9 @@ App.profile = App.cable.subscriptions.create "ProfileChannel",
   received: (data) ->
     location.reload();
 
-  change: (username,gender,year,month,date,country,profile_en,profile_jp) ->
+  change: (username,gender,year,month,date,country,profile_en,profile_jp,able_see) ->
     @perform 'change',username:username,gender:gender,year:year,month:month,date:date,
-    country:country,profile_en:profile_en,profile_jp:profile_jp
+    country:country,profile_en:profile_en,profile_jp:profile_jp,able_see:able_see
 
 
 $(document).on 'click', '.save_button', (event) ->
@@ -20,6 +20,7 @@ $(document).on 'click', '.save_button', (event) ->
   year = 1;
   month = 1;
   date = 1;
+  able_see = $("#cmn-toggle-1").prop("checked")
   username = $(".profile_page #username").val();
   gender = $(".profile_page #gender").val();
   country = $(".profile_page #country").val();
@@ -27,25 +28,8 @@ $(document).on 'click', '.save_button', (event) ->
   profile_jp = $(".profile_page #profile_jp").val();
 
   if profile_en != "" && profile_jp != ""
-    $("#enjp_change").dialog
-      modal: true
-      title: 'Confirmation / 確認画面'
-      buttons:
-        'to English / 英語に翻訳': ->
-          $(this).dialog 'close'
-          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"en")
-          return
-        'to Japanese / 日本語に翻訳': ->
-          $(this).dialog 'close'
-          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"ja")
-          return
-        'No Translation / 翻訳しない': ->
-          $(this).dialog 'close'
-          App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp)
-          return
-        'Cancel / キャンセル': ->
-          $(this).dialog 'close'
-          return
+    App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp,able_see)
+
   else if profile_en == "" && profile_jp != ""
     $("#toen_change").dialog
       modal: true
@@ -53,11 +37,11 @@ $(document).on 'click', '.save_button', (event) ->
       buttons:
         'to English / 英語に翻訳': ->
           $(this).dialog 'close'
-          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"en")
+          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"en",able_see)
           return
         'No Translation / 翻訳しない': ->
           $(this).dialog 'close'
-          App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp)
+          App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp,able_see)
           return
         'Cancel / キャンセル': ->
           $(this).dialog 'close'
@@ -69,19 +53,19 @@ $(document).on 'click', '.save_button', (event) ->
       buttons:
         'to Japanese / 日本語に翻訳': ->
           $(this).dialog 'close'
-          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"ja")
+          translate_google(username,gender,year,month,date,country,profile_en,profile_jp,"ja",able_see)
           return
         'No Translation / 翻訳しない': ->
           $(this).dialog 'close'
-          App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp)
+          App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp,able_see)
           return
         'Cancel / キャンセル': ->
           $(this).dialog 'close'
           return
   else
-    App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp)
+    App.profile.change(username,gender,year,month,date,country,profile_en,profile_jp,able_see)
 
-translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,lang) ->
+translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,lang,able_see) ->
   words = profile_jp
   if lang == "ja"
     words = profile_en
@@ -99,6 +83,6 @@ translate_google=(username,gender,year,month,date,country,profile_en,profile_jp,
     ary = text.split('"');
     trans_text = ary[7]#7番はテキスト
     if lang == "ja"
-      App.profile.change(username,gender,year,month,date,country,profile_en,trans_text)
+      App.profile.change(username,gender,year,month,date,country,profile_en,trans_text,able_see)
     else
-      App.profile.change(username,gender,year,month,date,country,trans_text,profile_jp)
+      App.profile.change(username,gender,year,month,date,country,trans_text,profile_jp,able_see)

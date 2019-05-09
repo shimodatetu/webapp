@@ -9,7 +9,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :group_id
       t.binary :photo, :limit => 1.megabyte
       t.string :file_name
-
+      t.boolean :deleted,default:false
       t.timestamps
     end
   end

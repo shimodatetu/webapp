@@ -8,19 +8,23 @@
   ">
   <div class="group_user_cover">
     <div class="group_img_cover">
-      <% if post.user.photo.nil? %>
-        <%= image_tag("/user.png", :class => "group_img") %>
-      <% else %>
-        <%= image_tag show_image_profile_path(post.user), :class => "group_img" %>
+      <%= link_to "/other_profile/#{post.user.id}" do %>
+        <% if post.user.photo.nil? %>
+          <%= image_tag("/user.png", :class => "group_img") %>
+        <% else %>
+          <%= image_tag show_image_profile_path(post.user), :class => "group_img" %>
+        <% end %>
       <% end %>
     </div>
   </div>
   <div class="thread_content">
     <div class="post_content_cover">
       <% if post.photo.nil? %>
-        <div class="user_name">
-          <%= post.user.name %>
-        </div>
+        <%= link_to "/other_profile/#{post.user.id}" do %>
+          <div class="user_name">
+            <%= post.user.name %>
+          </div>
+        <% end %>
         <div class="post_content_position en_position">
           <% if post.id == first_id %>
             <div class="thread_title">
@@ -57,9 +61,11 @@
           </div>
         </div>
       <% else %>
-        <div class="user_name">
-          <%= post.user.name %>
-        </div>
+        <%= link_to "/other_profile/#{post.user.id}" do %>
+          <div class="user_name">
+            <%= post.user.name %>
+          </div>
+        <% end %>
         <div class="post_image_cover">
           <%= image_tag show_post_image_thread_path(post), :class => "post_image" %>
         </div>

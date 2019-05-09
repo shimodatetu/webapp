@@ -1,4 +1,4 @@
-.profile{
+.profile_other{
   ::-webkit-input-placeholder {
     color: #bbbbbb;
   }
@@ -27,16 +27,18 @@
       text-align:center;
       padding:2px;
       box-shadow: none;
+      font-size:20px;
+      padding-top:5px;
+      padding-bottom:5px;
+      label{
+        font-weight:normal;
+      }
       .jp{
-        font-size:12px;
       }
       .en{
         font-size:18px;
         margin-top:-3px;
       }
-    }
-    .profile_picture_change:hover{
-      background-color: #cccccc;
     }
     margin-bottom:20px;
   }
@@ -95,6 +97,9 @@
           height:35px;
           margin-right:10px;
           width:20%;
+          -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+          -moz-appearance: none;	/* ベンダープレフィックス(Firefox用) */
+          appearance: none;
         }
         .content_name{
           padding-top:5px;
@@ -107,6 +112,7 @@
           }
         }
         .content_input{
+          background: #fff;
           margin-top:10px;
           padding:2px;
           padding-left:10px;

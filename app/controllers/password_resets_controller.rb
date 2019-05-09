@@ -17,7 +17,8 @@ class PasswordResetsController < ApplicationController
       flash[:info] = "Email sent with password reset instructions"
       render "new_check"
     else
-      flash.now[:danger] = "Email address not found"
+      flash.now[:failed_jp] = "メールアドレスが間違っています。"
+      flash.now[:failed_en] = "Email address is wrong."
       render "new"
     end
   end
@@ -35,7 +36,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "Password has been reset."
       redirect_to root_path
     else
-      render 'edit'                        # (2) への対応
+      redirect_to root_path
     end
   end
 
