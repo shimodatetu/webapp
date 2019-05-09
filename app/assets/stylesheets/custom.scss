@@ -310,4 +310,7 @@ body{
   input.cmn-toggle-round:checked + label:after {
     margin-left: calc(12vw + 40px)!important;
   }
+  .switch{
+    margin-top:1vw;
+  }
 }
