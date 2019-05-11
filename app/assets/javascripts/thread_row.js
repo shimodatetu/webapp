@@ -10,7 +10,7 @@ $(function(){
   });
   var options ={"backdrop":"static"}
   $(".thread_page .words_post_button").click(function(){
-    if($(".user_login").attr("id") == "true"){
+    if($(".user_login").attr("id") != "false"){
       var options = {"backdrop":"static"};
       $('#sampleModal-'+this.id).modal(options);
     }

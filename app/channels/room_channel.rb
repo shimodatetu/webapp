@@ -15,6 +15,7 @@ class RoomChannel < ApplicationCable::Channel
     if group
       post = Post.new()
       post.lang = data['lang']
+      post.id_ingroup = group.posts.count
       post.content_jap = data['content_jap']
       post.content_eng = data['content_eng']
       post.group_id = group.id

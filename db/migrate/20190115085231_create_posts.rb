@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :content_eng
       t.text :content_jap
       t.string :image
+      t.integer :id_ingroup
       t.integer :user_id
       t.integer :group_id
       t.binary :photo, :limit => 1.megabyte

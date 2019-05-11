@@ -1,75 +1,87 @@
 <% group = post.group %>
 <% first_id = group.posts.first.id%>
 <% id = params[:id] %>
-<div class="thread_cover
-  <% if params[:id].nil? %>
-    <%= 'thread_not_first' %>
-  <% end %>
-  ">
-  <div class="group_user_cover">
-    <div class="group_img_cover">
-      <%= link_to "/other_profile/#{post.user.id}" do %>
-        <% if post.user.photo.nil? %>
-          <%= image_tag("/user.png", :class => "group_img") %>
+<% if post.deleted %>
+<% else %>
+  <div class="thread_cover">
+    <div class="group_user_cover">
+      <div class="group_img_cover">
+        <%= link_to "/other_profile/#{post.user.id}" do %>
+          <% if post.user.photo.nil? %>
+            <%= image_tag("/user.png", :class => "group_img") %>
+          <% else %>
+            <%= image_tag show_image_profile_path(post.user), :class => "group_img" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="thread_content">
+      <div class="post_content_cover">
+        <% if post.photo.nil? %>
+            <div class="user_name">
+              <%= link_to "/other_profile/#{post.user.id}" do %>
+                <%= post.user.name %>
+              <% end %>
+            </div>
+          <div class="post_content_position en_position">
+            <% if post.id == first_id %>
+              <div class="thread_title">
+                <div class="title_padding">
+                  <%= post.group.title_en %>
+                </div>
+              </div>
+            <% else %>
+              <div class="title_space"></div>
+            <% end %>
+            <div class="post_content en_content_row">
+              <div class="post_content_text">
+                <%= simple_format(h(post.content_eng)) %>
+              </div>
+            </div>
+          </div>
+          <div class="post_content_position_space">
+            <span class="slider_icon glyphicon glyphicon-resize-horizontal"></span>
+          </div>
+          <div class="post_content_position jp_position">
+            <% if post.id == first_id %>
+              <div class="thread_title">
+                <div class="title_padding">
+                  <%= post.group.title_jp %>
+                </div>
+              </div>
+            <% else %>
+              <div class="title_space"></div>
+            <% end %>
+            <div class="post_content jp_content_row">
+              <div class="post_content_text">
+                <%= simple_format(h(post.content_jap)) %>
+              </div>
+            </div>
+          </div>
         <% else %>
-          <%= image_tag show_image_profile_path(post.user), :class => "group_img" %>
+            <div class="user_name">
+              <%= link_to "/other_profile/#{post.user.id}" do %>
+                <%= post.user.name %>
+              <% end %>
+            </div>
+          <div class="post_image_cover">
+            <%= image_tag show_post_image_thread_path(post), :class => "post_image" %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
+    <% if params[:id].nil? %>
+      <div class="delete_button delete_button_set"id="<%= post.user.id %>">
+        <button class="btn btn-danger">
+          Delete / 削除
+        </button>
+      </div>
+    <% elsif post.id != first_id && logged_in? && current_user.id == post.user.id %>
+      <div class="delete_button">
+        <button class="btn btn-danger">
+          Delete / 削除
+        </button>
+      </div>
+    <% end %>
   </div>
-  <div class="thread_content">
-    <div class="post_content_cover">
-      <% if post.photo.nil? %>
-        <%= link_to "/other_profile/#{post.user.id}" do %>
-          <div class="user_name">
-            <%= post.user.name %>
-          </div>
-        <% end %>
-        <div class="post_content_position en_position">
-          <% if post.id == first_id %>
-            <div class="thread_title">
-              <div class="title_padding">
-                <%= post.group.title_en %>
-              </div>
-            </div>
-          <% else %>
-            <div class="title_space"></div>
-          <% end %>
-          <div class="post_content en_content_row">
-            <div class="post_content_text">
-              <%= simple_format(h(post.content_eng)) %>
-            </div>
-          </div>
-        </div>
-        <div class="post_content_position_space">
-          <span class="slider_icon glyphicon glyphicon-resize-horizontal"></span>
-        </div>
-        <div class="post_content_position jp_position">
-          <% if post.id == first_id %>
-            <div class="thread_title">
-              <div class="title_padding">
-                <%= post.group.title_jp %>
-              </div>
-            </div>
-          <% else %>
-            <div class="title_space"></div>
-          <% end %>
-          <div class="post_content jp_content_row">
-            <div class="post_content_text">
-              <%= simple_format(h(post.content_jap)) %>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <%= link_to "/other_profile/#{post.user.id}" do %>
-          <div class="user_name">
-            <%= post.user.name %>
-          </div>
-        <% end %>
-        <div class="post_image_cover">
-          <%= image_tag show_post_image_thread_path(post), :class => "post_image" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<% end %>

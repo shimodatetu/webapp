@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_001020) do
     t.text "content_eng"
     t.text "content_jap"
     t.string "image"
+    t.integer "id_ingroup"
     t.integer "user_id"
     t.integer "group_id"
     t.binary "photo", limit: 1048576

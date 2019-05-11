@@ -1,11 +1,16 @@
-
 <% lang = session["lang"] %>
 <% session["now_group"] = params[:id] %>
 <% thread = Group.find_by(id: params[:id]) %>
 <% thread.seen_num+=1 %>
 <% thread.save %>
 
-<div class="user_login"id="<%= logged_in? %>"></div>
+<div class="thread_page_num"style="display:none"id="<%= @thread_page_num.to_i %>">
+</div>
+<% if logged_in? %>
+  <div class="user_login"id="<%= current_user.id %>"></div>
+<% else %>
+  <div class="user_login"id="false"></div>
+<% end %>
 <div class="thread_page">
   <div class="lang_bar_cover" data-toggle="tooltip" data-placement="bottom" data-original-title="説明">
     <div class="lang_bar">
@@ -234,3 +239,20 @@
   	</div>
   </div>
 </div>
+<button class="delete_button_destroy"style="display:none">
+</button>
+<% if logged_in? == true %>
+  <script>
+    $(document).on("click", ".delete_button_destroy", function(){
+      if($(".delete_button_set").attr("id") != "<%= current_user.id %>"){
+          $(".delete_button_set").removeAttr("id");
+          $(".delete_button_set").attr("style","display:none");
+          $(".delete_button_set").attr("class","delete_button");
+      }
+      else {
+        $(".delete_button_set").removeAttr("id");
+        $(".delete_button_set").attr("class","delete_button");
+      }
+    });
+  </script>
+<% end %>

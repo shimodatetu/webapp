@@ -7,6 +7,7 @@
   .lang_bar_cover{
     z-index: 20;
     background: #ffffff;
+    background:#fff0a091;
     position:fixed;
     width:100%;
     margin-left:-5%;
@@ -188,6 +189,8 @@
     }
 
     .thread_cover{
+      filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.2));
+      cursor: pointer;
       background-color: #ffffff;
       padding:20px;
       border-radius: 5px;

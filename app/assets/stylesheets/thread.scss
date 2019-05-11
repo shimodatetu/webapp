@@ -10,6 +10,7 @@
   .lang_bar_cover{
     z-index: 20;
     background: #ffffff;
+    background:#fff7cd;
     position:fixed;
     width:100%;
     margin-left:-5%;
@@ -413,6 +414,13 @@
           bottom:10px;
         }
       }
+    }
+  }
+  .delete_button{
+    margin-left: calc(100% - 120px);
+    .btn{
+      background: #f74d3c;
+      color:#fff;
     }
   }
 }

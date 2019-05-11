@@ -11,7 +11,7 @@
   }
 }
 body{
-  background:#fff0a042;
+  background:#fff0a017;
 }
 @media screen and (max-width: 600px){
   .profile{
@@ -311,6 +311,10 @@ body{
     margin-left: calc(12vw + 40px)!important;
   }
   .switch{
-    margin-top:1vw;
+    margin-top:calc(2vw + 2px);
+    padding-top: 0px!important;
+  }
+  .profile_page{
+    width: 98%;
   }
 }

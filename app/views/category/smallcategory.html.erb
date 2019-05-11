@@ -53,11 +53,11 @@
           <div class="thread_content">
             <div class="post_content_cover">
               <object>
-              <%= link_to "/other_profile/#{group.user.id}" do %>
                 <div class="user_name">
-                  <%= group.user.name %>
+                  <%= link_to "/other_profile/#{group.user.id}" do %>
+                    <%= group.user.name %>
+                  <% end %>
                 </div>
-              <% end %>
               </object>
               <div class="post_content_position en_position">
                 <div class="thread_title">

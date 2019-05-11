@@ -20,6 +20,7 @@ class ThreadChannel < ApplicationCable::Channel
       post.lang = data['lang']
       post.content_jap = data['message_jp']
       post.content_eng = data['message_en']
+      post.id_ingroup = group.posts.count
       post.group_id = group.id
       post.user_id = current_user.id
       post.save
