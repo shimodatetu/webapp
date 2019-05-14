@@ -88,14 +88,16 @@ body{
     padding-left: 0px!important;
   }
   .post_footer{
-    width:80%!important;
+    width:85%!important;
+    padding: 0px!important;
+    padding-left: 0px!important;
   }
   .post_form{
-    width:6%!important;
+    width: 6%;
+    font-size: 90%;
     .image_post_button{
       width:100%!important;
       font-size:150%!important;
-      padding:0px;
     }
   }
   .post_form_cover_enjp{
@@ -201,9 +203,10 @@ body{
     width:99vw!important;
   }
   .words_post_button {
-    padding-top:20px!important;
-    padding-left:5px!important;
-    padding-right:10px!important;
+    padding-top:4vw!important;
+    padding-left:calc(2vw - 5px)!important;
+    padding-right:2vw!important;
+    padding-bottom:calc(4vw - 15px)!important;
     .button_text{
       display:none!important;
     }
@@ -316,5 +319,33 @@ body{
   }
   .profile_page{
     width: 98%;
+  }
+  .post_footer{
+    .post_text{
+      font-size:4vw!important;
+      padding: 2vw!important;
+      padding-left: 0px!important;
+      .float_jp{
+        font-size:2vw!important;
+      }
+    }
+    .picture_send{
+      font-size:5vw!important;
+    }
+    .picture_send{
+      width: 7vw!important;
+      height: 5vw!important;
+    }
+  }
+  .post_form{
+    width: 10vw;
+    .image_post_button{
+      height: calc(10vw + 15px)!important;
+      text-align: center;
+      padding-left:0px!important;
+      padding-right:0px!important;
+      padding-bottom:0px!important;
+      padding-top:2vw!important;
+    }
   }
 }

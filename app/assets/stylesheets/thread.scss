@@ -642,6 +642,11 @@
 }
 @media screen and (max-width: 720px){
   .thread_footer{
-    min-width:720px;
+    min-width: 720px;
+  }
+}
+@media screen and (max-width: 480px){
+  .thread_footer{
+    min-width: 100%!important;
   }
 }
