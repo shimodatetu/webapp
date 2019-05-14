@@ -13,6 +13,15 @@ class TasksController < ApplicationController
     redirect_to "/search/show"
   end
 
+  def delete
+    delete_id = params[:delete_id].to_i
+    post = Post.find_by(id: delete_id)
+    if post && post.user.id == current_user.id
+      post.update(deleted: true)
+      redirect_to params[:url]
+    end
+  end
+
   def search_inside
     search_text = params[:search_text]
     search_en = Bigcategory.find_by(name_en: search_text)

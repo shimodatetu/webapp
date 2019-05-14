@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'category/show'
   post 'tasks/en',to:'tasks#lang_change_en'
   post 'tasks/jp',to:'tasks#lang_change_jp'
+  post 'delete',to:'tasks#delete'
   post 'search/header',to:'tasks#search'
   post 'search/inside',to:'tasks#search_inside'
   post 'logout/inner',to:'tasks#logout_inner'

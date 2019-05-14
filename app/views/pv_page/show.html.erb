@@ -57,8 +57,14 @@
             <div class="post_content_cover">
               <object>
                 <div class="user_name">
-                  <%= link_to "/other_profile/#{group.user.id}" do %>
-                    <%= group.user.name %>
+                  <% if current_user.id != group.user.id %>
+                    <%= link_to "/other_profile/#{group.user.id}" do %>
+                      <%= group.user.name %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to "/profile" do %>
+                      <%= group.user.name %>
+                    <% end %>
                   <% end %>
                 </div>
               </object>

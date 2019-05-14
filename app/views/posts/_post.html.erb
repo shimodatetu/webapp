@@ -2,8 +2,14 @@
 <% first_id = group.posts.first.id%>
 <% id = params[:id] %>
 <% if post.deleted %>
-<% else %>
   <div class="thread_cover">
+    この投稿は削除されました。<br>
+    <div class="en">
+      This comment is deleted.
+    </div>
+  </div>
+<% else %>
+  <div class="thread_cover"id="<%= post.id %>">
     <div class="group_user_cover">
       <div class="group_img_cover">
         <%= link_to "/other_profile/#{post.user.id}" do %>
@@ -17,12 +23,62 @@
     </div>
     <div class="thread_content">
       <div class="post_content_cover">
-        <% if post.photo.nil? %>
-            <div class="user_name">
+        <div>
+          <div class="user_name">
+            <% if params[:id].nil? || current_user.id != post.user.id %>
               <%= link_to "/other_profile/#{post.user.id}" do %>
                 <%= post.user.name %>
               <% end %>
+            <% else %>
+              <%= link_to "/profile" do %>
+                <%= post.user.name %>
+              <% end %>
+            <% end %>
+          </div>
+          <% if params[:id].nil? || current_user != post.user || (post.id != first_id && logged_in? && current_user.id == post.user.id)%>
+            <div class="dropdown">
+              <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <% if params[:id].nil? %>
+                  <div class="one_topic delete_button_set">
+                    <button type="button" class="delete_button" data-toggle="modal" data-target="#deleteModal"
+                        data-whatever="<%= post.id %>">
+                      <div class="jp">投稿を削除する</div>
+                      Delete this comment
+                    </button>
+                  </div>
+                  <div class="one_topic">
+                    <%= link_to "/other_profile/#{post.user.id}" do %>
+                      <div class="jp">プロフィールへ飛ぶ</div>
+                      Jump to the profile.
+                    <% end %>
+                  </div>
+                <% else %>
+                  <% if current_user != post.user %>
+                    <div class="one_topic">
+                      <%= link_to "/other_profile/#{post.user.id}" do %>
+                        <div class="jp">プロフィールへ飛ぶ</div>
+                        Jump to the profile.
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <% if post.id != first_id && logged_in? && current_user.id == post.user.id %>
+                    <div class="one_topic">
+                      <button type="button" class="delete_button" data-toggle="modal" data-target="#deleteModal"
+                          data-whatever="<%= post.id %>">
+                        <div class="jp">投稿を削除する</div>
+                        Delete this comment
+                      </button>
+                    </div>
+                  <% end %>
+                <% end %>
+              </ul>
             </div>
+          <% end %>
+        </div>
+        <% if post.photo.nil? %>
           <div class="post_content_position en_position">
             <% if post.id == first_id %>
               <div class="thread_title">
@@ -59,29 +115,22 @@
             </div>
           </div>
         <% else %>
-            <div class="user_name">
-              <%= link_to "/other_profile/#{post.user.id}" do %>
-                <%= post.user.name %>
-              <% end %>
-            </div>
           <div class="post_image_cover">
             <%= image_tag show_post_image_thread_path(post), :class => "post_image" %>
           </div>
         <% end %>
       </div>
     </div>
-    <% if params[:id].nil? %>
-      <div class="delete_button delete_button_set"id="<%= post.user.id %>">
-        <button class="btn btn-danger">
-          Delete / 削除
-        </button>
-      </div>
+    <!--<% if params[:id].nil? %>
+      <button type="button" class="delete_button" data-toggle="modal" data-target="#deleteModal"
+          data-whatever="<%= post.id %>">
+        Delete / 削除
+      </button>
     <% elsif post.id != first_id && logged_in? && current_user.id == post.user.id %>
-      <div class="delete_button">
-        <button class="btn btn-danger">
-          Delete / 削除
-        </button>
-      </div>
-    <% end %>
+      <button type="button" class="delete_button" data-toggle="modal" data-target="#deleteModal"
+          data-whatever="<%= post.id %>">
+        Delete / 削除
+      </button>
+    <% end %>-->
   </div>
 <% end %>

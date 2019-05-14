@@ -49,7 +49,15 @@
             <div class="thread_content">
               <div class="post_content_cover">
                 <div class="user_name">
-                  <%= group.user.name %>
+                  <% if current_user.id != group.user.id %>
+                    <%= link_to "/other_profile/#{group.user.id}" do %>
+                      <%= group.user.name %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to "/profile" do %>
+                      <%= group.user.name %>
+                    <% end %>
+                  <% end %>
                 </div>
                 <div class="post_content_position en_position">
                   <div class="thread_title">
