@@ -71,7 +71,7 @@
       }
     }
   }
-  .profile_page{
+  .profile_words, .profile_page{
     font-size:18px;
     margin-left:15px;
     background-color: #fff0b0;
@@ -83,18 +83,22 @@
       padding-top:5px;
       .profile_content_data{
         padding:5px;
+        .content_cover{
+          width:70%;
+        }
         .content_checkbox{
           margin-top:10px;
           margin-left:10px;
           margin-right:4px;
         }
         .content_select{
+          width:100%;
           margin-top:5px;
           background-color:#ffffff;
           border:solid 1px #dddddd;
           height:35px;
           margin-right:10px;
-          width:20%;
+          padding-left: 5px;
         }
         .content_name{
           padding-top:5px;
@@ -140,7 +144,7 @@
     }
   }
   .save_button{
-    margin-left: 20px;
+    margin-left: 5px;
     margin-top:-10px;
     border:0px;
     font-size:15px;
@@ -152,6 +156,9 @@
 
 .profiled {
   font-size: 4vh;
+  .profile_content_cover{
+    width:70%;
+  }
   .content {
     height:7vh;
     width:100%;
@@ -187,7 +194,7 @@ input.cmn-toggle-round + label:before,
 input.cmn-toggle-round + label:after {
   display: block;
   position: absolute;
-  top: 68px;
+  top: 8px;
   left: 1px;
   bottom: 1px;
   content: "";

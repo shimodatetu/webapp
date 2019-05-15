@@ -191,6 +191,14 @@
       border-top-right-radius:5px;
       border-top-left-radius:5px;
     }
+    .deleted_coment{
+      font-size: 12px;
+      padding: 10px!important;
+      padding-left: 20px!important;
+      .en{
+        font-size:14px;
+      }
+    }
     .thread_cover{
       background-color: #ffffff;
       padding:20px;
@@ -198,9 +206,6 @@
       border-top-right-radius: 5px;
       border-radius: 0px;
       border:solid thin #dddddd;
-      .en{
-        font-size:18px;
-      }
       .group_user_cover{
         display: inline-block;
         vertical-align: top;

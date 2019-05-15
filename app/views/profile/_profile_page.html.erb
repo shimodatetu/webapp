@@ -53,7 +53,7 @@
               Username
             </div>
           </div>
-          <div class=""style="width:70%;">
+          <div class="profile_content_cover">
             <input id="username"class="form_control content_input form-control" placeholder="Blank"value="<%= current_user.name %>">
           </div>
         </div>
@@ -68,7 +68,8 @@
               Gender
             </div>
           </div>
-            <select id="gender"class="content_select"style="width:70%">
+          <div class="profile_content_cover">
+            <select id="gender"class="content_select">
               <option value="">No Selected</option>
               <% if current_user.gender == "Male" %>
                 <option value="Male" selected>Male / 男性</option>
@@ -86,6 +87,7 @@
                 <option value="Neuter">Neuter / 中性</option>
               <% end %>
             </select>
+          </div>
         </div>
       </div>
       <!--<div class="col-sm-12 profile_content">
@@ -140,8 +142,8 @@
               Country
             </div>
           </div>
-          <div class="">
-            <select value="<%= current_user.country %>"class="content_select"id="country"name="country"style="width:70%;padding:1vw;">
+          <div class="cprofile_ontent_cover">
+            <select value="<%= current_user.country %>"class="content_select"id="country"name="country"style="padding:1vw;">
               <option value="">No selected</option>
               <%= render partial: "country" %>
             </select>
@@ -153,7 +155,7 @@
       </div>
     </div>
   </div>
-  <div class="profile_page">
+  <div class="profile_words">
     <div class="profile_content">
       <div class="col-sm-6">
         <div class="row profile_content_data self_introduction">

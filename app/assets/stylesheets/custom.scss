@@ -243,6 +243,9 @@ body{
       }
       font-size:calc(5vw - 3px)!important;
     }
+    .content_cover{
+      width:100%!important;
+    }
     .content_name{
       .en{
         font-size:calc(5vw - 3px);
@@ -314,7 +317,7 @@ body{
     margin-left: calc(12vw + 40px)!important;
   }
   .switch{
-    margin-top:calc(2vw + 2px);
+    margin-top: calc(35px - 5vw)!important;
     padding-top: 0px!important;
   }
   .profile_page{
@@ -346,6 +349,12 @@ body{
       padding-right:0px!important;
       padding-bottom:0px!important;
       padding-top:2vw!important;
+    }
+  }
+  .post_form_cover{
+    width:100%!important;
+    .content_post{
+      height: 18vh;
     }
   }
 }
