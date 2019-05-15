@@ -96,6 +96,13 @@ class CategoryController < ApplicationController
     @page_num = page_num
     @start_num = start_num
     @end_num = end_num
+
+
+    @thread_page_num = 0
+    @page_id = 0
+    @page_num = 0
+    @start_num = 0
+    @end_num = 0
   end
 
   def big_new
