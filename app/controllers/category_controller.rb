@@ -54,7 +54,6 @@ class CategoryController < ApplicationController
         end
       end
     end
-
   end
 
   def show

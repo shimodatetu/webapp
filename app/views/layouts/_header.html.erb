@@ -48,7 +48,7 @@
               スレッド作成
             </div>
             <div class="base_en">
-              Make Thread
+              Make a Thread
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@
             <span class="icon glyphicon glyphicon-user"></span>
             <div class="text">
               <div class="float_jap"style="padding-left:15px">会員登録</div>
-              <div class="base_en">Sign In</div>
+              <div class="base_en">Sign Up</div>
             </div>
           </div>
         <% end %>
@@ -142,12 +142,12 @@
     <% if @test_id.nil? %>
       <%= link_to "/groups", data: {"turbolinks"=>false},class: "btn btn-info thread_button make" do %>
         <div class="thread_button_jp">スレッド作成</div>
-        Make Thread
+        Make Threads
       <% end %>
     <% else %>
       <%= link_to "/groups/?category_id=#{@test_id}",data: {"turbolinks"=>false}, class: "btn btn-info thread_button make" do %>
         <div class="thread_button_jp">スレッド作成</div>
-        Make Thread
+        Make Threads
       <% end %>
     <% end %>
   </div>

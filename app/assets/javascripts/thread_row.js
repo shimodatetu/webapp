@@ -15,7 +15,7 @@ $(function(){
       $('#sampleModal-'+this.id).modal(options);
     }
     else {
-      alert("If you want to post, you need to login or sign in.\n投稿するには、ログインかサインインが必要です。");
+      alert("If you want to post, you need to login or sign up.\n投稿するには、ログインか会員登録が必要です。");
     }
   });
   $('#deleteModal').on('show.bs.modal', function (event) {
