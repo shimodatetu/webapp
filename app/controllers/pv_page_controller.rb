@@ -31,13 +31,13 @@ class PvPageController < ApplicationController
       @page_num = page_num
       @start_num = start_num
       @end_num = end_num
+    else 
+      @thread_page_num = 0
+      @page_id = 0
+      @page_num = 0
+      @start_num = 0
+      @end_num = 0
     end
-
-    @thread_page_num = 0
-    @page_id = 0
-    @page_num = 0
-    @start_num = 0
-    @end_num = 0
   end
   def show_image
     @image = User.find(params[:id])
