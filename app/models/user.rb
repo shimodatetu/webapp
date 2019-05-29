@@ -4,10 +4,11 @@ class User < ApplicationRecord
   has_many :posts
   has_many :groups
   has_secure_password
+  validates :password, length: (6..32),format: { with: /\A[a-z0-9]+\z/i }
   #mount_uploader :image, ImageUploader
   after_update { ProfileBroadcastJob.perform_later self  }
 
-  validates :name, presence: true
+  validates :name, presence: true,format: { with: /\A[a-z0-9]+\z/i }
   validates :email, uniqueness:true,presence: true
 
   def User.new_token

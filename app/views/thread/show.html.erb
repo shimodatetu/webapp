@@ -42,6 +42,75 @@
       <%= render thread.posts.first %>
       <%= render thread.posts.offset(@thread_page_num*(@page_id - 1)+1).limit(@thread_page_num) %>
     </div>
+  </div>
+  <div class="footer thread_footer">
+    <div class="thread_post_cover">
+			<div class="modal-body">
+        <div class="thread_post">
+          <div class="post_form_cover post_form_cover_enjp connect_btn">
+            <%= image_tag "/english.png", class: "image" %>
+            <textarea name="content"class="base_en_form connect_btn content_post form-control" rows="6"
+            placeholder="&#13;&#10;This side is English form.&#13;&#10;こちらは英語投稿欄です"></textarea>
+          </div>
+          <div class="space_form"></div>
+          <div class="post_form_cover post_form_cover_enjp">
+            <%= image_tag "21hb-GV4ZtL.jpg", class: "image" %>
+            <textarea name="content"class="base_jp_form content_post form-control" rows="6"
+            placeholder="&#13;&#10;This side is Japanese form.&#13;&#10;こちらは日本語投稿欄です"></textarea>
+          </div>
+        </div>
+			</div>
+			<div>
+        <%= form_for @post, :html => {:class => "post_form"},remote: true do |f| %>
+          <label for="file_send"class="image_send_button btn btn-prmary image_post_button">
+            <div class="glyphicon glyphicon-picture picture_send"></div>
+          </label>
+          <%= f.file_field :photo,:id => "file_send", :class => "post_file", :style => "display:none"%>
+          <input type="hidden"id="group" name="group" value="<%= params[:id] %>">
+          <%= f.hidden_field :group_id,value: params[:id] %>
+          <button type="submit"class="img_post"style="display:none"></button>
+        <% end %>
+        <div class="post_footer">
+          <div class="post_button_cover">
+            <button type="button" class="post_button btn btn-primary btn_send words_post_button"id="en"
+            name="<% if logged_in? %>logined<% end %>">
+              <div class="button_text">
+                <div class="float_jp">
+                  日本語に翻訳
+                </div>
+                Translate to Japanese
+              </div>
+              <%#= image_tag "/english.png", class: "image picture_send" %>
+            </button>
+          </div>
+          <div class="post_button_cover">
+            <button type="button" class="post_button btn btn-primary btn_send words_post_button"id="enjp"
+            name="<% if logged_in? %>logined<% end %>">
+              <div class="button_text">
+                <div class="float_jp">
+                  投稿
+                </div>
+                Post
+              </div>
+              <%#= image_tag "/english.png", class: "image picture_send" %>
+              <%#= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+            </button>
+          </div>
+          <div class="post_button_cover">
+            <button type="button" class="post_button btn btn-primary btn_send words_post_button"id="jp"
+            name="<% if logged_in? %>logined<% end %>">
+              <div class="button_text">
+                <div class="float_jp">
+                  英語に翻訳
+                </div>
+                Translate to English
+              </div>
+              <%#= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
+            </button>
+          </div>
+        </div>
+			</div>
+    </div>
     <div class="page_button_cover">
       <% if 1 >= @page_id %>
         <div class="page_button no_push">
@@ -83,94 +152,45 @@
         <% end %>
       <% end %>
     </div>
-    <div class="thread_post_cover check_delete">
-      <div class="modal fade" id="deleteModal" tabindex="-1">
-      	<div class="modal-dialog"style="width:90vw">
-      		<div class="modal-content">
-      			<div class="modal-body">
-              <div class="explain_text">
-                この投稿は削除されます。
-                復元できません。
-                削除しますか？
-                <div class="en">
-                  Your comment will be deleted.
-                  It is not able to be reconstructed.
-                  Do you want to delete this comment?
-                </div>
-              </div>
-              <div class="delete_html">
-              </div>
-      			</div>
-            <div class="modal-footer">
-              <%= form_tag('/delete',method: :post) do %>
-                <%= hidden_field_tag :delete_id ,-1,class:"delete_id" %>
-                <%= hidden_field_tag :url, request.path %>
-                <button type="submit" class="btn btn-default btn_delete"id="jp">
-                  <div class="float_jp">削除</div>
-                  <div class="base_en">Delete</div>
-                </button>
-                <button type="button" class="btn btn-default btn_back" data-dismiss="modal"style="margin-right:calc(50% - 70px);">
-                  <div class="float_jp">戻る</div>
-                  <div class="base_en">Back</div>
-                </button>
-              <% end %>
-            </div>
-      		</div>
-      	</div>
-      </div>
-    </div>
   </div>
-  <div class="footer thread_footer">
-    <%= form_for @post, :html => {:class => "post_form"},remote: true do |f| %>
-      <label for="file_send"class="image_send_button btn btn-prmary image_post_button">
-        <div class="glyphicon glyphicon-picture picture_send"></div>
-      </label>
-      <%= f.file_field :photo,:id => "file_send", :class => "post_file", :style => "display:none"%>
-      <input type="hidden"id="group" name="group" value="<%= params[:id] %>">
-      <%= f.hidden_field :group_id,value: params[:id] %>
-      <button type="submit"class="img_post"style="display:none"></button>
-    <% end %>
 
-    <div class="post_footer">
-      <div class="glyphicon glyphicon-comment picture_send"></div>
-      <div class="post_text">
-        <div class="float_jp">
-           投稿
+  <div class="thread_post_cover check_delete">
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+      <div class="modal-dialog"style="width:90vw">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="explain_text">
+              この投稿は削除されます。
+              復元できません。
+              削除しますか？
+              <div class="en">
+                Your comment will be deleted.
+                It is not able to be reconstructed.
+                Do you want to delete this comment?
+              </div>
+            </div>
+            <div class="delete_html">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= form_tag('/delete',method: :post) do %>
+              <%= hidden_field_tag :delete_id ,-1,class:"delete_id" %>
+              <%= hidden_field_tag :url, request.path %>
+              <button type="submit" class="btn btn-default btn_delete"id="jp">
+                <div class="float_jp">削除</div>
+                <div class="base_en">Delete</div>
+              </button>
+              <button type="button" class="btn btn-default btn_back" data-dismiss="modal"style="margin-right:calc(50% - 70px);">
+                <div class="float_jp">戻る</div>
+                <div class="base_en">Back</div>
+              </button>
+            <% end %>
+          </div>
         </div>
-        Post
       </div>
-      <button type="button" class="post_button btn btn-primary words_post_button"id="en">
-        <div class="button_text">
-          <div class="float_jp">
-            書き込み
-          </div>
-          Write
-        </div>
-        <%= image_tag "/english.png", class: "image picture_send" %>
-      </button>
-      <button type="button" class="post_button btn btn-primary words_post_button"id="enjp">
-        <div class="button_text">
-          <div class="float_jp">
-            書き込み
-          </div>
-          Write
-        </div>
-        <%= image_tag "/english.png", class: "image picture_send" %>
-        <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
-      </button>
-      <button type="button" class="post_button btn btn-primary words_post_button"id="jp">
-        <div class="button_text">
-          <div class="float_jp">
-             書き込み
-          </div>
-          Write
-        </div>
-        <%= image_tag "21hb-GV4ZtL.jpg", class: "image picture_send" %>
-      </button>
     </div>
   </div>
 </div>
-<!-- モーダル・ダイアログ -->
 
 <div class="thread_post_cover">
   <div class="modal fade" id="sampleModal-en" tabindex="-1">
@@ -202,6 +222,7 @@
   	</div>
   </div>
 </div>
+
 <div class="thread_post_cover">
   <div class="modal fade" id="sampleModal-enjp" tabindex="-1">
   	<div class="modal-dialog"style="width:90vw">

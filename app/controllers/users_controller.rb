@@ -33,6 +33,16 @@ class UsersController < ApplicationController
       flash.now[:failed_jp] = "名前が空になっています。"
     elsif mes_en == "Password confirmation doesn't match Password"
       flash.now[:failed_jp] = "パスワード確認がパスワードと一致しません。"
+    elsif mes_en == "Password is too short (minimum is 6 characters)"
+      flash.now[:failed_jp] = "パスワードが短すぎます。(最低６文字です)"
+    elsif mes_en == "Password is too long (maximum is 32 characters)"
+      flash.now[:failed_jp] = "パスワードが長すぎます。(最高32文字です)"
+    elsif mes_en == "Name is invalid"
+      flash.now[:failed_jp] = "名前は半角英数字でお願いします。"
+      flash.now[:failed_en] = "Please input your username using half-width alphanumeric."
+    elsif mes_en == "Password is invalid"
+      flash.now[:failed_jp] = "パスワードは半角英数字でお願いします。"
+      flash.now[:failed_en] = "Please input your password using half-width alphanumeric."
     end
   end
 

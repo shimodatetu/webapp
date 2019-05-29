@@ -87,19 +87,6 @@ body{
   .space_form{
     padding-left: 0px!important;
   }
-  .post_footer{
-    width:85%!important;
-    padding: 0px!important;
-    padding-left: 0px!important;
-  }
-  .post_form{
-    width: 6%;
-    font-size: 90%;
-    .image_post_button{
-      width:100%!important;
-      font-size:150%!important;
-    }
-  }
   .post_form_cover_enjp{
     width:calc(50% - 5px)!important;
     ::placeholder{
@@ -122,8 +109,6 @@ body{
       }
     }
     .words_post_button{
-      padding-left: calc(5vw - 15px)!important;
-      padding-right: calc(5vw - 10px)!important;
     }
   }
   .profile{
@@ -203,12 +188,8 @@ body{
     width:99vw!important;
   }
   .words_post_button {
-    padding-top:4vw!important;
-    padding-left:calc(2vw - 5px)!important;
-    padding-right:2vw!important;
-    padding-bottom:calc(4vw - 15px)!important;
     .button_text{
-      display:none!important;
+      //display:none!important;
     }
   }
 
@@ -341,14 +322,11 @@ body{
     }
   }
   .post_form{
-    width: 10vw;
     .image_post_button{
-      height: calc(10vw + 15px)!important;
       text-align: center;
       padding-left:0px!important;
       padding-right:0px!important;
       padding-bottom:0px!important;
-      padding-top:2vw!important;
     }
   }
   .post_form_cover_enjp{

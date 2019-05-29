@@ -8,8 +8,6 @@ class RoomChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  require 'rest-client'
-
   def speak(data)
     group = Group.find_by(id: data['group_id'])
     if group

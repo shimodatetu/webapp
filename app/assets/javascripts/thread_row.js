@@ -9,15 +9,7 @@ $(function(){
     $(elem).find(".en_content_row").attr("style","-webkit-line-clamp:"+Math.ceil(row));
   });
   var options ={"backdrop":"static"}
-  $(".thread_page .words_post_button").click(function(){
-    if($(".user_login").attr("id") != "false"){
-      var options = {"backdrop":"static"};
-      $('#sampleModal-'+this.id).modal(options);
-    }
-    else {
-      alert("If you want to post, you need to login or sign up.\n投稿するには、ログインか会員登録が必要です。");
-    }
-  });
+
   $('#deleteModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
     var recipient = button.data('whatever') //data-whatever の値を取得
@@ -26,4 +18,5 @@ $(function(){
     modal.find('.delete_id').attr("value",recipient) //モーダルのタイトルに値を表示
     modal.find(".delete_html").html(recipient2)
   })
+  
 });
